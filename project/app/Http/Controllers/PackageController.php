@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Package;
+use DB;
 
 class PackageController extends Controller
 {
@@ -11,20 +13,53 @@ class PackageController extends Controller
     }
 
     public function store(){
+        $package=new Package;
     	if(null!==request('save')){
-    		$sector=new Sector;
-    		$sector->Sectorcode=request('sector_code');
-    		$sector->Sectorname=request('sector_name');
-    		$sector->Sectordesc=request('sector_description');
-    		$sector->save();
+    		
+            $this->validate(request(),[
+
+                'package_code'=>'required',
+                'package_name'=>'required',
+                'package_description'=>'required'
+
+            ]);
+
+    		$package->Packagecode=request('package_code');
+    		$package->Packagename=request('package_name');
+    		$package->Packagedesc=request('package_description');
+    		$package->save();
     		//dd(request()->all());
     	}
     	else if(null!==request('edit')){
 
+            $this->validate(request(),[
+
+                'package_code'=>'required',
+                'package_name'=>'required',
+                'package_description'=>'required'
+
+            ]);
+
+            DB::table('packages')
+                ->where('Packagecode',request('package_code'))
+                ->update([
+
+                    'Packagename'=>request('package_name'),
+                    'Packagedesc'=>request('package_description')
+
+                ]);
+
     	}
 
     	else if(null!==request('delete')){
+            $this->validate(request(),[
 
+                'package_code'=>'required'
+            ]);
+
+            DB::table('packages')
+                ->where('Packagecode',request('package_code'))
+                ->delete();
     	}
 
     	else

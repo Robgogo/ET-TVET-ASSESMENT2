@@ -4,23 +4,25 @@
 <form method="POST" action="/saveos">
 	{{csrf_field()}}
 
-	<div>
+	<div class="form-group col-md-4 " style="margin-left: 400px;margin-top: 100px;">
 		<label for="os_code">OS Code:</label>
-		<input type="text" name="os_code" id="os_code">
+		<input type="text" class="form-control" name="os_code" id="os_code">
 	</div>
-	<div>
+	<div class="form-group col-md-4 " style="margin-left: 400px;">
 		<label for="os_name">OS Name:</label>
-		<input type="text" name="os_name" id="os_name">
+		<input type="text" class="form-control" name="os_name" id="os_name">
 	</div>
-	<div>
+	<div class="form-group col-md-4 " style="margin-left: 400px;">
 		<label for="os_description">OS Description:</label>
-		<textarea name="os_description" id="os_description"></textarea>
+		<textarea name="os_description" class="form-control" id="os_description"></textarea>
 	</div>
-	<div>
-		<button name="save" value="save" type="submit">Save</button>
-		<button name="edit" value="edit" type="submit">Edit</button>
-		<button name="delete" value="delete" type="submit">Delete</button>
+	<div class="form-group col-md-4 " style="margin-left: 400px;">
+		<button name="save" class="form-control col-md-3 btn btn-primary" value="save" type="submit">Save</button>
+		<button name="edit" class="form-control col-md-3 btn btn-primary" value="edit" type="submit">Edit</button>
+		<button name="delete" class="form-control col-md-3 btn btn-primary" value="delete" type="submit">Delete</button>
 	</div>
+
+	@include('layouts.errors');
 
 </form>
 

@@ -4,23 +4,25 @@
 <form method="POST" action="/saveregion">
 	{{csrf_field()}}
 
-	<div>
+	<div class="form-group col-md-4 " style="margin-left: 400px;margin-top: 100px;">
 		<label for="region_code">Region Code:</label>
-		<input type="text" name="region_code" id="region_code">
+		<input type="text" class="form-control" name="region_code" id="region_code">
 	</div>
-	<div>
+	<div class="form-group col-md-4 " style="margin-left: 400px;">
 		<label for="region_name">Region Name:</label>
-		<input type="text" name="region_name" id="region_name">
+		<input type="text" class="form-control" name="region_name" id="region_name">
 	</div>
-	<div>
+	<div class="form-group col-md-4 " style="margin-left: 400px;">
 		<label for="region_description">Region Description:</label>
-		<textarea name="region_description" id="region_description"></textarea>
+		<textarea name="region_description" class="form-control" id="region_description"></textarea>
 	</div>
-	<div>
-		<button name="save" value="save" type="submit">Save</button>
-		<button name="edit" value="edit" type="submit">Edit</button>
-		<button name="delete" value="delete" type="submit">Delete</button>
+	<div class="form-group col-md-4 " style="margin-left: 400px;">
+		<button name="save" class="form-control col-md-3 btn btn-primary" value="save" type="submit">Save</button>
+		<button name="edit" class="form-control col-md-3 btn btn-primary" value="edit" type="submit">Edit</button>
+		<button name="delete" class="form-control col-md-3 btn btn-primary" value="delete" type="submit">Delete</button>
 	</div>
+
+	@include('layouts.errors');
 
 </form>
 
