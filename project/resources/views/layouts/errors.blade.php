@@ -1,10 +1,12 @@
-@if(count($errors))
-	<div>
-		<ul>
-			@foreach($errors->all() as $error)
-				<li>{{$error}}</li>
-		
-			@endforeach
-		</ul>
-	</div>
-@endif
+<div class="form-group" style="margin-left: 400px;>
+	@if(count($errors))
+		<div class=" alert alert-error col-md-4">
+			<ul>
+				@foreach($errors->all() as $error)
+					<li>{{$error}}</li>
+			
+				@endforeach
+			</ul>
+		</div>
+	@endif
+</div>
