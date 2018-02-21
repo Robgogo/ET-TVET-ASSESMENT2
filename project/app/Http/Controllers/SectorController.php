@@ -33,9 +33,9 @@ class SectorController extends Controller
     	else if(null!==request('edit')){
             $this->validate(request(),[
 
-                'Sectorcode'=>'required',
-                'Sectorname'=>'required',
-                'Sectordesc'=>'required'
+                'sector_code'=>'required',
+                'sector_name'=>'required',
+                'sector_desc'=>'required'
             ]);
 
             DB::table('sectors')
@@ -49,7 +49,7 @@ class SectorController extends Controller
 
     	else if(null!==request('delete')){
             $this->validate(request(),[
-                'Sectorcode'=>'required'
+                'sector_code'=>'required'
             ]);
             DB::table('sectors')
                 ->where('Sectorcode',request('sector_code'))
