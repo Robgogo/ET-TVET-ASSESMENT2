@@ -45,9 +45,7 @@
 					<td>
 						<select id="item_name" name="item_name">
 							<option value="">Choose item name</option>
-							{{--@foreach($package->items as $item)
-									<option value="{{$item}}">{{$item}}</option>
-								@endforeach--}}
+							
 						</select> 
 					</td>
 					<td>
@@ -76,27 +74,22 @@
  	console.log("adfasfda");
  	 xhttp.onreadystatechange = function() {
     if (xhttp.readyState == 4 && xhttp.status == 200) {
-    	//responseObject=JSON.parse(xhttp.response);
-    	console.log(xhttp.response);
-      // document.getElementById("demo").innerHTML = xhttp.responseText;
+    	responseObject=JSON.parse(xhttp.responseText);
+    	console.log(responseObject.items[0].Itemname);
+    	var newcontent='';
+    	console.log(responseObject.items.length);
+    	$('#item_name').empty();
+    	for(var i=0;i<responseObject.items.length;i++){
+    		newcontent+='<option value="'+responseObject.items[i].Itemname+'">'+responseObject.items[i].Itemname+'</option>';
+    	}
+       document.getElementById("item_name").innerHTML = newcontent;
     }
   };
   xhttp.open("GET", "get_package_id/" + packageNumber.value, true);
  	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  
+
   xhttp.send();
  }
- 
-  	
-
-	 // $('#package_code').on('change',function(){
-	 // 	var url="get_package_id/" +this.value;
-	 // 	console.log(url);
-	 // 	$.get("{{URL::to('get_package_id/')}}",function(data) {
-	 // 		console.log(data);
-	 // 	}
-	 // 	);
-	 // });
 
 </script>
 

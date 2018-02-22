@@ -15,11 +15,7 @@ class CreatePackageController extends Controller
     public function getId($pack_no){
     	$pack=Package::get()->where('Packagecode',$pack_no);
     	$id=$pack->pluck('id')[0];
-    	//$this->get($id);
-    	$package = Package::findOrFail($id);
-    	$items = $package->items;
-    	// dd(response()->json($items)->Itemnam;
-    	return response()->json($package);
+    	return $this->get($id);
     }
 
     public function get($id){
