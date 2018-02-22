@@ -27,6 +27,8 @@ Route::post('/savepackage','PackageController@store');
 Route::get('/item','ItemDocController@index');
 Route::post('/saveitem','ItemDocController@store');
 
+Route::get('/create_package','CreatePackageController@index');
+Route::get('/get_package_id/{pack_no}','CreatePackageController@getId');
 
 Route::get('/', function () {
     return view('welcome');

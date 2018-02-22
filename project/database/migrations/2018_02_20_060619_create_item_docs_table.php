@@ -15,6 +15,7 @@ class CreateItemDocsTable extends Migration
     {
         Schema::create('item_docs', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('package_id');
             $table->string('Itemcode');
             $table->string('Itemname');
             $table->string('Itemdesc');
