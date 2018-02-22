@@ -69,12 +69,34 @@
 
 <script type="text/javascript">
 	
-	$('#package_code').on('click',function(){
-		var pack_no=this.value;
-		$.get("{{URL::to('get_package_id/'."+pack_no+")}}",function(data){
-			console.log(data);
-		});
-	});
+
+ var xhttp = new XMLHttpRequest();
+ var packageNumber = document.getElementById('package_code');
+ packageNumber.onchange=  function (){
+ 	console.log("adfasfda");
+ 	 xhttp.onreadystatechange = function() {
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+    	//responseObject=JSON.parse(xhttp.response);
+    	console.log(xhttp.response);
+      // document.getElementById("demo").innerHTML = xhttp.responseText;
+    }
+  };
+  xhttp.open("GET", "get_package_id/" + packageNumber.value, true);
+ 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  
+  xhttp.send();
+ }
+ 
+  	
+
+	 // $('#package_code').on('change',function(){
+	 // 	var url="get_package_id/" +this.value;
+	 // 	console.log(url);
+	 // 	$.get("{{URL::to('get_package_id/')}}",function(data) {
+	 // 		console.log(data);
+	 // 	}
+	 // 	);
+	 // });
 
 </script>
 
