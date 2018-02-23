@@ -3,7 +3,7 @@
 
 @section('content')
 
-<form method="POST" action="/creatpackages">
+<form method="POST" action="/creatpackages" enctype="multipart/form-data">
 	{{csrf_field()}}
 
 	<div>
@@ -15,14 +15,6 @@
 		<input type="date" name="date" id="date">
 	</div>
 	<div>
-		<label for="package_name">Package Name:</label>
-		<input type="text" name="package_name" id="package_name">
-	</div>
-	<div>
-		<label for="created_by">Created By:</label>
-		<input type="text" name="created_by" id="created_by">
-	</div>
-	<div>
 		<label for="package_code">Package Code:</label>
 		<select id="package_code" name="package_code">
 			<option value="">Choose the code</option>
@@ -31,6 +23,15 @@
 			@endforeach
 		</select>
 	</div>
+	<div>
+		<label for="package_name">Package Name:</label>
+		<input type="text" name="package_name" id="package_name">
+	</div>
+	<div>
+		<label for="created_by">Created By:</label>
+		<input type="text" name="created_by" id="created_by">
+	</div>
+	
 	<div>
 		<table>
 			<tr>
@@ -65,6 +66,8 @@
 	</div>
 
 
+</form>
+
 <script type="text/javascript">
 	
 
@@ -72,10 +75,12 @@
  var packageNumber = document.getElementById('package_code');
  packageNumber.onchange=  function (){
  	console.log("adfasfda");
- 	 xhttp.onreadystatechange = function() {
+ 	var package_name='';
+ 	xhttp.onreadystatechange = function() {
     if (xhttp.readyState == 4 && xhttp.status == 200) {
-    	responseObject=JSON.parse(xhttp.responseText);
-    	console.log(responseObject.items[0].Itemname);
+ 	   	responseObject=JSON.parse(xhttp.responseText);
+ 	   	package_name=responseObject.Packagename;
+    	console.log(responseObject);
     	var newcontent='';
     	console.log(responseObject.items.length);
     	$('#item_name').empty();
@@ -83,6 +88,7 @@
     		newcontent+='<option value="'+responseObject.items[i].Itemname+'">'+responseObject.items[i].Itemname+'</option>';
     	}
        document.getElementById("item_name").innerHTML = newcontent;
+       document.getElementById("package_name").value=package_name;
     }
   };
   xhttp.open("GET", "get_package_id/" + packageNumber.value, true);
@@ -94,4 +100,5 @@
 </script>
 
 
+	@include('layouts.errors');
 @endsection
