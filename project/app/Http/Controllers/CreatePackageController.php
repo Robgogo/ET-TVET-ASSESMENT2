@@ -28,22 +28,47 @@ class CreatePackageController extends Controller
             'created_by'=>'required',
             'item_name'=>'required',
             'upload'=>'required',
-            'comments'=>'required'
-        ]);
-        $filename=request()->upload->getClientOriginalName();
-        $packagename=request('package_name');
+            'comments'=>'required',
+            'item_name2'=>'required',
+            'upload2'=>'required',
+            'comments2'=>'required',
+            'item_name3'=>'required',
+            'upload3'=>'required',
+            'comments3'=>'required',
+            'item_name4'=>'required',
+            'upload4'=>'required',
+            'comments4'=>'required',
+            'item_name5'=>'required',
+            'upload5'=>'required',
+            'comments5'=>'required',
+            'item_name6'=>'required',
+            'upload6'=>'required',
+            'comments6'=>'required',
+            'item_name7'=>'required',
+            'upload7'=>'required',
+            'comments7'=>'required',
+            'item_name8'=>'required',
+            'upload8'=>'required',
+            'comments8'=>'required',
+            'item_name9'=>'required',
+            'upload9'=>'required',
+            'comments9'=>'required',
+            'item_name10'=>'required',
+            'upload10'=>'required',
+            'comments10'=>'required'
 
-        $dir="public/files/".$packagename;
-        if(request()->hasFile('upload')){
-             request()->upload->storeAs($dir,$filename);
-        }
+        ]);
+
         $createPackage->cpack_no=request('cpackno');
         $createPackage->package_code=request('package_code');
         $createPackage->creatd_by=request('created_by');
         $createPackage->save();
         $id=$createPackage->id;
+        $packagename=request('package_name');
 
-        $packageInfo->store($id,$dir,$filename);
+        $dir="public/files/".$packagename;
+
+        $packageInfo->store($id,$dir);
 
         return redirect('/');
 

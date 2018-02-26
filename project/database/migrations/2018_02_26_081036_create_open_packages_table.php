@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCreatedPackageInfosTable extends Migration
+class CreateOpenPackagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,16 @@ class CreateCreatedPackageInfosTable extends Migration
      */
     public function up()
     {
-        Schema::create('created_package_infos', function (Blueprint $table) {
+        Schema::create('open_packages', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('open_pack_no');
+            $table->string('opened_by');
             $table->integer('created_package_id');
-            $table->integer('item_no');
-            $table->string('item_name');
-            $table->string('file_dir');
-            $table->string('comments');
+            $table->string('sector_code');
+            $table->string('subsector_code');
+            $table->string('os_code');
+            $table->string('level_code');
+            $table->string('region_code');
             $table->timestamps();
         });
     }
@@ -31,6 +34,6 @@ class CreateCreatedPackageInfosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('created_package_infos');
+        Schema::dropIfExists('open_packages');
     }
 }
