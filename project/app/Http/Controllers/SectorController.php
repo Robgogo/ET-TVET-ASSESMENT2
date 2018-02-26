@@ -21,7 +21,7 @@ class SectorController extends Controller
 
                 'sector_code'=>'required',
                 'sector_name'=>'required',
-                'sector_desc'=>'required'
+                'sector_description'=>'required'
             ]);
     	
     		$sector->Sectorcode=request('sector_code');
@@ -35,7 +35,7 @@ class SectorController extends Controller
 
                 'sector_code'=>'required',
                 'sector_name'=>'required',
-                'sector_desc'=>'required'
+                'sector_description'=>'required'
             ]);
 
             DB::table('sectors')

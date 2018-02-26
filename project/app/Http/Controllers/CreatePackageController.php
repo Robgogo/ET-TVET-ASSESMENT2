@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Package;
 use App\CreatePackage;
-use App\CreatedPackageInfo;
 
 
 class CreatePackageController extends Controller
@@ -14,11 +13,12 @@ class CreatePackageController extends Controller
     	$package=Package::all();
     	return view('transactions.create_package',compact('package'));
     }
+    //function to store the form values on to the database and upload a file.
 
     public function store(){
 
         $createPackage=new CreatePackage;
-        $packageInfo=new CreatedPackageInfo;
+        $packageInfo=new CreatedPackageInfoController;
 
         $this->validate(request(),[
             'cpackno'=>'required',
@@ -42,16 +42,13 @@ class CreatePackageController extends Controller
         $createPackage->creatd_by=request('created_by');
         $createPackage->save();
         $id=$createPackage->id;
-        $packageInfo->created_package_id=$id;
-        $packageInfo->item_name=request('item_name');
-        $packageInfo->file_dir=$dir."/".$filename;
-        $packageInfo->comments=request('comments');
-        $packageInfo->save();
+
+        $packageInfo->store($id,$dir,$filename);
 
         return redirect('/');
 
     }
-
+//this two functions process the request from ajax and return the response.
     public function getId($pack_no){
     	$pack=Package::get()->where('Packagecode',$pack_no);
     	$id=$pack->pluck('id')[0];

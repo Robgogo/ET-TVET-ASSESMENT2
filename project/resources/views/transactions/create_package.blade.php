@@ -18,6 +18,7 @@
 		<label for="package_code">Package Code:</label>
 		<select id="package_code" name="package_code">
 			<option value="">Choose the code</option>
+			{{-- this part displays the data fetched from the database see the route and the controller files on how to pass the variable $package --}}
 			@foreach($package as $code)
 				<option value="{{$code->Packagecode}}">{{$code->Packagecode}}</option>
 			@endforeach
@@ -56,6 +57,141 @@
 						<input type="text" name="comments" id="comments">
 					</td>
 				</tr>
+				<tr>
+					<td>Item 2</td>
+					<td>
+						<select id="item_name2" name="item_name">
+							<option value="">Choose item name</option>
+
+						</select>
+					</td>
+					<td>
+						<input type="file" name="upload" id="upload">
+					</td>
+					<td>
+						<input type="text" name="comments" id="comments">
+					</td>
+				</tr>
+				<tr>
+					<td>Item 3</td>
+					<td>
+						<select id="item_name" name="item_name">
+							<option value="">Choose item name</option>
+
+						</select>
+					</td>
+					<td>
+						<input type="file" name="upload" id="upload">
+					</td>
+					<td>
+						<input type="text" name="comments" id="comments">
+					</td>
+				</tr>
+				<tr>
+					<td>Item 4</td>
+					<td>
+						<select id="item_name" name="item_name">
+							<option value="">Choose item name</option>
+
+						</select>
+					</td>
+					<td>
+						<input type="file" name="upload" id="upload">
+					</td>
+					<td>
+						<input type="text" name="comments" id="comments">
+					</td>
+				</tr>
+				<tr>
+					<td>Item 5</td>
+					<td>
+						<select id="item_name" name="item_name">
+							<option value="">Choose item name</option>
+
+						</select>
+					</td>
+					<td>
+						<input type="file" name="upload" id="upload">
+					</td>
+					<td>
+						<input type="text" name="comments" id="comments">
+					</td>
+				</tr>
+				<tr>
+					<td>Item 6</td>
+					<td>
+						<select id="item_name" name="item_name">
+							<option value="">Choose item name</option>
+
+						</select>
+					</td>
+					<td>
+						<input type="file" name="upload" id="upload">
+					</td>
+					<td>
+						<input type="text" name="comments" id="comments">
+					</td>
+				</tr>
+				<tr>
+					<td>Item 7</td>
+					<td>
+						<select id="item_name" name="item_name">
+							<option value="">Choose item name</option>
+
+						</select>
+					</td>
+					<td>
+						<input type="file" name="upload" id="upload">
+					</td>
+					<td>
+						<input type="text" name="comments" id="comments">
+					</td>
+				</tr>
+				<tr>
+					<td>Item 8</td>
+					<td>
+						<select id="item_name" name="item_name">
+							<option value="">Choose item name</option>
+
+						</select>
+					</td>
+					<td>
+						<input type="file" name="upload" id="upload">
+					</td>
+					<td>
+						<input type="text" name="comments" id="comments">
+					</td>
+				</tr>
+				<tr>
+					<td>Item 9</td>
+					<td>
+						<select id="item_name" name="item_name">
+							<option value="">Choose item name</option>
+
+						</select>
+					</td>
+					<td>
+						<input type="file" name="upload" id="upload">
+					</td>
+					<td>
+						<input type="text" name="comments" id="comments">
+					</td>
+				</tr>
+				<tr>
+					<td>Item 10</td>
+					<td>
+						<select id="item_name" name="item_name">
+							<option value="">Choose item name</option>
+
+						</select>
+					</td>
+					<td>
+						<input type="file" name="upload" id="upload">
+					</td>
+					<td>
+						<input type="text" name="comments" id="comments">
+					</td>
+				</tr>
 			</tbody>
 		</table>
 	</div>
@@ -70,7 +206,8 @@
 
 <script type="text/javascript">
 	
-
+//this is the Ajax script that fetches the 
+//data behind the scene from database based on the selectoin of the package code,
  var xhttp = new XMLHttpRequest();
  var packageNumber = document.getElementById('package_code');
  packageNumber.onchange=  function (){
@@ -82,13 +219,15 @@
  	   	package_name=responseObject.Packagename;
     	console.log(responseObject);
     	var newcontent='';
+    	//items is part of the response
     	console.log(responseObject.items.length);
     	$('#item_name').empty();
     	for(var i=0;i<responseObject.items.length;i++){
     		newcontent+='<option value="'+responseObject.items[i].Itemname+'">'+responseObject.items[i].Itemname+'</option>';
     	}
-       document.getElementById("item_name").innerHTML = newcontent;
-       document.getElementById("package_name").value=package_name;
+        document.getElementById("item_name").innerHTML = newcontent;
+		document.getElementById("item_name2").innerHTML = newcontent;
+        document.getElementById("package_name").value=package_name;
     }
   };
   xhttp.open("GET", "get_package_id/" + packageNumber.value, true);

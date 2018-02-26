@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 use App\Level;
 
 class LevelController extends Controller
@@ -14,6 +15,13 @@ class LevelController extends Controller
     public function store(){
     	$level=new Level;
     	if(null!==request('save')){
+
+            $this->validate(request(),[
+
+                'level_code'=>'required',
+                'level_name'=>'required',
+                'level_description'=>'required'
+            ]);
     		
     		$level->Levelcode=request('level_code');
     		$level->Levelname=request('level_name');
@@ -23,9 +31,31 @@ class LevelController extends Controller
     	}
     	else if(null!==request('edit')){
 
+             $this->validate(request(),[
+
+                'level_code'=>'required',
+                'level_name'=>'required',
+                'level_description'=>'required'
+            ]);
+
+             DB::table('levels')
+                ->where('Levelcode',request('level_code'))
+                ->update([
+                    'Levelname'=>request('level_name'),
+                    'Leveldesc'=>request('level_description')
+                ]);
+
     	}
 
     	else if(null!==request('delete')){
+
+             $this->validate(request(),[
+                'level_code'=>'required',
+            ]);
+
+             DB::table('levels')
+                ->where('Levelcode',request('level_code'))
+                ->delete();
 
     	}
 

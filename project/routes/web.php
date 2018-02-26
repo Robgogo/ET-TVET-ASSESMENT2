@@ -28,6 +28,8 @@ Route::get('/item','ItemDocController@index');
 Route::post('/saveitem','ItemDocController@store');
 
 Route::get('/create_package','CreatePackageController@index');
+//the route below is the code that is responsible to get therequest from ajax and 
+//process it and return the values needed
 Route::get('/get_package_id/{pack_no}','CreatePackageController@getId');
 Route::post('/creatpackages','CreatePackageController@store');
 
