@@ -1,6 +1,6 @@
-<div class="form-group" style="margin-left: 400px;>
+<div class="form-group  col-md-4" style="margin-left: 400px;">
 	@if(count($errors))
-		<div class=" alert alert-error col-md-4">
+		<div class= "alert alert-danger" >
 			<ul>
 				@foreach($errors->all() as $error)
 					<li>{{$error}}</li>

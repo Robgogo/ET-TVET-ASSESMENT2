@@ -20,7 +20,7 @@ class CreatePackageController extends Controller
         $createPackage=new CreatePackage;
         $packageInfo=new CreatedPackageInfoController;
 
-        $this->validate(request(),[
+       /* $this->validate(request(),[
             'cpackno'=>'required',
             'date'=>'required',
             'package_code'=>'required',
@@ -57,7 +57,7 @@ class CreatePackageController extends Controller
             'upload10'=>'required',
             'comments10'=>'required'
 
-        ]);
+        ]);*/
 
         $createPackage->cpack_no=request('cpackno');
         $createPackage->package_code=request('package_code');
@@ -67,10 +67,15 @@ class CreatePackageController extends Controller
         $packagename=request('package_name');
 
         $dir="public/files/".$packagename;
+        $filename=request()->upload->getClientOriginalName();
 
-        $packageInfo->store($id,$dir);
+        if(request()->hasFile('upload')){
+            request()->upload->storeAs($dir,$filename);
+        }
 
-        return redirect('/');
+        $packageInfo->store($id,$dir,$filename);
+    //dd($packageInfo);
+            return redirect('/');
 
     }
 //this two functions process the request from ajax and return the response.

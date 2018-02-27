@@ -1,4 +1,4 @@
- @extends('layouts.layout')
+@extends('layouts.layout')
 
 
 @section('content')
@@ -26,7 +26,7 @@
 	</div>
 	<div>
 		<label for="package_name">Package Name:</label>
-		<input type="text" name="package_name" id="package_name" disabled="disabled">
+		<input type="text" name="package_name" id="package_name" readonly="true">
 	</div>
 	<div>
 		<label for="created_by">Created By:</label>

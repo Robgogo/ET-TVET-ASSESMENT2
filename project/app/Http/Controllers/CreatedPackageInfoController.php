@@ -7,14 +7,10 @@ use App\CreatedPackageInfo;
 
 class CreatedPackageInfoController extends Controller
 {
-    public function store($id,$dir){
+    public function store($id,$dir,$filename){
         $packageInfo=new CreatedPackageInfo;
         $packageInfo->created_package_id=$id;
-        $filename=request()->upload->getClientOriginalName();
 
-        if(request()->hasFile('upload')){
-            request()->upload->storeAs($dir,$filename);
-        }
         $packageInfo->item_no=request('item_no');
         $packageInfo->item_name=request('item_name');
         $packageInfo->file_dir=$dir."/".$filename;

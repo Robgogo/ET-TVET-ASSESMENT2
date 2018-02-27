@@ -33,6 +33,9 @@ Route::get('/create_package','CreatePackageController@index');
 Route::get('/get_package_id/{pack_no}','CreatePackageController@getId');
 Route::post('/creatpackages','CreatePackageController@store');
 
+Route::get('/open_package','OpenPackageController@index');
+Route::post('/open_package','OpenPackageController@store');
+
 Route::get('/', function () {
     return view('welcome');
 });
