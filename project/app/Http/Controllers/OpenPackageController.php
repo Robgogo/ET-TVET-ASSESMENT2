@@ -33,29 +33,30 @@ class OpenPackageController extends Controller
             'date'=>'required',
             'opened_by'=>'required',
             'sector_code'=>'required',
-            'sector_name'=>'required',
+
             'subsector_code'=>'required',
-            'subsector_name'=>'required',
+
             'os_code'=>'required',
-            'os_name'=>'required',
+
             'level_code'=>'required',
-            'level_name'=>'required',
+
             'region_code'=>'required',
-            'region_name'=>'required',
+
             'package_code'=>'required'
         ]);
         $open_pack_no=request('package_code');
 
         $att=DB::table('create_packages')
-            ->where('cpack_no',$open_pack_no)
+            ->where('package_code',$open_pack_no)
             ->first();
         $created_package_id=$att->id;
         $date=$att->created_at;
         $by=$att->creatd_by;
 
+
         $val=DB::table('created_package_infos')
                 ->where('created_package_id',$created_package_id)
-                ->get();
+                ->first();
 
 
 
@@ -68,7 +69,19 @@ class OpenPackageController extends Controller
         $open_pack->level_code=request('level_code');
         $open_pack->region_code=request('region_code');
         $open_pack->save();
+    dd($date->);
+//        return view('transactions.open_package.open_package')->with(compact('open_pack_no','date','by','val','created_package_id'));
+    }
 
-        return view('transactions.open_package.open_package')->with(compact('open_pack_no','date','by','val'));
+    public function download($created_package_id){
+        $val=DB::table('created_package_infos')
+            ->where('created_package_id',$created_package_id)
+            ->first();
+        $path = storage_path().'/'.'app'.'/'.$val->file_dir;
+        if (file_exists($path)) {
+            return response()->download($path);
+        }
+        else
+            return "File Not found";
     }
 }

@@ -119,7 +119,7 @@
                             <option value="">Choose the code</option>
                             {{-- this part displays the data fetched from the database see the route and the controller files on how to pass the variable $package --}}
                             @foreach($package as $code)
-                                <option value="{{$code->Packagecode}}">{{$code->Packagecode}}</option>
+                                <option value="{{$code->package_code}}">{{$code->package_code}}</option>
                             @endforeach
                         </select>
                     </div>

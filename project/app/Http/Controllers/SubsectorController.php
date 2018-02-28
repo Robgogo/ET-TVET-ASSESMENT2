@@ -46,7 +46,7 @@ class SubsectorController extends Controller
             DB::table('subsectors')
                 ->where('Subsectorcode',request('subsector_code'))
                 ->update([
-                    'sector_id'=>request('sector_id');
+                    'sector_id'=>request('sector_id'),
                     'Subsectorname'=>request('subsector_name'),
                     'Subsectordesc'=>request('subsector_description')
 

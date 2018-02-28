@@ -1,16 +1,16 @@
 @extends('layouts.layout')
     @section('content')
 
-        <form method="POST" action="/creatpackages" enctype="multipart/form-data">
+        <form method="POST" action="/open" enctype="multipart/form-data">
             {{csrf_field()}}
 
             <div>
                 <label for="cpackno">Package No:</label>
-                <input type="text" name="cpackno" id="cpackno" readonly="true" value="{{open_pack_no}}">
+                <input type="text" name="cpackno" id="cpackno" readonly="true" value="{{$open_pack_no}}">
             </div>
             <div>
                 <label for="date">Date:</label>
-                <input type="date" name="date" id="date" value="{{date}}" readonly="true">
+                <input type="date" name="date" id="date" value="{{$date}}" readonly="true">
             </div>
             <div>
                 <label for="created_by">Created By:</label>
@@ -34,7 +34,7 @@
                                 <input type="text" readonly="true" value="{{$val->item_no}}}">
                             </td>
                             <td>
-                                <a href="/download?url={{$val->file_dir}}"><button>Download File</button></a>
+                                <a href="/download/{{$created_package_id}}">Download Files</a>
                             </td>
                             <td>
                                 <input type="file" name="upload" id="upload">

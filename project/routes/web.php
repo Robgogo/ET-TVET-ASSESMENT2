@@ -35,6 +35,8 @@ Route::post('/creatpackages','CreatePackageController@store');
 
 Route::get('/open_package','OpenPackageController@index');
 Route::post('/open_package','OpenPackageController@store');
+Route::get('/download/{created_package_id}','OpenPackageController@download');
+Route::post('/open','OpenedPackageInfoController@store');
 
 Route::get('/', function () {
     return view('welcome');
