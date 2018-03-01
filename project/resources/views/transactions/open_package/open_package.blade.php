@@ -31,7 +31,7 @@
                             <input type="hidden" value="1" name="item_no">
                             <td>Item 1</td>
                             <td>
-                                <input type="text" readonly="true" value="{{$val->item_name}}">
+                                <input type="text" readonly="true" value="{{$val[0]->item_name}}">
                             </td>
                             <td>
                                 <a href="/download/{{$created_package_id}}">Download Files</a>
@@ -40,7 +40,26 @@
                                 <input type="file" name="upload" id="upload">
                             </td>
                             <td>
-                                <input type="text" name="comments" id="comments" readonly="true" value="{{$val->comments}}">
+                                <input type="text" name="comments" id="comments" readonly="true" value="{{$val[0]->comments}}">
+                            </td>
+                            <td>
+                                <input type="text" name="new_comments" id="comments">
+                            </td>
+                        </tr>
+                        <tr>
+                            <input type="hidden" value="2" name="item_no2">
+                            <td>Item 1</td>
+                            <td>
+                                <input type="text" readonly="true" value="{{$val[1]->item_name}}">
+                            </td>
+                            <td>
+                                <a href="/download/{{$created_package_id}}">Download Files</a>
+                            </td>
+                            <td>
+                                <input type="file" name="upload" id="upload">
+                            </td>
+                            <td>
+                                <input type="text" name="comments" id="comments" readonly="true" value="{{$val[1]->comments}}">
                             </td>
                             <td>
                                 <input type="text" name="new_comments" id="comments">

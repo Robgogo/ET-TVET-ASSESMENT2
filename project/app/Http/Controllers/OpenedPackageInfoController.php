@@ -43,7 +43,7 @@ class OpenedPackageInfoController extends Controller
         $pack->opened_item_comment=request('new_comments');
         $pack->save();
 
-        dd($pack);
+        return view('/');
 
 
     }

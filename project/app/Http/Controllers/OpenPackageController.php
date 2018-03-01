@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\CreatedPackageInfo;
 use Illuminate\Http\Request;
 use App\Level;
 use App\Region;
@@ -54,10 +55,10 @@ class OpenPackageController extends Controller
         $date=$att->created_at;
         $by=$att->creatd_by;
 
-
-        $val=DB::table('created_package_infos')
-                ->where('created_package_id',$created_package_id)
-                ->first();
+        $val=CreatedPackageInfo::get()->where('created_package_id',$created_package_id);
+//        $val=DB::table('created_package_infos')
+//                ->where('created_package_id',$created_package_id)
+//                ->get();
 
 
 
@@ -70,7 +71,7 @@ class OpenPackageController extends Controller
         $open_pack->level_code=request('level_code');
         $open_pack->region_code=request('region_code');
         $open_pack->save();
-   // dd($date);
+        // dd($val);
         return view('transactions.open_package.open_package')->with(compact('open_pack_no','date','by','val','created_package_id'));
     }
 
