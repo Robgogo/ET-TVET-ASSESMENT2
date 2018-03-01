@@ -5,12 +5,12 @@
             {{csrf_field()}}
 
             <div>
-                <label for="cpackno">Package No:</label>
-                <input type="text" name="cpackno" id="cpackno" readonly="true" value="{{$open_pack_no}}">
+                <label for="opackno">Package No:</label>
+                <input type="text" name="opackno" id="opackno" readonly="true" value="{{$open_pack_no}}">
             </div>
             <div>
                 <label for="date">Date:</label>
-                <input type="date" name="date" id="date" value="{{$date}}" readonly="true">
+                <input type="text" name="date" id="date" value="{{$date}}" readonly="true">
             </div>
             <div>
                 <label for="created_by">Created By:</label>
@@ -31,7 +31,7 @@
                             <input type="hidden" value="1" name="item_no">
                             <td>Item 1</td>
                             <td>
-                                <input type="text" readonly="true" value="{{$val->item_no}}}">
+                                <input type="text" readonly="true" value="{{$val->item_name}}">
                             </td>
                             <td>
                                 <a href="/download/{{$created_package_id}}">Download Files</a>

@@ -17,7 +17,7 @@ class CreateOpenedPackageInfosTable extends Migration
             $table->increments('id');
             $table->integer('open_package_id');
             $table->integer('item_no');
-            $table->string('opened_iems_dir');
+            $table->string('opened_items_dir');
             $table->string('opened_item_comment');
             $table->timestamps();
         });

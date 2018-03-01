@@ -44,10 +44,11 @@ class OpenPackageController extends Controller
 
             'package_code'=>'required'
         ]);
-        $open_pack_no=request('package_code');
+        $open_pack_no=request('opackno');
+        $created_pack_no=request('package_code');
 
         $att=DB::table('create_packages')
-            ->where('package_code',$open_pack_no)
+            ->where('package_code',$created_pack_no)
             ->first();
         $created_package_id=$att->id;
         $date=$att->created_at;
@@ -69,8 +70,8 @@ class OpenPackageController extends Controller
         $open_pack->level_code=request('level_code');
         $open_pack->region_code=request('region_code');
         $open_pack->save();
-    dd($date->);
-//        return view('transactions.open_package.open_package')->with(compact('open_pack_no','date','by','val','created_package_id'));
+   // dd($date);
+        return view('transactions.open_package.open_package')->with(compact('open_pack_no','date','by','val','created_package_id'));
     }
 
     public function download($created_package_id){
