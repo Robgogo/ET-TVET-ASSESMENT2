@@ -42,9 +42,9 @@ class RegionController extends Controller
                 ->where('Regioncode',request('region_code'))
                 ->update([
 
-                    'Regioncode'=>request('region_code');
-                    'Regionname'=>request('region_name');
-                    'Regiondesc'=>request('region_description');
+                    'Regioncode'=>request('region_code'),
+                    'Regionname'=>request('region_name'),
+                    'Regiondesc'=>request('region_description'),
 
                 ]);
     	}

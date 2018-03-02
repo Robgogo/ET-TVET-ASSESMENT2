@@ -66,7 +66,7 @@ class CreatePackageController extends Controller
         $id=$createPackage->id;
         $packagename=request('package_name');
 
-        $dir="public/files/".$packagename;
+        $dir="public/files/create/".$packagename;
         $filename=request()->upload->getClientOriginalName();
 
         if(request()->hasFile('upload')){
