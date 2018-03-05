@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Package;
+use App\Package;
 use DB;
 
 class PackageController extends Controller
 {
     public function index(){
+
+
     	return view('maintenance.package');
     }
 

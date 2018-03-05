@@ -4,6 +4,7 @@
 <form method="POST" action="/saveitem">
 	{{csrf_field()}}
 
+
 	<div class="form-group col-md-4 " style="margin-left: 400px;margin-top: 100px;">
 		<label for="item_code">Item Code:</label>
 		<input type="text" class="form-control" name="item_code" id="item_code">
@@ -15,6 +16,15 @@
 	<div class="form-group col-md-4 " style="margin-left: 400px;">
 		<label for="item_description">Item Description:</label>
 		<textarea name="item_description" class="form-control" id="item_description"></textarea>
+	</div>
+	<div class="form-group col-md-4" style="margin-left: 400px;">
+		<label for="package_no">Package Code:</label>
+		<select class="form-control" name="package_no" id="package_no">
+			<option value="">Choose package belonging to:</option>
+			@foreach($packages as $pack)
+				<option value="{{$pack["id"]}}">{{$pack["Packagecode"]}}</option>
+			@endforeach
+		</select>
 	</div>
 	<div class="form-group col-md-4 " style="margin-left: 400px;">
 		<button name="save" class="form-control col-md-3 btn btn-primary" value="save" type="submit">Save</button>

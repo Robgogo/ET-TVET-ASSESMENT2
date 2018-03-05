@@ -52,13 +52,16 @@ class OpenPackageController extends Controller
             ->where('package_code',$created_pack_no)
             ->first();
         $created_package_id=$att->id;
+        $created_by=$att->creatd_by;
         $date=$att->created_at;
-        $by=$att->creatd_by;
 
-        $val=CreatedPackageInfo::get()->where('created_package_id',$created_package_id);
-//        $val=DB::table('created_package_infos')
-//                ->where('created_package_id',$created_package_id)
-//                ->get();
+        $cpack_no=$att->cpack_no;
+
+
+        //$val=CreatedPackageInfo::get()->where('created_package_id',$created_package_id);
+        $val=DB::table('created_package_infos')
+                ->where('created_package_id',$created_package_id)
+                ->get();
 
 
 
@@ -71,13 +74,14 @@ class OpenPackageController extends Controller
         $open_pack->level_code=request('level_code');
         $open_pack->region_code=request('region_code');
         $open_pack->save();
-        // dd($val);
-        return view('transactions.open_package.open_package')->with(compact('open_pack_no','date','by','val','created_package_id'));
+        //dd($val);
+        return view('transactions.open_package.open_package')->with(compact('cpack_no','created_by','date','val','created_package_id'));
+
     }
 
     public function download($created_package_id){
         $val=DB::table('created_package_infos')
-            ->where('created_package_id',$created_package_id)
+            ->where('id',$created_package_id)
             ->first();
         $path = storage_path().'/'.'app'.'/'.$val->file_dir;
         if (file_exists($path)) {

@@ -3,203 +3,214 @@
 
 @section('content')
 
-<form method="POST" action="/creatpackages" enctype="multipart/form-data">
+<form class="form-horizontal" role="form" method="POST" action="/creatpackages" enctype="multipart/form-data">
 	{{csrf_field()}}
 
-	<div>
-		<label for="cpackno">Package No:</label>
-		<input type="text" name="cpackno" id="cpackno">
+	<div class="form-group">
+		<label class="control-label col-sm-2" for="cpackno">Package No:</label>
+		<div class="col-sm-4">
+			<input type="text" class="form-control" name="cpackno" id="cpackno">
+		</div>
 	</div>
-	<div>
-		<label for="date">Date:</label>
-		<input type="date" name="date" id="date">
+	<div class="form-group">
+		<label class="control-label col-sm-2" for="date">Date:</label>
+		<div class="col-sm-4">
+			<input type="date" class="form-control" name="date" id="date">
+		</div>
 	</div>
-	<div>
-		<label for="package_code">Package Code:</label>
-		<select id="package_code" name="package_code">
-			<option value="">Choose the code</option>
-			{{-- this part displays the data fetched from the database see the route and the controller files on how to pass the variable $package --}}
-			@foreach($package as $code)
-				<option value="{{$code->Packagecode}}">{{$code->Packagecode}}</option>
-			@endforeach
-		</select>
+	<div class="form-group">
+		<label class="control-label col-sm-2" for="package_code">Package Code:</label>
+		<div class="col-sm-4">
+			<select class="form-control" id="package_code" name="package_code">
+				<option value="">Choose the code</option>
+				{{-- this part displays the data fetched from the database see the route and the controller files on how to pass the variable $package --}}
+				@foreach($package as $code)
+					<option value="{{$code->Packagecode}}">{{$code->Packagecode}}</option>
+				@endforeach
+			</select>
+		</div>
+
 	</div>
-	<div>
-		<label for="package_name">Package Name:</label>
-		<input type="text" name="package_name" id="package_name" readonly="true">
+	<div class="form-group">
+		<label class="control-label col-sm-2" for="package_name">Package Name:</label>
+		<div class="col-sm-4">
+			<input type="text" class="form-control" name="package_name" id="package_name" readonly="true">
+		</div>
 	</div>
-	<div>
-		<label for="created_by">Created By:</label>
-		<input type="text" name="created_by" id="created_by">
+	<div class="form-group">
+		<label class="control-label col-sm-2" for="created_by">Created By:</label>
+		<div class="col-sm-4">
+			<input type="text" class="form-control" name="created_by" id="created_by">
+		</div>
 	</div>
 	
-	<div>
-		<table>
+	<div class="form-group col-md-12 table-responsive">
+		<table class="table table-bordered table-striped">
 			<tr>
-				<th></th>
-				<th>Item Name</th>
-				<th>Upload a document</th>
-				<th>Comments</th>
+				<th scope="col"></th>
+				<th scope="col">Item Name</th>
+				<th scope="col">Upload a document</th>
+				<th scope="col">Comments</th>
 			</tr>
 			<tbody>
 				<tr>
 					<input type="hidden" value="1" name="item_no">
 					<td>Item 1</td>
 					<td>
-						<select id="item_name" name="item_name">
+						<select class="form-control" id="item_name" name="item_name">
 							<option value="">Choose item name</option>
 							
 						</select> 
 					</td>
 					<td>
-						<input type="file" name="upload" id="upload">
+						<input type="file" class="form-control" name="upload" id="upload">
 					</td>
 					<td>
-						<input type="text" name="comments" id="comments">
+						<input type="text" class="form-control" name="comments" id="comments">
 					</td>
 				</tr>
 				<tr>
 					<input type="hidden" value="2" name="item_no2">
 					<td>Item 2</td>
 					<td>
-						<select id="item_name2" name="item_name2">
+						<select class="form-control" id="item_name2" name="item_name2">
 							<option value="">Choose item name</option>
 
 						</select>
 					</td>
 					<td>
-						<input type="file" name="upload2" id="upload2">
+						<input class="form-control" type="file" name="upload2" id="upload2">
 					</td>
 					<td>
-						<input type="text" name="comments2" id="comments2">
+						<input type="text" class="form-control" name="comments2" id="comments2">
 					</td>
 				</tr>
 				<tr>
-					<input type="hidden" value="3" name="item_no3">
+					<input type="hidden" class="form-control" value="3" name="item_no3">
 					<td>Item 3</td>
 					<td>
-						<select id="item_name3" name="item_name3">
+						<select id="item_name3" class="form-control" name="item_name3">
 							<option value="">Choose item name</option>
 
 						</select>
 					</td>
 					<td>
-						<input type="file" name="upload3" id="upload3">
+						<input type="file" class="form-control" name="upload3" id="upload3">
 					</td>
 					<td>
-						<input type="text" name="comments3" id="comments3">
+						<input type="text" class="form-control" name="comments3" id="comments3">
 					</td>
 				</tr>
 				<tr>
-					<input type="hidden" value="4" name="item_no4">
+					<input type="hidden"  value="4" name="item_no4">
 					<td>Item 4</td>
 					<td>
-						<select id="item_name4" name="item_name4">
+						<select class="form-control" id="item_name4" name="item_name4">
 							<option value="">Choose item name</option>
 
 						</select>
 					</td>
 					<td>
-						<input type="file" name="upload4" id="upload4">
+						<input type="file" class="form-control" name="upload4" id="upload4">
 					</td>
 					<td>
-						<input type="text" name="comments4" id="comments4">
+						<input type="text" class="form-control" name="comments4" id="comments4">
 					</td>
 				</tr>
 				<tr>
 					<input type="hidden" value="5" name="item_no5">
 					<td>Item 5</td>
 					<td>
-						<select id="item_name5" name="item_name5">
+						<select id="item_name5" class="form-control" name="item_name5">
 							<option value="">Choose item name</option>
 
 						</select>
 					</td>
 					<td>
-						<input type="file" name="upload5" id="upload5">
+						<input class="form-control" type="file" name="upload5" id="upload5">
 					</td>
 					<td>
-						<input type="text" name="comments5" id="comments5">
+						<input type="text" class="form-control" name="comments5" id="comments5">
 					</td>
 				</tr>
 				<tr>
 					<input type="hidden" value="6" name="item_no6">
 					<td>Item 6</td>
 					<td>
-						<select id="item_name6" name="item_name6">
+						<select id="item_name6" class="form-control" name="item_name6">
 							<option value="">Choose item name</option>
 
 						</select>
 					</td>
 					<td>
-						<input type="file" name="upload6" id="upload6">
+						<input type="file" class="form-control" name="upload6" id="upload6">
 					</td>
 					<td>
-						<input type="text" name="comments6" id="comments6">
+						<input type="text" class="form-control" name="comments6" id="comments6">
 					</td>
 				</tr>
 				<tr>
 					<input type="hidden" value="7" name="item_no7">
 					<td>Item 7</td>
 					<td>
-						<select id="item_name7" name="item_name7">
+						<select id="item_name7" class="form-control" name="item_name7">
 							<option value="">Choose item name</option>
 
 						</select>
 					</td>
 					<td>
-						<input type="file" name="upload7" id="upload7">
+						<input type="file" class="form-control" name="upload7" id="upload7">
 					</td>
 					<td>
-						<input type="text" name="comments7" id="comments7">
+						<input type="text" class="form-control" name="comments7" id="comments7">
 					</td>
 				</tr>
 				<tr>
 					<input type="hidden" value="8" name="item_no8">
 					<td>Item 8</td>
 					<td>
-						<select id="item_name8" name="item_name8">
+						<select class="form-control" id="item_name8" name="item_name8">
 							<option value="">Choose item name</option>
 
 						</select>
 					</td>
 					<td>
-						<input type="file" name="upload8" id="upload8">
+						<input type="file" class="form-control" name="upload8" id="upload8">
 					</td>
 					<td>
-						<input type="text" name="comments8" id="comments8">
+						<input type="text" class="form-control" name="comments8" id="comments8">
 					</td>
 				</tr>
 				<tr>
 					<input type="hidden" value="9" name="item_no9">
 					<td>Item 9</td>
 					<td>
-						<select id="item_name9" name="item_name9">
+						<select class="form-control" id="item_name9" name="item_name9">
 							<option value="">Choose item name</option>
 
 						</select>
 					</td>
 					<td>
-						<input type="file" name="upload9" id="upload9">
+						<input type="file" class="form-control" name="upload9" id="upload9">
 					</td>
 					<td>
-						<input type="text" name="comments9" id="comments9">
+						<input type="text" class="form-control" name="comments9" id="comments9">
 					</td>
 				</tr>
 				<tr>
 					<input type="hidden" value="10" name="item_no10">
 					<td>Item 10</td>
 					<td>
-						<select id="item_name10" name="item_name10">
+						<select class="form-control" id="item_name10" name="item_name10">
 							<option value="">Choose item name</option>
 
 						</select>
 					</td>
 					<td>
-						<input type="file" name="upload10" id="upload10">
+						<input type="file" class="form-control" name="upload10" id="upload10">
 					</td>
 					<td>
-						<input type="text" name="comments10" id="comments10">
+						<input type="text" class="form-control" name="comments10" id="comments10">
 					</td>
 				</tr>
 			</tbody>
@@ -207,8 +218,8 @@
 	</div>
 
 <br>
-	<div>
-		<button name="save" style="margin-left: 600px;" type="submit">Save</button>
+	<div class="form-group col-sm-2">
+		<button name="save" class="form-control btn btn-primary col-sm-5" style="margin-left: 1275px;" type="submit">Save</button>
 	</div>
 
 

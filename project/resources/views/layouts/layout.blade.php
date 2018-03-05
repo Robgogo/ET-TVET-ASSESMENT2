@@ -6,10 +6,15 @@
 	<link  href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" >
 	<link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap-grid.min.css')}}">
 	<title>ET-TVET SYSTEM</title>
+	<style>
+		.nav{
+			background: lightgray;
+		}
+	</style>
 </head>
 <body>
 	<div>
-	<nav class="navbar navbar-default">
+	<nav class="navbar navbar-default nav">
 		<div class="container-fluid">
 			<div class="navbar-header"><a class="navbar-brand navbar-link" href="#">Brand</a>
 				<button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
@@ -30,9 +35,10 @@
 					</li>
 					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#">Transaction </a>
 						<ul class="dropdown-menu" role="menu">
-							<li role="presentation"><a href="#">First Item</a></li>
-							<li role="presentation"><a href="#">Second Item</a></li>
-							<li role="presentation"><a href="#">Third Item</a></li>
+							<li role="presentation"><a href="/create_package">Create Package</a></li>
+							<li role="presentation"><a href="/open_package">Open Package</a></li>
+							<li role="presentation"><a href="/post_package">Post Package</a></li>
+							<li role="presentation"><a href="/approve_package">Approve Package</a></li>
 						</ul>
 					</li>
 					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#">Reports </a>

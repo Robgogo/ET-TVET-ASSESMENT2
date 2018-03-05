@@ -5,11 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\ItemDoc;
+use App\Package;
 
 class ItemDocController extends Controller
 {
     public function index(){
-    	return view('maintenance.item_doc');
+
+        $packages=Package::all();
+        //dd($packages);
+    	return view('maintenance.item_doc')->with(compact('packages'));
     }
 
     public function store(){
@@ -17,12 +21,12 @@ class ItemDocController extends Controller
     	if(null!==request('save')){
 
             $this->validate(request(),[
-
+                'package_no'=>'required',
                 'item_code'=>'required',
                 'item_name'=>'required',
                 'item_description'=>'required'
             ]);
-    		
+    		$item->package_id=request('package_no');
     		$item->Itemcode=request('item_code');
     		$item->Itemname=request('item_name');
     		$item->Itemdesc=request('item_description');
