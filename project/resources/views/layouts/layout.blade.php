@@ -10,6 +10,10 @@
 		.nav{
 			background: lightgray;
 		}
+		body{
+			background: ;
+			color: black;
+		}
 	</style>
 </head>
 <body>
