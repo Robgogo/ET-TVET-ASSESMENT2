@@ -6,7 +6,7 @@
 
         <div class="form-group col-md-3">
             <label for="opackno">Package No:</label>
-            <input type="text" class="form-control " name="opackno" id="opackno" readonly="true" value="{{$cpack_no}}">
+            <input type="text" class="form-control " name="opackno" id="opackno" readonly="true" value="{{$opened_pack_no}}">
         </div>
         <div class="form-group col-md-3">
             <label for="date">Date:</label>
@@ -14,7 +14,7 @@
         </div>
         <div class="form-group col-md-3">
             <label for="created_by">Created By:</label>
-            <input type="text" class="form-control" name="created_by" id="created_by" readonly="true" value="{{$created_by}}">
+            <input type="text" class="form-control" name="created_by" id="created_by" readonly="true" value="{{$opened_by}}">
         </div>
         <br>
 
@@ -36,7 +36,7 @@
                     <input type="hidden" value="1" name="item_no">
                     <td>Item 1</td>
                     <td>
-                        <input type="text" class="form-control" readonly="true" value="{{$val[0]->item_name}}">
+                        <input type="text" class="form-control" readonly="true" value="{{$val[0]->item_no}}">
                     </td>
                     <td>
                         <a href="/download/{{$val[0]->id}}" class="btn btn-primary " role="button">Download Files</a>
@@ -45,7 +45,7 @@
                         <input type="file" class="form-control" name="upload" id="upload">
                     </td>
                     <td>
-                        <input type="text" class="form-control" name="comments" id="comments" readonly="true" value="{{$val[0]->comments}}">
+                        <input type="text" class="form-control" name="comments" id="comments" readonly="true" value="{{$val[0]->opened_item_comment}}">
                     </td>
                     <td>
                         <input type="text" class="form-control" name="new_comments" id="new_comments">
@@ -55,7 +55,7 @@
                     <input type="hidden" value="2" name="item_no2">
                     <td>Item 2</td>
                     <td>
-                        <input type="text" class="form-control" readonly="true" value="{{$val[1]->item_name}}">
+                        <input type="text" class="form-control" readonly="true" value="{{$val[1]->item_no}}">
                     </td>
                     <td>
                         <a href="/download/{{$val[1]->id}}"  class="btn btn-primary " role="button">Download Files</a>
@@ -64,7 +64,7 @@
                         <input type="file" class="form-control" name="upload2" id="upload2">
                     </td>
                     <td>
-                        <input type="text" class="form-control" name="comments2" id="comments2" readonly="true" value="{{$val[1]->comments}}">
+                        <input type="text" class="form-control" name="comments2" id="comments2" readonly="true" value="{{$val[1]->opened_item_comment}}">
                     </td>
                     <td>
                         <input type="text" class="form-control" name="new_comments2" id="new_comments2">
@@ -74,7 +74,7 @@
                     <input type="hidden" value="3" name="item_no3">
                     <td>Item 3</td>
                     <td>
-                        <input type="text" class="form-control" readonly="true" value="{{$val[2]->item_name}}">
+                        <input type="text" class="form-control" readonly="true" value="{{$val[2]->item_no}}">
                     </td>
                     <td>
                         <a href="/download/{{$val[2]->id}}"  class="btn btn-primary " role="button">Download Files</a>
@@ -83,7 +83,7 @@
                         <input type="file" class="form-control" name="upload3" id="upload3">
                     </td>
                     <td>
-                        <input type="text" class="form-control" name="comments3" id="comments3" readonly="true" value="{{$val[2]->comments}}">
+                        <input type="text" class="form-control" name="comments3" id="comments3" readonly="true" value="{{$val[2]->opened_item_comment}}">
                     </td>
                     <td>
                         <input type="text" class="form-control" name="new_comments3" id="new_comments3">
@@ -93,7 +93,7 @@
                     <input type="hidden" value="4" name="item_no4">
                     <td>Item 4</td>
                     <td>
-                        <input type="text" class="form-control" readonly="true" value="{{$val[3]->item_name}}">
+                        <input type="text" class="form-control" readonly="true" value="{{$val[3]->item_no}}">
                     </td>
                     <td>
                         <a href="/download/{{$val[3]->id}}"  class="btn btn-primary " role="button">Download Files</a>
@@ -102,7 +102,7 @@
                         <input type="file" class="form-control" name="upload4" id="upload4">
                     </td>
                     <td>
-                        <input type="text" class="form-control" name="comments4" id="comments4" readonly="true" value="{{$val[3]->comments}}">
+                        <input type="text" class="form-control" name="comments4" id="comments4" readonly="true" value="{{$val[3]->opened_item_comment}}">
                     </td>
                     <td>
                         <input type="text" class="form-control" name="new_comments4" id="new_comments4">
@@ -112,7 +112,7 @@
                     <input type="hidden" value="5" name="item_no5">
                     <td>Item 5</td>
                     <td>
-                        <input type="text" class="form-control" readonly="true" value="{{$val[4]->item_name}}">
+                        <input type="text" class="form-control" readonly="true" value="{{$val[4]->item_no}}">
                     </td>
                     <td>
                         <a href="/download/{{$val[4]->id}}"  class="btn btn-primary " role="button">Download Files</a>
@@ -121,7 +121,7 @@
                         <input type="file" class="form-control" name="upload5" id="upload5">
                     </td>
                     <td>
-                        <input type="text" class="form-control" name="comments5" id="comments5" readonly="true" value="{{$val[4]->comments}}">
+                        <input type="text" class="form-control" name="comments5" id="comments5" readonly="true" value="{{$val[4]->opened_item_comment}}">
                     </td>
                     <td>
                         <input type="text" class="form-control" name="new_comments5" id="new_comments5">
@@ -131,7 +131,7 @@
                     <input type="hidden" value="6" name="item_no6">
                     <td>Item 6</td>
                     <td>
-                        <input type="text" class="form-control" readonly="true" value="{{$val[5]->item_name}}">
+                        <input type="text" class="form-control" readonly="true" value="{{$val[5]->item_no}}">
                     </td>
                     <td>
                         <a href="/download/{{$val[5]->id}}"  class="btn btn-primary " role="button">Download Files</a>
@@ -140,7 +140,7 @@
                         <input type="file" class="form-control" name="upload6" id="upload6">
                     </td>
                     <td>
-                        <input type="text" class="form-control" name="comments6" id="comments6" readonly="true" value="{{$val[5]->comments}}">
+                        <input type="text" class="form-control" name="comments6" id="comments6" readonly="true" value="{{$val[5]->opened_item_comment}}">
                     </td>
                     <td>
                         <input type="text" class="form-control" name="new_comments6" id="new_comments6">
@@ -150,7 +150,7 @@
                     <input type="hidden" value="7" name="item_no7">
                     <td>Item 7</td>
                     <td>
-                        <input type="text" class="form-control" readonly="true" value="{{$val[6]->item_name}}">
+                        <input type="text" class="form-control" readonly="true" value="{{$val[6]->item_no}}">
                     </td>
                     <td>
                         <a href="/download/{{$val[6]->id}}"  class="btn btn-primary " role="button">Download Files</a>
@@ -159,7 +159,7 @@
                         <input type="file" class="form-control" name="upload7" id="upload7">
                     </td>
                     <td>
-                        <input type="text" class="form-control"  name="comments7" id="comments7" readonly="true" value="{{$val[6]->comments}}">
+                        <input type="text" class="form-control"  name="comments7" id="comments7" readonly="true" value="{{$val[6]->opened_item_comment}}">
                     </td>
                     <td>
                         <input type="text" class="form-control" name="new_comments7" id="new_comments7">
@@ -169,7 +169,7 @@
                     <input type="hidden" value="8" name="item_no8">
                     <td>Item 8</td>
                     <td>
-                        <input type="text" class="form-control" readonly="true" value="{{$val[7]->item_name}}">
+                        <input type="text" class="form-control" readonly="true" value="{{$val[7]->item_no}}">
                     </td>
                     <td>
                         <a href="/download/{{$val[7]->id}}"  class="btn btn-primary " role="button">Download Files</a>
@@ -178,7 +178,7 @@
                         <input type="file" class="form-control" name="upload8" id="upload8">
                     </td>
                     <td>
-                        <input type="text" class="form-control" name="comments8" id="comments8" readonly="true" value="{{$val[7]->comments}}">
+                        <input type="text" class="form-control" name="comments8" id="comments8" readonly="true" value="{{$val[7]->opened_item_comment}}">
                     </td>
                     <td>
                         <input type="text" class="form-control" name="new_comments8" id="new_comments8">
@@ -188,7 +188,7 @@
                     <input type="hidden" value="9" name="item_no9">
                     <td>Item 9</td>
                     <td>
-                        <input type="text" class="form-control" readonly="true" value="{{$val[8]->item_name}}">
+                        <input type="text" class="form-control" readonly="true" value="{{$val[8]->item_no}}">
                     </td>
                     <td>
                         <a href="/download/{{$val[8]->id}}"  class="btn btn-primary " role="button">Download Files</a>
@@ -197,7 +197,7 @@
                         <input type="file" class="form-control" name="upload9" id="upload9">
                     </td>
                     <td>
-                        <input type="text" class="form-control" name="comments9" id="comments9" readonly="true" value="{{$val[8]->comments}}">
+                        <input type="text" class="form-control" name="comments9" id="comments9" readonly="true" value="{{$val[8]->opened_item_comment}}">
                     </td>
                     <td>
                         <input type="text" class="form-control" name="new_comments9" id="new_comments9">
@@ -207,7 +207,7 @@
                     <input type="hidden" value="10" name="item_no10">
                     <td>Item 10</td>
                     <td>
-                        <input type="text" class="form-control" readonly="true" value="{{$val[9]->item_name}}">
+                        <input type="text" class="form-control" readonly="true" value="{{$val[9]->item_no}}">
                     </td>
                     <td>
                         <a href="/download/{{$val[9]->id}}" class="btn btn-primary " role="button">Download Files</a>
@@ -216,7 +216,7 @@
                         <input type="file" class="form-control" name="upload10" id="upload10">
                     </td>
                     <td>
-                        <input type="text" class="form-control" name="comments10" id="comments10" readonly="true" value="{{$val[9]->comments}}">
+                        <input type="text" class="form-control" name="comments10" id="comments10" readonly="true" value="{{$val[9]->opened_item_comment}}">
                     </td>
                     <td>
                         <input type="text" class="form-control" name="new_comments10" id="new_comments10">

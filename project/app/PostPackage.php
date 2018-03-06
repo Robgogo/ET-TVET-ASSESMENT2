@@ -3,7 +3,8 @@
 namespace App;
 
 
-class OpenPackage extends Model
+
+class PostPackage extends Model
 {
     //
 }

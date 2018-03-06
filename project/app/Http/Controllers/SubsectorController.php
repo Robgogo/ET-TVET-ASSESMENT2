@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Subsector;
+use App\Sector;
 use DB;
 
 class SubsectorController extends Controller
 {
     public function index(){
-    	return view('maintenance.subsector');
+
+        $sector=Sector::all();
+    	return view('maintenance.subsector')->with(compact('sector'));
     }
 
     public function store(){
@@ -21,6 +24,7 @@ class SubsectorController extends Controller
                 //code to validate the choosen sector
                 'subsector_code'=>'required',
                 'subsector_name'=>'required',
+                'sector_id'=>'required',
                 'subsector_description'=>'required'
 
             ]);

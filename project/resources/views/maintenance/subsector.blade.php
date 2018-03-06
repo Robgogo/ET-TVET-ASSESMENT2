@@ -16,6 +16,15 @@
 		<label for="subsector_description">Sub-Sector Description:</label>
 		<textarea name="subsector_description" class="form-control" id="subsector_description"></textarea>
 	</div>
+	<div class="form-group col-md-4" style="margin-left: 350px;">
+		<label for="sector_id">Sector Code:</label>
+		<select class="form-control" name="sector_id" id="sector_id">
+			<option value="">Choose sector belonging to:</option>
+			@foreach($sector as $sec)
+				<option value="{{$sec["id"]}}">{{$sec["Sectorcode"]}}</option>
+			@endforeach
+		</select>
+	</div>
 	<div class="form-group col-md-4 " style="margin-left: 350px;">
 		<button name="save" class="form-control col-md-3 btn btn-primary" value="save" type="submit">Save</button>
 		<button name="edit" class="form-control col-md-3 btn btn-primary" value="edit" type="submit">Edit</button>
