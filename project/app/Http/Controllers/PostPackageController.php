@@ -29,22 +29,22 @@ class PostPackageController extends Controller
 
         $post_pack=new PostPackage;
 
-//        $this->validate(request(),[
-//            'postpackno'=>'required',
-//            'date'=>'required',
-//            'posted_by'=>'required',
-//            'sector_code'=>'required',
-//
-//            'subsector_code'=>'required',
-//
-//            'os_code'=>'required',
-//
-//            'level_code'=>'required',
-//
-//            'region_code'=>'required',
-//
-//            'open_package_no'=>'required'
-//        ]);
+        $this->validate(request(),[
+            'postpackno'=>'required',
+            'date'=>'required',
+            'posted_by'=>'required',
+            'sector_code'=>'required',
+
+            'subsector_code'=>'required',
+
+            'os_code'=>'required',
+
+            'level_code'=>'required',
+
+            'region_code'=>'required',
+
+            'open_package_no'=>'required'
+        ]);
 
         $post_pack_no=request('postpackno');
         $opened_pack_no=request('open_package_no');
@@ -61,6 +61,10 @@ class PostPackageController extends Controller
                 ->where('open_package_id',$opened_pack_id)
                 ->get();
 
+        $items=DB::table('created_package_infos')
+                    ->where('created_package_id',$att[0]->created_package_id)
+                    ->get();
+
         $post_pack->post_pack_no=$post_pack_no;
         $post_pack->opened_package_id=$opened_pack_id;
         $post_pack->created_by=request('posted_by');
@@ -72,6 +76,18 @@ class PostPackageController extends Controller
         $post_pack->save();
 
 
-        return view('transactions.post_package.post_package')->with(compact('opened_pack_no','date','opened_by','val'));
+        return view('transactions.post_package.post_package')->with(compact('opened_pack_no','date','opened_by','val','items'));
+    }
+
+    public function download($opened_package_id){
+        $val=DB::table('opened_package_infos')
+            ->where('id',$opened_package_id)
+            ->first();
+        $path = storage_path().'/'.'app'.'/'.$val->opened_items_dir;
+        if (file_exists($path)) {
+            return response()->download($path);
+        }
+        else
+            return "File Not found";
     }
 }

@@ -2,16 +2,16 @@
 
 
 @section('content')
-    <h3 class="h3 font-italic">Open Package for posting</h3>
+    <h3 class="h3 font-italic">Open Package for approving</h3>
     <br>
     <div class="container">
-        <form class="form-horizontal" role="form" method="POST" action="/post_package">
+        <form class="form-horizontal" role="form" method="POST" action="/approve_package">
             {{csrf_field()}}
 
             <div class="form-group">
-                <label class="control-label col-sm-2" for="postpackno">Post Package No:</label>
+                <label class="control-label col-sm-2" for="approve_packno">Approval Package No:</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" name="postpackno" id="postpackno">
+                    <input type="text" class="form-control" name="approve_packno" id="approve_packno">
                 </div>
             </div>
             <div class="form-group">
@@ -21,9 +21,9 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2" for="posted_by">Opened By:</label>
+                <label class="control-label col-sm-2" for="approved_by">Approved By:</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control " name="posted_by" id="posted_by">
+                    <input type="text" class="form-control " name="approved_by" id="approved_by">
                 </div>
             </div>
             <div>
@@ -144,13 +144,13 @@
             <div>
                 <span>
                      <div class="form-group">
-                        <label class="control-label col-sm-2" for="open_package_no">Opened Package Code:</label>
+                        <label class="control-label col-sm-2" for="post_package_no">Posted Package Code:</label>
                          <div class="col-sm-6">
-                        <select id="open_package_no" class="form-control" name="open_package_no">
+                        <select id="post_package_no" class="form-control" name="post_package_no">
                             <option value="">Choose the code</option>
                             {{-- this part displays the data fetched from the database see the route and the controller files on how to pass the variable $package --}}
-                            @foreach($open_package as $code)
-                                <option value="{{$code->open_pack_no}}">{{$code->open_pack_no}}</option>
+                            @foreach($post_package as $code)
+                                <option value="{{$code->post_pack_no}}">{{$code->post_pack_no}}</option>
                             @endforeach
                         </select>
                          </div>

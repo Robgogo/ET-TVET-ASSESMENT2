@@ -40,6 +40,11 @@ Route::post('/open','OpenedPackageInfoController@store');
 
 Route::get('/post_package','PostPackageController@index');
 Route::post('/post_package','PostPackageController@store');
+Route::get('/download_for_post/{opened_package_id}','PostPackageController@download');
+Route::post('/post','PostPackageInfoController@store');
+
+Route::get('/approve_package','ApproveController@index');
+Route::post('/approve_package','ApproveController@store');
 
 
 Route::get('/', function () {

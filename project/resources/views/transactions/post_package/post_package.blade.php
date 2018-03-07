@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 @section('content')
 
-    <form role="form" method="POST" action="/open" enctype="multipart/form-data">
+    <form role="form" method="POST" action="/post" enctype="multipart/form-data">
         {{csrf_field()}}
 
         <div class="form-group col-md-3">
@@ -36,10 +36,10 @@
                     <input type="hidden" value="1" name="item_no">
                     <td>Item 1</td>
                     <td>
-                        <input type="text" class="form-control" readonly="true" value="{{$val[0]->item_no}}">
+                        <input type="text" class="form-control" readonly="true" value="{{$items[0]->item_name}}">
                     </td>
                     <td>
-                        <a href="/download/{{$val[0]->id}}" class="btn btn-primary " role="button">Download Files</a>
+                        <a href="/download_for_post/{{$val[0]->id}}" class="btn btn-primary " role="button">Download Files</a>
                     </td>
                     <td>
                         <input type="file" class="form-control" name="upload" id="upload">
@@ -55,10 +55,10 @@
                     <input type="hidden" value="2" name="item_no2">
                     <td>Item 2</td>
                     <td>
-                        <input type="text" class="form-control" readonly="true" value="{{$val[1]->item_no}}">
+                        <input type="text" class="form-control" readonly="true" value="{{$items[1]->item_name}}">
                     </td>
                     <td>
-                        <a href="/download/{{$val[1]->id}}"  class="btn btn-primary " role="button">Download Files</a>
+                        <a href="/download_for_post/{{$val[1]->id}}"  class="btn btn-primary " role="button">Download Files</a>
                     </td>
                     <td>
                         <input type="file" class="form-control" name="upload2" id="upload2">
@@ -74,10 +74,10 @@
                     <input type="hidden" value="3" name="item_no3">
                     <td>Item 3</td>
                     <td>
-                        <input type="text" class="form-control" readonly="true" value="{{$val[2]->item_no}}">
+                        <input type="text" class="form-control" readonly="true" value="{{$items[2]->item_name}}">
                     </td>
                     <td>
-                        <a href="/download/{{$val[2]->id}}"  class="btn btn-primary " role="button">Download Files</a>
+                        <a href="/download_for_post/{{$val[2]->id}}"  class="btn btn-primary " role="button">Download Files</a>
                     </td>
                     <td>
                         <input type="file" class="form-control" name="upload3" id="upload3">
@@ -93,10 +93,10 @@
                     <input type="hidden" value="4" name="item_no4">
                     <td>Item 4</td>
                     <td>
-                        <input type="text" class="form-control" readonly="true" value="{{$val[3]->item_no}}">
+                        <input type="text" class="form-control" readonly="true" value="{{$items[3]->item_name}}">
                     </td>
                     <td>
-                        <a href="/download/{{$val[3]->id}}"  class="btn btn-primary " role="button">Download Files</a>
+                        <a href="/download_for_post/{{$val[3]->id}}"  class="btn btn-primary " role="button">Download Files</a>
                     </td>
                     <td>
                         <input type="file" class="form-control" name="upload4" id="upload4">
@@ -112,10 +112,10 @@
                     <input type="hidden" value="5" name="item_no5">
                     <td>Item 5</td>
                     <td>
-                        <input type="text" class="form-control" readonly="true" value="{{$val[4]->item_no}}">
+                        <input type="text" class="form-control" readonly="true" value="{{$items[4]->item_name}}">
                     </td>
                     <td>
-                        <a href="/download/{{$val[4]->id}}"  class="btn btn-primary " role="button">Download Files</a>
+                        <a href="/download_for_post/{{$val[4]->id}}"  class="btn btn-primary " role="button">Download Files</a>
                     </td>
                     <td>
                         <input type="file" class="form-control" name="upload5" id="upload5">
@@ -131,10 +131,10 @@
                     <input type="hidden" value="6" name="item_no6">
                     <td>Item 6</td>
                     <td>
-                        <input type="text" class="form-control" readonly="true" value="{{$val[5]->item_no}}">
+                        <input type="text" class="form-control" readonly="true" value="{{$items[5]->item_name}}">
                     </td>
                     <td>
-                        <a href="/download/{{$val[5]->id}}"  class="btn btn-primary " role="button">Download Files</a>
+                        <a href="/download_for_post/{{$val[5]->id}}"  class="btn btn-primary " role="button">Download Files</a>
                     </td>
                     <td>
                         <input type="file" class="form-control" name="upload6" id="upload6">
@@ -150,10 +150,10 @@
                     <input type="hidden" value="7" name="item_no7">
                     <td>Item 7</td>
                     <td>
-                        <input type="text" class="form-control" readonly="true" value="{{$val[6]->item_no}}">
+                        <input type="text" class="form-control" readonly="true" value="{{$items[6]->item_name}}">
                     </td>
                     <td>
-                        <a href="/download/{{$val[6]->id}}"  class="btn btn-primary " role="button">Download Files</a>
+                        <a href="/download_for_post/{{$val[6]->id}}"  class="btn btn-primary " role="button">Download Files</a>
                     </td>
                     <td>
                         <input type="file" class="form-control" name="upload7" id="upload7">
@@ -169,10 +169,10 @@
                     <input type="hidden" value="8" name="item_no8">
                     <td>Item 8</td>
                     <td>
-                        <input type="text" class="form-control" readonly="true" value="{{$val[7]->item_no}}">
+                        <input type="text" class="form-control" readonly="true" value="{{$items[7]->item_name}}">
                     </td>
                     <td>
-                        <a href="/download/{{$val[7]->id}}"  class="btn btn-primary " role="button">Download Files</a>
+                        <a href="/download_for_post/{{$val[7]->id}}"  class="btn btn-primary " role="button">Download Files</a>
                     </td>
                     <td>
                         <input type="file" class="form-control" name="upload8" id="upload8">
@@ -188,10 +188,10 @@
                     <input type="hidden" value="9" name="item_no9">
                     <td>Item 9</td>
                     <td>
-                        <input type="text" class="form-control" readonly="true" value="{{$val[8]->item_no}}">
+                        <input type="text" class="form-control" readonly="true" value="{{$items[8]->item_name}}">
                     </td>
                     <td>
-                        <a href="/download/{{$val[8]->id}}"  class="btn btn-primary " role="button">Download Files</a>
+                        <a href="/download_for_post/{{$val[8]->id}}"  class="btn btn-primary " role="button">Download Files</a>
                     </td>
                     <td>
                         <input type="file" class="form-control" name="upload9" id="upload9">
@@ -207,10 +207,10 @@
                     <input type="hidden" value="10" name="item_no10">
                     <td>Item 10</td>
                     <td>
-                        <input type="text" class="form-control" readonly="true" value="{{$val[9]->item_no}}">
+                        <input type="text" class="form-control" readonly="true" value="{{$items[9]->item_name}}">
                     </td>
                     <td>
-                        <a href="/download/{{$val[9]->id}}" class="btn btn-primary " role="button">Download Files</a>
+                        <a href="/download_for_post/{{$val[9]->id}}" class="btn btn-primary " role="button">Download Files</a>
                     </td>
                     <td>
                         <input type="file" class="form-control" name="upload10" id="upload10">
