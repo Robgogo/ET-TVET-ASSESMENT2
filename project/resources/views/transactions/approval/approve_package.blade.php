@@ -184,9 +184,9 @@
             </table>
         </div>
         <br>
-        <div class="form-group col-md-3">
-            <button name="save" class="form-control col-md-5 btn btn-danger" style="margin-left:1100px;" type="submit">Disapprove</button>
-            <button name="save" class="form-control col-md-5 btn btn-primary" style="margin-left:50px;" type="submit">Approve</button>
+        <div class="form-group col-md-3"  style="margin-left:1100px;">
+            <button name="disapprove" class="form-control col-md-5 btn btn-danger" value="Disapprove" type="submit">Disapprove</button>
+            <button name="approve" class="form-control col-md-5 btn btn-primary" style="margin-left:10px;" value="approve" type="submit">Approve</button>
 
         </div>
     </form>

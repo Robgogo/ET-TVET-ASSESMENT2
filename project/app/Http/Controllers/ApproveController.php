@@ -81,7 +81,33 @@ class ApproveController extends Controller
         $approve_pack->save();
 
         return view('transactions.approval.approve_package')->with(compact('posted_pack_no','date','posted_by','val','items'));
+    }
 
+    public function storeStat(){
 
+        if(null!==request('approve')){
+            $id=Approve::all()->last();
+            DB::table('approves')
+                ->where('id',$id->id)
+                ->update([
+                    'approval_status'=>'approved'
+                ]);
+            return redirect('/');
+        }
+        else{
+            return "not approved";
+        }
+    }
+
+    public function download($post_package_id){
+        $val=DB::table('post_package_infos')
+            ->where('id',$post_package_id)
+            ->first();
+        $path = storage_path().'/'.'app'.'/'.$val->post_items_dir;
+        if (file_exists($path)) {
+            return response()->download($path);
+        }
+        else
+            return "File Not found";
     }
 }

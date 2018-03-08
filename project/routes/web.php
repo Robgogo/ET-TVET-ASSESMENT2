@@ -45,7 +45,13 @@ Route::post('/post','PostPackageInfoController@store');
 
 Route::get('/approve_package','ApproveController@index');
 Route::post('/approve_package','ApproveController@store');
+Route::get('/download_for_approve/{post_package_id}','ApproveController@download');
+Route::post('/post','ApproveController@storeStat');
 
+Route::get('/input_user','InputUser@index');
+Route::post('/input_user', function () {
+    return view('welcome');
+});
 
 Route::get('/', function () {
     return view('welcome');
