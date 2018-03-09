@@ -5,13 +5,13 @@
     <p class="h3 font-italic">Insert a new employee</p>
     <br>
     <div class="container">
-        <form class="form-horizontal" role="form" method="POST" action="/input_user">
+        <form class="form-horizontal" role="form" method="POST" action="/input_user" enctype="multipart/form-data">
             {{csrf_field()}}
 
             <div class="form-group">
-                <label class="control-label col-sm-2" for="postpackno">Transaction No:</label>
+                <label class="control-label col-sm-2" for="transaction_no">Transaction No:</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" name="postpackno" id="postpackno">
+                    <input type="text" class="form-control" name="transaction_no" id=transaction_no">
                 </div>
             </div>
             <div class="form-group">
@@ -45,10 +45,10 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2" for="sector_code">Sector:</label>
+                <label class="control-label col-sm-2" for="sector">Sector:</label>
                  <div class="col-sm-6">
-                    <select id="sector_code" class="form-control " name="sector_code">
-                        <option value="">Choose the code</option>
+                    <select id="sector" class="form-control " name="sector">
+                        <option value="">Choose the sector</option>
                         {{-- this part displays the data fetched from the database see the route and the controller files on how to pass the variable $package --}}
                         @foreach($sector as $code)
                             <option value="{{$code->Sectorcode}}">{{$code->Sectorname}}</option>
@@ -57,10 +57,10 @@
                  </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2" for="subsector_code">Subsector:</label>
+                <label class="control-label col-sm-2" for="subsector">Subsector:</label>
                 <div class="col-sm-6">
-                <select id="subsector_code" class="form-control " name="subsector_code">
-                    <option value="">Choose the code</option>
+                <select id="subsector" class="form-control " name="subsector">
+                    <option value="">Choose the sub-sector</option>
                     {{-- this part displays the data fetched from the database see the route and the controller files on how to pass the variable $package --}}
                     @foreach($subsector as $code)
                         <option value="{{$code->Subsectorcode}}">{{$code->Subsectorname}}</option>
@@ -72,7 +72,7 @@
                 <label class="control-label col-sm-2" for="department">Department:</label>
                 <div class="col-sm-6">
                     <select id="department" class="form-control " name="department">
-                        <option value="">Choose the code</option>
+                        <option value="">Choose the department</option>
                         {{-- this part displays the data fetched from the database see the route and the controller files on how to pass the variable $package --}}
                         @foreach($department as $code)
                             <option value="{{$code['Dept_code']}}">{{$code['Dept_name']}}</option>
@@ -87,22 +87,10 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2" for="level_code">Level Code:</label>
+                <label class="control-label col-sm-2" for="region">Region Code:</label>
                 <div class="col-sm-6">
-                <select id="level_code" class="form-control" name="level_code">
-                    <option value="">Choose the code</option>
-                    {{-- this part displays the data fetched from the database see the route and the controller files on how to pass the variable $package --}}
-                    @foreach($level as $code)
-                        <option value="{{$code->Levelcode}}">{{$code->Levelname}}</option>
-                    @endforeach
-                </select>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="region_code">Region Code:</label>
-                <div class="col-sm-6">
-                <select id="region_code" class="form-control" name="region_code">
-                    <option value="">Choose the code</option>
+                <select id="region" class="form-control" name="region">
+                    <option value="">Choose region</option>
                     {{-- this part displays the data fetched from the database see the route and the controller files on how to pass the variable $package --}}
                     @foreach($region as $code)
                         <option value="{{$code->Regioncode}}">{{$code->Regionname}}</option>

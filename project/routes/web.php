@@ -1,7 +1,7 @@
 <?php
 
 
-
+use App\EmployeeInfo;
 
 Route::get('/sector','SectorController@index');
 Route::post('/savesector','SectorController@store');
@@ -48,10 +48,15 @@ Route::post('/approve_package','ApproveController@store');
 Route::get('/download_for_approve/{post_package_id}','ApproveController@download');
 Route::post('/post','ApproveController@storeStat');
 
-Route::get('/input_user','InputUser@index');
-Route::post('/input_user', function () {
-    return view('welcome');
+Route::get('/input_user','EmployeeInfoController@index');
+Route::post('/input_user','EmployeeInfoController@store');
+Route::get('/user_stat',function () {
+    $employee=EmployeeInfo::all();
+
+    return view('admin.transactions.user_status')->with(compact('employee'));
 });
+Route::get('get_emp_info/{id}','EmployeeInfoController@details');
+Route::post('/update_status','EmployeeInfoController@updateStat');
 
 Route::get('/', function () {
     return view('welcome');

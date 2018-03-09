@@ -18,8 +18,8 @@
 	</div>
 	<div class="form-group col-md-4"  style="margin-left: 350px;">
 		<button class="form-control col-md-3 btn btn-primary" name="save" value="save" type="submit">Save</button>
-		<button class="form-control col-md-3 btn btn-primary" name="edit" value="edit" type="submit">Edit</button>
-		<button class="form-control col-md-3 btn btn-primary" name="delete" value="delete" type="submit">Delete</button>
+		<button class="form-control col-md-3 btn btn-primary" name="edit" value="edit" style="margin-left: 55px;" type="submit">Edit</button>
+		<button class="form-control col-md-3 btn btn-danger" name="delete" value="delete" style="margin-left: 55px;" type="submit">Delete</button>
 	</div>
 	@include('layouts.errors');
 </form>
