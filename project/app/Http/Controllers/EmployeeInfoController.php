@@ -35,22 +35,22 @@ class EmployeeInfoController extends Controller
 
     public function store(){
 
-//        $this->validate(request(),[
-//            'transaction_no'=>'required',
-//            'employee_id'=>'required',
-//            'first_name'=>'required',
-//            'last_name'=>'required',
-//            'sector'=>'required',
-//            'subsector'=>'required',
-//            'department'=>'required',
-//            'position'=>'required',
-//            'region'=>'required',
-//            'mobile'=>'required',
-//            'email'=>'required',
-//            'username'=>'required',
-//            'password'=>'required',
-//            'upload_photo'=>'required'
-//        ]);
+        $this->validate(request(),[
+            'transaction_no'=>'required',
+            'employee_id'=>'required',
+            'first_name'=>'required',
+            'last_name'=>'required',
+            'sector'=>'required',
+            'subsector'=>'required',
+            'department'=>'required',
+            'position'=>'required',
+            'region'=>'required',
+            'mobile'=>'required',
+            'email'=>'required',
+            'username'=>'required',
+            'password'=>'required',
+            'upload_photo'=>'required'
+        ]);
 
         $employee=new EmployeeInfo;
         $user=new User;
@@ -82,7 +82,7 @@ class EmployeeInfoController extends Controller
         $user->employee_id=request('employee_id');
         $user->email=request('email');
         $user->user_name=request('username');
-        $user->password=request('password');
+        $user->password=bcrypt(request('password'));
 
         $user->save();
 

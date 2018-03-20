@@ -17,6 +17,7 @@
 	</style>
 </head>
 <body>
+
 	<div>
 	<nav class="navbar navbar-default nav">
 		<div class="container-fluid">
@@ -25,8 +26,10 @@
 			</div>
 			<div class="collapse navbar-collapse" id="navcol-1">
 				<ul class="nav navbar-nav">
+					@if(Auth::check())
 					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#">maintenance </a>
 						<ul class="dropdown-menu" role="menu">
+
 							<li role="presentation"><a href="/sector">Sector</a></li>
 							<li role="presentation"><a href="subsector">Sub Sector</a></li>
 							<li role="presentation"><a href="/region">Region</a></li>
@@ -52,11 +55,13 @@
 							<li role="presentation"><a href="#">Third Item</a></li>
 						</ul>
 					</li>
+						@endif
 				</ul>
 			</div>
 		</div>
 	</nav>
 	</div>
+
 	<div class="container-fluid">
 		@yield('content')
 
@@ -64,5 +69,6 @@
 	<script type="text/javascript" src="{{asset('js/jquery.min.js')}}"></script>
 	<script type="text/javascript" src="{{asset('js/bootstrap.min.js')}}"></script>
 	@yield('ajax')
+
 </body>
 </html>

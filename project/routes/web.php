@@ -37,16 +37,28 @@ Route::get('/open_package','OpenPackageController@index');
 Route::post('/open_package','OpenPackageController@store');
 Route::get('/download/{created_package_id}','OpenPackageController@download');
 Route::post('/open','OpenedPackageInfoController@store');
+Route::get('/get_sector_id/{id}','OpenPackageController@getSectorName');
+Route::get('/get_subsector_id/{id}','OpenPackageController@getSubsectorName');
+Route::get('/get_os_id/{id}','OpenPackageController@getOsName');
+Route::get('/get_level_id/{id}','OpenPackageController@getLevelName');
+Route::get('/get_region_id/{id}','OpenPackageController@getRegionName');
+Route::get('/get_package_id/{id}','OpenPackageController@getPackageName');
+
+
 
 Route::get('/post_package','PostPackageController@index');
 Route::post('/post_package','PostPackageController@store');
 Route::get('/download_for_post/{opened_package_id}','PostPackageController@download');
 Route::post('/post','PostPackageInfoController@store');
 
+Route::get('/get_open_package_id/{id}','PostPackageController@getPackageName');
+
 Route::get('/approve_package','ApproveController@index');
 Route::post('/approve_package','ApproveController@store');
 Route::get('/download_for_approve/{post_package_id}','ApproveController@download');
 Route::post('/post','ApproveController@storeStat');
+
+Route::get('/get_post_package_id/{id}','ApproveController@getPackageName');
 
 Route::get('/input_user','EmployeeInfoController@index');
 Route::post('/input_user','EmployeeInfoController@store');
@@ -58,6 +70,18 @@ Route::get('/user_stat',function () {
 Route::get('get_emp_info/{id}','EmployeeInfoController@details');
 Route::post('/update_status','EmployeeInfoController@updateStat');
 
+Route::get('/user_permissions','UserControlPermissionController@index');
+Route::post('/user_permission','UserControlPermissionController@store');
+
+Route::get('/login','SessionController@index');
+Route::post('/login','SessionController@store');
+Route::get('/logout','SessionController@destroy');
+
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

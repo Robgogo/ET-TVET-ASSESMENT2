@@ -2,6 +2,7 @@
 
 
 @section('content')
+    @if(Auth::check())
     <p class="h3 font-italic">Insert a new employee</p>
     <br>
     <div class="container">
@@ -135,4 +136,10 @@
         </form>
     </div>
     @include('layouts.errors')
+    @else
+        <h1>You re not logged in!</h1>
+        @if (Auth::guest())
+            {{ view('Auth.login')}}
+        @endif
+    @endif
 @endsection

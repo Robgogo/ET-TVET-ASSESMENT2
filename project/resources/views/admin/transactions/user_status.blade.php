@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 @section('content')
-
+    @if(Auth::check())
     <h2>Browse User</h2>
     <div class="container">
         <form class="form-horizontal" role="form" method="POST" action="/update_status" enctype="multipart/form-data">
@@ -18,7 +18,7 @@
                  </div>
             </div>
             <div class="form-group" id="image">
-                <img src="#" id="picture">
+                <img src="{{asset('storage/male_avatar.png')}}" id="picture" class="img-rounded" style="width: 240px;height: 240px; margin-left: 250px;">
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="first_name">First Name:</label>
@@ -155,4 +155,10 @@
         }
 
     </script>
+    @else
+        <h1>You re not logged in!</h1>
+        @if (Auth::guest())
+            {{ view('Auth.login')}}
+        @endif
+    @endif
 @endsection

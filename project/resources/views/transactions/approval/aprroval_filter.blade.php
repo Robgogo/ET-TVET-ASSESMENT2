@@ -2,6 +2,8 @@
 
 
 @section('content')
+    @if(Auth::check())
+        @if(\App\Http\Controllers\UserControlPermissionController::hasApprovePackagePermission(Auth::user()))
     <h3 class="h3 font-italic">Open Package for approving</h3>
     <br>
     <div class="container">
@@ -146,7 +148,7 @@
                      <div class="form-group">
                         <label class="control-label col-sm-2" for="post_package_no">Posted Package Code:</label>
                          <div class="col-sm-6">
-                        <select id="post_package_no" class="form-control" name="post_package_no">
+                        <select id="post_package_no" class="form-control" name="post_package_no" id="post_package_no">
                             <option value="">Choose the code</option>
                             {{-- this part displays the data fetched from the database see the route and the controller files on how to pass the variable $package --}}
                             @foreach($post_package as $code)
@@ -170,4 +172,138 @@
         </form>
     </div>
     @include('layouts.errors')
+@endsection
+
+
+@section('ajax')
+    <script type="text/javascript">
+        var xhttp = new XMLHttpRequest();
+        var sectorName = document.getElementById('sector_code');
+        sectorName.onchange=  function (){
+            console.log("adfasfda");
+            var sector_name='';
+            xhttp.onreadystatechange = function() {
+                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                    responseObject=JSON.parse(xhttp.responseText);
+                    sector_name=responseObject[0].Sectorname;
+                    console.log(responseObject[0].Sectorname);
+                    var newcontent='';
+                    //items is part of the response
+                    document.getElementById("sector_name").value = sector_name;
+
+                    //document.getElementById("package_name");
+                }
+            };
+            xhttp.open("GET", "get_sector_id/" + sectorName.value, true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+            xhttp.send();
+        }
+
+        var subsectorName=document.getElementById('subsector_code');
+        subsectorName.onchange=  function (){
+            console.log("adfasfda");
+            var subsector_name='';
+            xhttp.onreadystatechange = function() {
+                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                    responseObject=JSON.parse(xhttp.responseText);
+                    subsector_name=responseObject[0].Subsectorname;
+                    console.log(responseObject);
+                    var newcontent='';
+                    //items is part of the response
+                    document.getElementById("subsector_name").value = subsector_name;
+
+                }
+            };
+            xhttp.open("GET", "get_subsector_id/" + subsectorName.value, true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+            xhttp.send();
+        }
+
+        var osName=document.getElementById('os_code');
+        osName.onchange=  function (){
+            console.log("adfasfda");
+            var os_name='';
+            xhttp.onreadystatechange = function() {
+                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                    responseObject=JSON.parse(xhttp.responseText);
+                    os_name=responseObject[0].OSname;
+                    console.log(responseObject);
+                    document.getElementById("os_name").value = os_name;
+
+                }
+            };
+            xhttp.open("GET", "get_os_id/" + osName.value, true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+            xhttp.send();
+        }
+
+        var levelName=document.getElementById('level_code');
+        levelName.onchange=  function (){
+            console.log("adfasfda");
+            var level_name='';
+            xhttp.onreadystatechange = function() {
+                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                    responseObject=JSON.parse(xhttp.responseText);
+                    level_name=responseObject[0].Levelname;
+                    console.log(responseObject);
+                    document.getElementById("level_name").value = level_name;
+
+                }
+            };
+            xhttp.open("GET", "get_level_id/" + levelName.value, true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+            xhttp.send();
+        }
+
+        var regionName=document.getElementById('region_code');
+        regionName.onchange=  function (){
+            console.log("adfasfda");
+            var region_name='';
+            xhttp.onreadystatechange = function() {
+                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                    responseObject=JSON.parse(xhttp.responseText);
+                    region_name=responseObject[0].Regionname;
+                    console.log(responseObject);
+                    document.getElementById("region_name").value = region_name;
+
+                }
+            };
+            xhttp.open("GET", "get_region_id/" + regionName.value, true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+            xhttp.send();
+        }
+
+        var packageName=document.getElementById('post_package_no');
+        packageName.onchange=  function (){
+            console.log("adfasfda");
+            var package_name='';
+            xhttp.onreadystatechange = function() {
+                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                    responseObject=JSON.parse(xhttp.responseText);
+                    package_name=responseObject[0].Packagename;
+                    console.log(responseObject);
+                    document.getElementById("package_name").value = package_name;
+
+                }
+            };
+            xhttp.open("GET", "get_post_package_id/" + packageName.value, true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+            xhttp.send();
+        }
+    </script>
+    @else
+        <h1>Not Allowed to view this page!</h1>
+    @endif
+    @else
+        <h1>You re not logged in!</h1>
+        @if (Auth::guest())
+            {{ view('Auth.login')}}
+        @endif
+    @endif
 @endsection

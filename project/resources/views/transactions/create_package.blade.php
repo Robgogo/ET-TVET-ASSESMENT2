@@ -2,7 +2,9 @@
 
 
 @section('content')
+	@if(Auth::check())
 
+		@if(\App\Http\Controllers\UserControlPermissionController::hasCreatePackagePermission(Auth::user()))
 <form class="form-horizontal" role="form" method="POST" action="/creatpackages" enctype="multipart/form-data">
 	{{csrf_field()}}
 
@@ -267,7 +269,14 @@
  }
 
 </script>
-
-
+@else
+			<h1>Not Allowed to view this page!</h1>
+@endif
 	@include('layouts.errors');
+@else
+	<h1>You re not logged in!</h1>
+	@if (Auth::guest())
+		{{ view('Auth.login')}}
+	@endif
+@endif
 @endsection

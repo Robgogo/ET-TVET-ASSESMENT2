@@ -78,6 +78,7 @@
             </div>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav">
+                    @if(Auth::check())
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#">maintenance </a>
                         <ul class="dropdown-menu" role="menu">
                             <li role="presentation"><a href="/sector">Sector</a></li>
@@ -105,22 +106,24 @@
                             <li role="presentation"><a href="#">Third Item</a></li>
                         </ul>
                     </li>
+                        @endif
                 </ul>
             </div>
         </div>
+
+        @if (Route::has('login'))
+            <div class="top-right links">
+                @if (Auth::check())
+                    <a href="{{ url('/home') }}">Home</a>
+                @else
+                    <a href="{{ url('/login') }}">Login</a>
+
+                @endif
+            </div>
+        @endif
+
     </nav>
         <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @if (Auth::check())
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ url('/login') }}">Login</a>
-                        <a href="{{ url('/register') }}">Register</a>
-                    @endif
-                </div>
-            @endif
-
             <div class="content">
                 <div class="title m-b-md">
                     Laravel

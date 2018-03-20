@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\CreatePackage;
+use App\Package;
 use Illuminate\Http\Request;
 use App\Sector;
 use App\Subsector;
@@ -89,5 +91,14 @@ class PostPackageController extends Controller
         }
         else
             return "File Not found";
+    }
+
+    public function getPackageName($id){
+        $open_package=OpenPackage::get()->where('open_pack_no',$id);
+        $created_package_id=$open_package->pluck('id');
+        $created_package=CreatePackage::get()->where('id',$created_package_id[0]);
+        $package_code=$created_package->pluck('package_code');
+        $package=Package::get()->where('Packagecode',$package_code[0]);
+        return response()->json($package);
     }
 }

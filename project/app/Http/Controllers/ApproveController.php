@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Approve;
+use App\CreatePackage;
 use Illuminate\Http\Request;
 use App\Sector;
 use App\Subsector;
@@ -109,5 +110,16 @@ class ApproveController extends Controller
         }
         else
             return "File Not found";
+    }
+
+    public function getPackageName($id){
+        $post_package=PostPackage::get()->where('post_pack_no',$id);
+        $opened_package_id=$post_package->pluck('id');
+        $opened_package=OpenPackage::get()->where('id',$opened_package_id[0]);
+        $created_package_id=$opened_package->pluck('id');
+        $created_package=CreatePackage::get()->where('id',$created_package_id[0]);
+        $package_code=$created_package->pluck('package_code');
+        $package=Package::get()->where('Packagecode',$package_code[0]);
+        return response()->json($package);
     }
 }

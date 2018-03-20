@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\CreatedPackageInfo;
+use App\Package;
 use Illuminate\Http\Request;
 use App\Level;
 use App\Region;
@@ -89,5 +90,35 @@ class OpenPackageController extends Controller
         }
         else
             return "File Not found";
+    }
+
+    public function getSectorName($id){
+        $sector=Sector::get()->where('Sectorcode',$id);
+        return response()->json($sector);
+    }
+
+    public function getSubsectorName($id){
+        $subsector=Subsector::get()->where('Subsectorcode',$id);
+        return response()->json($subsector);
+    }
+
+    public function getOsName($id){
+        $os=OccupationalStandard::get()->where('OScode',$id);
+        return response()->json($os);
+    }
+
+    public function getLevelName($id){
+        $level=Level::get()->where('Levelcode',$id);
+        return response()->json($level);
+    }
+
+    public function getRegionName($id){
+        $region=Region::get()->where('Regioncode',$id);
+        return response()->json($region);
+    }
+
+    public function getPackageName($id){
+        $package=Package::get()->where('package_code',$id);
+        return response()->json($package);
     }
 }
