@@ -13,56 +13,62 @@ class ItemDocController extends Controller
 
         $packages=Package::all();
         //dd($packages);
-    	return view('maintenance.item_doc')->with(compact('packages'));
+    	return view('maintenance.item.item_doc')->with(compact('packages'));
     }
 
     public function store(){
         $item=new ItemDoc;
-    	if(null!==request('save')){
 
-            $this->validate(request(),[
-                'package_no'=>'required',
-                'item_code'=>'required',
-                'item_name'=>'required',
-                'item_description'=>'required'
+        $this->validate(request(),[
+            'package_no'=>'required',
+            'item_code'=>'required',
+            'item_name'=>'required',
+            'item_description'=>'required'
+        ]);
+        $item->package_id=request('package_no');
+        $item->Itemcode=request('item_code');
+        $item->Itemname=request('item_name');
+        $item->Itemdesc=request('item_description');
+        $item->save();
+        //dd(request()->all());
+
+    	return redirect('/item/show');
+    }
+
+    public function show(){
+        $items=ItemDoc::all();
+        //dd($items);
+        return view('maintenance.item.show')->with(compact('items'));
+    }
+
+    public function showEdit($id){
+        $item=ItemDoc::findorfail($id);
+        $packages=Package::all();
+        //dd($subsector);
+        return view('maintenance.item.edit')->with(compact('item','packages'));
+    }
+
+    public function edit(){
+        $this->validate(request(),[
+
+            'item_code'=>'required',
+            'item_name'=>'required',
+            'item_description'=>'required'
+        ]);
+
+        DB::table('item_docs')
+            ->where('Itemcode',request('item_code'))
+            ->update([
+                'Itemname'=>request('item_name'),
+                'Itemdesc'=>request('item_description')
             ]);
-    		$item->package_id=request('package_no');
-    		$item->Itemcode=request('item_code');
-    		$item->Itemname=request('item_name');
-    		$item->Itemdesc=request('item_description');
-    		$item->save();
-    		//dd(request()->all());
-    	}
-    	else if(null!==request('edit')){
-            $this->validate(request(),[
+        return redirect('/item/show');
+    }
 
-                'item_code'=>'required',
-                'item_name'=>'required',
-                'item_description'=>'required'
-            ]);
-
-            DB::table('item_docs')
-                ->where('Itemcode',request('item_code'))
-                ->update([
-                    'Itemname'=>request('item_name'),
-                    'Itemdesc'=>request('item_description')
-                ]);
-
-    	}
-
-    	else if(null!==request('delete')){
-            $this->validate(request(),[
-                'item_code'=>'required',
-            ]);
-
-             DB::table('item_docs')
-                ->where('Itemcode',request('item_code'))
-                ->delete();
-    	}
-
-    	else
-    		return "<h1>button other than save was pressed</h1>";	
-    	
-    	return redirect('/');
+    public function delete($id){
+        DB::table('item_docs')
+            ->where('id',$id)
+            ->delete();
+        return redirect('/item/show');
     }
 }

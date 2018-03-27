@@ -61,7 +61,7 @@ class EmployeeInfoController extends Controller
         $employee->middle_name=request('middle_name');
         $employee->last_name=request('last_name');
         $employee->sector_code=request('sector');
-        $employee->subsector_code=request('subsecotr');
+        $employee->subsector_code=request('subsector');
         $employee->region_code=request('region');
         $employee->department=request('department');
         $employee->position=request('position');
@@ -103,6 +103,15 @@ class EmployeeInfoController extends Controller
             ]);
 
         return redirect('/');
+    }
+
+    public static function isUserAdmin(User $user){
+
+        if($user->flag==1){
+            return true;
+        }
+        else
+            return false;
     }
 
 }

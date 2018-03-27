@@ -3,6 +3,7 @@
 
 @section('content')
     @if(Auth::check())
+        @if(\App\Http\Controllers\EmployeeInfoController::isUserAdmin(Auth::user()))
     <p class="h3 font-italic">Insert a new employee</p>
     <br>
     <div class="container">
@@ -136,6 +137,9 @@
         </form>
     </div>
     @include('layouts.errors')
+            @else
+                <h1>Only System Admin is allowed to view this page!</h1>
+            @endif
     @else
         <h1>You re not logged in!</h1>
         @if (Auth::guest())

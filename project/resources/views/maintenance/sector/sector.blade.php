@@ -6,7 +6,7 @@
 			<form class="form" method="POST" action="/savesector">
 				{{csrf_field()}}
 
-				<div class="form-group col-md-4 " style="margin-left: 350px;margin-top: 70px;">
+				<div class="form-group col-md-4 " style="margin-left: 350px;margin-top: 100px;">
 					<label for="sector_code">Sector Code:</label>
 					<input class="form-control"  type="text" name="sector_code" id="sector_code">
 
@@ -22,8 +22,6 @@
 				</div>
 				<div class="form-group col-md-4"  style="margin-left: 350px;">
 					<button class="form-control col-md-3 btn btn-success" name="save" value="save" type="submit">Save</button>
-					<button class="form-control col-md-3 btn btn-primary" name="edit" value="edit" style="margin-left: 55px;" type="submit">Edit</button>
-					<button class="form-control col-md-3 btn btn-danger" name="delete" value="delete" style="margin-left: 55px;" type="submit">Delete</button>
 				</div>
 				@include('layouts.errors');
 

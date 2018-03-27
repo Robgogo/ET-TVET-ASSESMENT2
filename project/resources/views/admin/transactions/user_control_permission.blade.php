@@ -1,13 +1,11 @@
 @extends('layouts.layout')
 @section('content')
     @if(Auth::check())
+        @if(\App\Http\Controllers\EmployeeInfoController::isUserAdmin(Auth::user()))
     <h2>Set user permission</h2>
     <div class="container">
         <form class="form-horizontal" role="form" method="POST" action="/user_permission" enctype="multipart/form-data">
             {{csrf_field()}}
-            <a href="#">
-                <div class=" glyphicon glyphicon-plus"></div>
-            </a>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="permission_no">Permission Number:</label>
                 <div class="col-sm-6">
@@ -415,6 +413,9 @@
         }
 
     </script>
+    @else
+        <h1>Only System Admin is allowed to view this page!</h1>
+    @endif
     @else
         <h1>You re not logged in!</h1>
         @if (Auth::guest())

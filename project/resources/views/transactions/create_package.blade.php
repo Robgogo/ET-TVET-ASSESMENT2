@@ -42,7 +42,7 @@
 	<div class="form-group">
 		<label class="control-label col-sm-2" for="created_by">Created By:</label>
 		<div class="col-sm-4">
-			<input type="text" class="form-control" name="created_by" id="created_by">
+			<input type="text" class="form-control" name="created_by" id="created_by" value="{{ Auth::user()->user_name}}" readonly>
 		</div>
 	</div>
 	

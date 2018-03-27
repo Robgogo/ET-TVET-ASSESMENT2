@@ -59,6 +59,7 @@ class CreatePackageController extends Controller
 
         ]);*/
 
+
         $createPackage->cpack_no=request('cpackno');
         $createPackage->package_code=request('package_code');
         $createPackage->creatd_by=request('created_by');
@@ -75,6 +76,8 @@ class CreatePackageController extends Controller
 
         $packageInfo->store($id,$dir,$filename);
     //dd($packageInfo);
+
+
             return redirect('/');
 
     }

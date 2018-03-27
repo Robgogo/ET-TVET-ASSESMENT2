@@ -3,28 +3,64 @@
 
 use App\EmployeeInfo;
 
-Route::get('/sector','SectorController@index');
+Route::get('/sector/create','SectorController@index');
+Route::get('/sector/show','SectorController@show');
+Route::get('/sector/edit/{id}','SectorController@showEdit');
+Route::post('/sector/edit','SectorController@edit');
+Route::post('/sector/delete/{id}','SectorController@delete');
 Route::post('/savesector','SectorController@store');
 
-Route::get('/subsector','SubsectorController@index');
+Route::get('/subsector/create','SubsectorController@index');
+Route::get('/subsector/show','SubsectorController@show');
+Route::get('/subsector/edit/{id}','SubsectorController@showEdit');
+Route::post('/subsector/edit','SubsectorController@edit');
+Route::post('/subsector/delete/{id}','SubsectorController@delete');
 Route::post('/savesubsector','SubsectorController@store');
 
-Route::get('/region','RegionController@index');
+Route::get('/region/create','RegionController@index');
+Route::get('/region/show','RegionController@show');
+Route::get('/region/edit/{id}','RegionController@showEdit');
+Route::post('/region/edit','RegionController@edit');
+Route::post('/region/delete/{id}','RegionController@delete');
 Route::post('/saveregion','RegionController@store');
 
-Route::get('/os','OccupationalStandardController@index');
-Route::post('/saveos','OccupationalStandardController@store');
-
-Route::get('/level','LevelController@index');
-Route::post('/savelevel','LevelController@store');
-
-Route::get('/assesor','AssesorController@index');
-Route::post('/saveassesor','AssesorController@store');
-
-Route::get('/package','PackageController@index');
+Route::get('/package/create','PackageController@index');
+Route::get('/package/show','PackageController@show');
+Route::get('/package/edit/{id}','PackageController@showEdit');
+Route::post('/package/edit','PackageController@edit');
+Route::post('/package/delete/{id}','PackageController@delete');
 Route::post('/savepackage','PackageController@store');
 
-Route::get('/item','ItemDocController@index');
+
+Route::get('/os/create','OccupationalStandardController@index');
+Route::get('/os/show','OccupationalStandardController@show');
+Route::get('/os/edit/{id}','OccupationalStandardController@showEdit');
+Route::post('/os/edit','OccupationalStandardController@edit');
+Route::post('/os/delete/{id}','OccupationalStandardController@delete');
+Route::post('/saveos','OccupationalStandardController@store');
+
+
+Route::get('/level/create','LevelController@index');
+Route::get('/level/show','LevelController@show');
+Route::get('/level/edit/{id}','LevelController@showEdit');
+Route::post('/level/edit','LevelController@edit');
+Route::post('/level/delete/{id}','LevelController@delete');
+Route::post('/savelevel','LevelController@store');
+
+
+Route::get('/assesor/create','AssesorController@index');
+Route::get('/assesor/show','AssesorController@show');
+Route::get('/assesor/edit/{id}','AssesorController@showEdit');
+Route::post('/assesor/edit','AssesorController@edit');
+Route::post('/assesor/delete/{id}','AssesorController@delete');
+Route::post('/saveassesor','AssesorController@store');
+
+
+Route::get('/item/create','ItemDocController@index');
+Route::get('/item/show','ItemDocController@show');
+Route::get('/item/edit/{id}','ItemDocController@showEdit');
+Route::post('/item/edit','ItemDocController@edit');
+Route::post('/item/delete/{id}','ItemDocController@delete');
 Route::post('/saveitem','ItemDocController@store');
 
 Route::get('/create_package','CreatePackageController@index');
@@ -85,3 +121,44 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//Report Routes
+//View Routers for summaries
+Route::group(['namespace' => 'ViewController'], function() {
+    //Sector Section
+    Route::group(['prefix' => 'summary'], function() {
+        Route::get('/sector', 'SummaryController@sector');
+        Route::get('/subsector', 'SummaryController@subSector');
+        Route::get('/occupationstd', 'SummaryController@occupationStd');
+        Route::get('/level', 'SummaryController@level');
+        Route::get('/region', 'SummaryController@region');
+        Route::get('/item', 'SummaryController@item');
+        Route::get('/package', 'SummaryController@package');
+        Route::get('/assessor', 'SummaryController@assessor');
+        Route::get('/created-package', 'SummaryController@createdPackage');
+        Route::get('/opened-package', 'SummaryController@openedPackage');
+        Route::get('/posted-package', 'SummaryController@postedPackage');
+    });
+});
+
+//Logic Router for summaries
+Route::group(['namespace' => 'LogicController'], function() {
+    //Sector Logic Controller
+    Route::group(['prefix' => 'summary'], function() {
+        Route::get('/sector/getsector/{id}', 'SummaryController@getSector');
+        Route::get('/subsector/getsubsector/{id}', 'SummaryController@getSubSector');
+        Route::get('/occupationstd/get-occupation-std/{id}', 'SummaryController@getOccupationStd');
+        Route::get('/level/get-level/{id}', 'SummaryController@getLevel');
+        Route::get('/region/get-region/{id}', 'SummaryController@getRegion');
+        Route::get('/item/get-item/{id}', 'SummaryController@getItem');
+        Route::get('/package/get-package/{id}', 'SummaryController@getPackage');
+        Route::get('/assessor/get-assessor/{id}', 'SummaryController@getAssessor');
+        Route::get('/created-package/get-package/{id}/{date_from?}/{date_to?}',
+            'SummaryController@getCreatedPackage');
+        Route::get('/opened-package/get-package/{id}/{date_from?}/{date_to?}',
+            'SummaryController@getOpenedPackage');
+        Route::get('/posted-package/get-package/{id}/{date_from?}/{date_to?}',
+            'SummaryController@getPostedPackage');
+    });
+});
+

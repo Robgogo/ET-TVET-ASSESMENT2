@@ -9,59 +9,61 @@ use App\Level;
 class LevelController extends Controller
 {
     public function index(){
-    	return view('maintenance.level');
+    	return view('maintenance.level.level');
     }
 
     public function store(){
     	$level=new Level;
-    	if(null!==request('save')){
 
-            $this->validate(request(),[
+        $this->validate(request(),[
 
-                'level_code'=>'required',
-                'level_name'=>'required',
-                'level_description'=>'required'
+            'level_code'=>'required',
+            'level_name'=>'required',
+            'level_description'=>'required'
+        ]);
+
+        $level->Levelcode=request('level_code');
+        $level->Levelname=request('level_name');
+        $level->Leveldesc=request('level_description');
+        $level->save();
+        //dd(request()->all());
+
+    	return redirect('/level/show');
+    }
+
+    public function show(){
+        $levels=Level::all();
+        //dd($levels);
+        return view('maintenance.level.show')->with(compact('levels'));
+    }
+
+    public function showEdit($id){
+        $level=Level::findorfail($id);
+        //dd($subsector);
+        return view('maintenance.level.edit')->with(compact('level'));
+    }
+
+    public function edit(){
+        $this->validate(request(),[
+
+            'level_code'=>'required',
+            'level_name'=>'required',
+            'level_description'=>'required'
+        ]);
+
+        DB::table('levels')
+            ->where('Levelcode',request('level_code'))
+            ->update([
+                'Levelname'=>request('level_name'),
+                'Leveldesc'=>request('level_description')
             ]);
-    		
-    		$level->Levelcode=request('level_code');
-    		$level->Levelname=request('level_name');
-    		$level->Leveldesc=request('level_description');
-    		$level->save();
-    		//dd(request()->all());
-    	}
-    	else if(null!==request('edit')){
+        return redirect('/level/show');
+    }
 
-             $this->validate(request(),[
-
-                'level_code'=>'required',
-                'level_name'=>'required',
-                'level_description'=>'required'
-            ]);
-
-             DB::table('levels')
-                ->where('Levelcode',request('level_code'))
-                ->update([
-                    'Levelname'=>request('level_name'),
-                    'Leveldesc'=>request('level_description')
-                ]);
-
-    	}
-
-    	else if(null!==request('delete')){
-
-             $this->validate(request(),[
-                'level_code'=>'required',
-            ]);
-
-             DB::table('levels')
-                ->where('Levelcode',request('level_code'))
-                ->delete();
-
-    	}
-
-    	else
-    		return "<h1>button other than save was pressed</h1>";	
-    	
-    	return redirect('/');
+    public function delete($id){
+        DB::table('levels')
+            ->where('id',$id)
+            ->delete();
+        return redirect('/os/show');
     }
 }

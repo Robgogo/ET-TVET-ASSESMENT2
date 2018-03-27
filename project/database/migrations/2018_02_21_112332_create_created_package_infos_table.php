@@ -20,6 +20,7 @@ class CreateCreatedPackageInfosTable extends Migration
             $table->string('item_name');
             $table->string('file_dir');
             $table->string('comments');
+            $table->string('status')->default('open');
             $table->timestamps();
         });
     }

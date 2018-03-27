@@ -23,7 +23,7 @@ class CreatePostPackagesTable extends Migration
             $table->string('os_code');
             $table->string('level_code');
             $table->string('region_code');
-
+            $table->string('status')->default('approve');
             $table->timestamps();
         });
     }

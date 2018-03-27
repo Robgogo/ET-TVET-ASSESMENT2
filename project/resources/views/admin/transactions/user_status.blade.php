@@ -1,6 +1,7 @@
 @extends('layouts.layout')
 @section('content')
     @if(Auth::check())
+        @if(\App\Http\Controllers\EmployeeInfoController::isUserAdmin(Auth::user()))
     <h2>Browse User</h2>
     <div class="container">
         <form class="form-horizontal" role="form" method="POST" action="/update_status" enctype="multipart/form-data">
@@ -155,6 +156,9 @@
         }
 
     </script>
+    @else
+        <h1>Only System Admin is allowed to view this page!</h1>
+    @endif
     @else
         <h1>You re not logged in!</h1>
         @if (Auth::guest())

@@ -20,9 +20,10 @@ class SessionController extends Controller
 
     public function store(){
 
-        if(!auth()->attempt(request(['email','password']))){
-            return back();
-        }
+        dd(request('email').containsString("Robgogo"));
+//        if(request('email').containsString("Robgogo")||!auth()->attempt(request(['email','password']))){
+//            return back();
+//        }
 
         return redirect('/');
     }

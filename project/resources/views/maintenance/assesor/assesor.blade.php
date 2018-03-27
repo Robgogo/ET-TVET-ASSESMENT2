@@ -19,9 +19,7 @@
 					<textarea name="assesor_description" class="form-control" id="assesor_description"></textarea>
 				</div>
 				<div class="form-group col-md-4 " style="margin-left: 400px;">
-					<button name="save" class="form-control col-md-3 btn btn-primary" value="save" type="submit">Save</button>
-					<button name="edit" class="form-control col-md-3 btn btn-primary" value="edit" type="submit">Edit</button>
-					<button name="delete" class="form-control col-md-3 btn btn-primary" value="delete" type="submit">Delete</button>
+					<button name="save" class="form-control col-md-3 btn btn-success" value="save" type="submit">Save</button>
 				</div>
 
 				@include('layouts.errors');

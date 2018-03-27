@@ -11,62 +11,64 @@ class PackageController extends Controller
     public function index(){
 
 
-    	return view('maintenance.package');
+    	return view('maintenance.package.package');
     }
 
     public function store(){
         $package=new Package;
-    	if(null!==request('save')){
     		
-            $this->validate(request(),[
+        $this->validate(request(),[
 
-                'package_code'=>'required',
-                'package_name'=>'required',
-                'package_description'=>'required'
+            'package_code'=>'required',
+            'package_name'=>'required',
+            'package_description'=>'required'
+
+        ]);
+
+        $package->Packagecode=request('package_code');
+        $package->Packagename=request('package_name');
+        $package->Packagedesc=request('package_description');
+        $package->save();
+        //dd(request()->all());
+    	return redirect('/package/show');
+    }
+
+    public function show(){
+        $Packages=Package::all();
+        //dd($sectors);
+        return view('maintenance.package.show')->with(compact('Packages'));
+    }
+
+    public function showEdit($id){
+        $package=Package::findorfail($id);
+        //dd($subsector);
+        return view('maintenance.package.edit')->with(compact('package'));
+    }
+
+    public function edit(){
+        $this->validate(request(),[
+
+            'package_code'=>'required',
+            'package_name'=>'required',
+            'package_description'=>'required'
+
+        ]);
+
+        DB::table('packages')
+            ->where('Packagecode',request('package_code'))
+            ->update([
+
+                'Packagename'=>request('package_name'),
+                'Packagedesc'=>request('package_description')
 
             ]);
+        return redirect('/package/show');
+    }
 
-    		$package->Packagecode=request('package_code');
-    		$package->Packagename=request('package_name');
-    		$package->Packagedesc=request('package_description');
-    		$package->save();
-    		//dd(request()->all());
-    	}
-    	else if(null!==request('edit')){
-
-            $this->validate(request(),[
-
-                'package_code'=>'required',
-                'package_name'=>'required',
-                'package_description'=>'required'
-
-            ]);
-
-            DB::table('packages')
-                ->where('Packagecode',request('package_code'))
-                ->update([
-
-                    'Packagename'=>request('package_name'),
-                    'Packagedesc'=>request('package_description')
-
-                ]);
-
-    	}
-
-    	else if(null!==request('delete')){
-            $this->validate(request(),[
-
-                'package_code'=>'required'
-            ]);
-
-            DB::table('packages')
-                ->where('Packagecode',request('package_code'))
-                ->delete();
-    	}
-
-    	else
-    		return "<h1>button other than save was pressed</h1>";	
-    	
-    	return redirect('/');
+    public function delete($id){
+        DB::table('packages')
+            ->where('id',$id)
+            ->delete();
+        return redirect('/package/show');
     }
 }

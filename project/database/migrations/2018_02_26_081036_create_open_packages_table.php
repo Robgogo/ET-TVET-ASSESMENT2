@@ -23,6 +23,7 @@ class CreateOpenPackagesTable extends Migration
             $table->string('os_code');
             $table->string('level_code');
             $table->string('region_code');
+            $table->string('status')->default('post');
             $table->timestamps();
         });
     }
