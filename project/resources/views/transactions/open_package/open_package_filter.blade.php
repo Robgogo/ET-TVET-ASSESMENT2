@@ -26,7 +26,7 @@
             <div class="form-group">
                 <label class="control-label col-sm-2" for="opened_by">Opened By:</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control " name="opened_by" id="opened_by">
+                    <input type="text" class="form-control " name="opened_by" id="opened_by" value="{{ Auth::user()->user_name}}" readonly>
                 </div>
             </div>
             <div>

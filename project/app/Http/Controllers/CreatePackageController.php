@@ -11,7 +11,7 @@ class CreatePackageController extends Controller
 {
     public function index(){
     	$package=Package::all();
-    	return view('transactions.create_package',compact('package'));
+    	return view('transactions.create.create_package',compact('package'));
     }
     //function to store the form values on to the database and upload a file.
 
@@ -20,7 +20,7 @@ class CreatePackageController extends Controller
         $createPackage=new CreatePackage;
         $packageInfo=new CreatedPackageInfoController;
 
-       /* $this->validate(request(),[
+        $this->validate(request(),[
             'cpackno'=>'required',
             'date'=>'required',
             'package_code'=>'required',
@@ -57,7 +57,7 @@ class CreatePackageController extends Controller
             'upload10'=>'required',
             'comments10'=>'required'
 
-        ]);*/
+        ]);
 
 
         $createPackage->cpack_no=request('cpackno');

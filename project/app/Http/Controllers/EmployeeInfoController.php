@@ -114,4 +114,16 @@ class EmployeeInfoController extends Controller
             return false;
     }
 
+    public static function isUserActive(User $user){
+        $emp_id=$user->employee_id;
+        $emp=DB::table('employee_infos')
+            ->where('employee_id',$emp_id)
+            ->get();
+        if($emp[0]->status=="active"){
+            return true;
+        }
+        else
+            return false;
+
+    }
 }

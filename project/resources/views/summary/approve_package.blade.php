@@ -2,19 +2,19 @@
 
 @section('content')
     @if(Auth::check())
-        @if(\App\Http\Controllers\UserControlPermissionController::hasOpenSummaryPermission(Auth::user()))
+        @if(\App\Http\Controllers\UserControlPermissionController::hasApproveSummaryPermission(Auth::user()))
             <div class="row">
                 <div class="offset-sm-1 col-sm-11">
                     <form action="" method="GET" class="form-inline">
                         <div class="form-group">
                             <label for="selectfield" style="font-size: 1.2em" class="control-label">
-                                Opened Package Number&nbsp;&nbsp;</label>
+                                Approve Package Number&nbsp;&nbsp;</label>
                             <select class="form-control"
                                     id="selectfield" name="selectfield">
                                 <option value=""></option>
                                 <option value="all">All</option>
                                 @foreach ($packages as $field)
-                                    <option value="{{ $field->open_pack_no }}">{{ $field->open_pack_no }}</option>
+                                    <option value="{{ $field->app_pack_no }}">{{ $field->app_pack_no }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -38,7 +38,7 @@
                     <table class="table table-hover table-bordered">
                         <thead>
                         <tr>
-                            <th scope="col">Open Pack. No.</th>
+                            <th scope="col">Approve Pack. No.</th>
                             <th scope="col">Date</th>
                             <th scope="col">Created By</th>
                             <th scope="col">Sector</th>
@@ -75,7 +75,7 @@
                 var select_value = $(selectfield).val();
                 var date_from = $('#datefrom').val();
                 var date_to= $('#dateto').val();
-                var url_path = "/summary/opened-package/get-package/" + select_value;
+                var url_path = "/summary/approve-package/get-package/" + select_value;
                 if (date_from != "" && date_to != "") {
                     url_path += "/" + date_from + "/" + date_to;
                     console.log(url_path);
@@ -100,17 +100,18 @@
                             {
                                 var cur_result = result[i];
                                 var cur_pack=pack[i];
-                                console.log(cur_pack[0].cpack_no);
-                                //console.log(cur_name.Packagename);
-                                table_value += '<tr><td>' + cur_result.open_pack_no + '</td>' +
+                                //console.log(cur_pack);
+                                console.log(cur_result);
+                                table_value += '<tr><td>' + cur_result.app_pack_no + '</td>' +
                                     '<td>' + cur_result.created_at + '</td>' +
-                                    '<td>' + cur_result.opened_by + '</td>' +
+                                    '<td>' + cur_result.approved_by + '</td>' +
                                     '<td>' + cur_result.sector_code + '</td>' +
                                     '<td>' + cur_result.subsector_code + '</td>' +
                                     '<td>' + cur_result.os_code + '</td>' +
                                     '<td>' + cur_result.level_code + '</td>' +
                                     '<td>' + cur_result.region_code + '</td>' +
-                                    '<td>' + cur_pack[0].cpack_no + '</td>' ;
+                                    '<td>' + cur_pack[0].package_code + '</td>' +
+                                    '<td>' + cur_result.approval_status + '</td>';
                                 table_value += '</tr>';
                             }
 

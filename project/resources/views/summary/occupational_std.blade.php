@@ -2,43 +2,47 @@
 
 @section('content')
   @if(Auth::check())
-    <div class="row">
-      <div class="offset-sm-1 col-sm-7">
-        <form action="" method="GET" class="form-horizontal">
-          <div class="form-group">
-            <label for="lastname" style="font-size: 1.2em" class="col-sm-5 control-label">
-            Occupational Standard Code&nbsp;&nbsp;</label>
-            <div class="col-sm-2">
-              <select class="form-control"
-                  id="selectfield" name="selectfield">
-                    <option value=""></option>
-                    <option value="all">All</option>
-                    @foreach ($occup_stds as $occup_std)
-                      <option value="{{ $occup_std->OScode }}">{{ $occup_std->OSname }}</option>
-                    @endforeach
-              </select>
+    @if(\App\Http\Controllers\UserControlPermissionController::hasOsSummaryPermission(Auth::user()))
+      <div class="row">
+        <div class="offset-sm-1 col-sm-7">
+          <form action="" method="GET" class="form-horizontal">
+            <div class="form-group">
+              <label for="lastname" style="font-size: 1.2em" class="col-sm-5 control-label">
+              Occupational Standard Code&nbsp;&nbsp;</label>
+              <div class="col-sm-2">
+                <select class="form-control"
+                    id="selectfield" name="selectfield">
+                      <option value=""></option>
+                      <option value="all">All</option>
+                      @foreach ($occup_stds as $occup_std)
+                        <option value="{{ $occup_std->OScode }}">{{ $occup_std->OSname }}</option>
+                      @endforeach
+                </select>
+              </div>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
-    </div>
-    <br>
-    <div class="row justify-content-center">
-      <div class="offset-sm-1 col-sm-8">
-        <table class="table table-hover table-bordered">
-          <thead>
-            <tr>
-              <th scope="col">Occupational Standard Code</th>
-              <th scope="col">Occupational Standard Name</th>
-              <th scope="col">Occupational Standard Description</th>
-            </tr>
-          </thead>
-          <tbody id="tablebody">
+      <br>
+      <div class="row justify-content-center">
+        <div class="offset-sm-1 col-sm-8">
+          <table class="table table-hover table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">Occupational Standard Code</th>
+                <th scope="col">Occupational Standard Name</th>
+                <th scope="col">Occupational Standard Description</th>
+              </tr>
+            </thead>
+            <tbody id="tablebody">
 
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
+    @else
+      <h1>Yo are not allowed to view this page!</h1>
+    @endif
   @else
     <h1>You re not logged in!</h1>
     @if (Auth::guest())

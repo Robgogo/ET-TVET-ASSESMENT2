@@ -2,56 +2,60 @@
 
 @section('content')
     @if(Auth::check())
-        <div class="row">
-          <div class="offset-sm-1 col-sm-11">
-            <form action="" method="GET" class="form-inline">
-              <div class="form-group">
-                <label for="selectfield" style="font-size: 1.2em" class="control-label">
-                Created Package Number&nbsp;&nbsp;</label>
-                <select class="form-control"
-                    id="selectfield" name="selectfield">
-                      <option value=""></option>
-                      <option value="all">All</option>
-                      @foreach ($packages as $field)
-                        <option value="{{ $field->cpack_no }}">{{ $field->cpack_no }}</option>
-                      @endforeach
-                </select>
+        @if(\App\Http\Controllers\UserControlPermissionController::hasCreateSummaryPermission(Auth::user()))
+            <div class="row">
+              <div class="offset-sm-1 col-sm-11">
+                <form action="" method="GET" class="form-inline">
+                  <div class="form-group">
+                    <label for="selectfield" style="font-size: 1.2em" class="control-label">
+                    Created Package Number&nbsp;&nbsp;</label>
+                    <select class="form-control"
+                        id="selectfield" name="selectfield">
+                          <option value=""></option>
+                          <option value="all">All</option>
+                          @foreach ($packages as $field)
+                            <option value="{{ $field->cpack_no }}">{{ $field->cpack_no }}</option>
+                          @endforeach
+                    </select>
+                  </div>
+                  &nbsp;&nbsp;&nbsp;
+                  <div class="form-group">
+                    <label for="datefrom" style="font-size: 1.2em" class="control-label">
+                    Date From&nbsp;&nbsp;</label>
+                    <input type="date" name="datefrom" id="datefrom" class="form-control" placeholder="mm/dd/yyyy">
+                  </div>
+                  <div class="form-group">
+                    <label for="dateto" style="font-size: 1.2em" class="control-label">
+                      Date To&nbsp;&nbsp;</label>
+                    <input type="date" name="dateto" id="dateto" class="form-control" placeholder="mm/dd/yyyy">
+                  </div>
+                </form>
               </div>
-              &nbsp;&nbsp;&nbsp;
-              <div class="form-group">
-                <label for="datefrom" style="font-size: 1.2em" class="control-label">
-                Date From&nbsp;&nbsp;</label>
-                <input type="date" name="datefrom" id="datefrom" class="form-control" placeholder="mm/dd/yyyy">
-              </div>
-              <div class="form-group">
-                <label for="dateto" style="font-size: 1.2em" class="control-label">
-                  Date To&nbsp;&nbsp;</label>
-                <input type="date" name="dateto" id="dateto" class="form-control" placeholder="mm/dd/yyyy">
-              </div>
-            </form>
-          </div>
-        </div>
-        <br>
-        <div class="row justify-content-center">
-          <div class="col-sm-11">
-            <table class="table table-hover table-bordered">
-              <thead>
-                <tr>
-                  <th scope="col">Package Number</th>
-                  <th scope="col">Date</th>
-                  <th scope="col">Created By</th>
-                  <th scope="col">Package Code</th>
-                  <th scope="col">Package Name</th>
-                  <th scope="col" colspan="3">Item </th>
-                </tr>
-              </thead>
-              <tbody id="tablebody">
+            </div>
+            <br>
+            <div class="row justify-content-center">
+              <div class="col-sm-11">
+                <table class="table table-hover table-bordered">
+                  <thead>
+                    <tr>
+                      <th scope="col">Package Number</th>
+                      <th scope="col">Date</th>
+                      <th scope="col">Created By</th>
+                      <th scope="col">Package Code</th>
+                      <th scope="col">Package Name</th>
+                      <th scope="col" colspan="3">Item </th>
+                    </tr>
+                  </thead>
+                  <tbody id="tablebody">
 
 
-              </tbody>
-            </table>
-          </div>
-        </div>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+        @else
+            <h1>Yo are not allowed to view this page!</h1>
+        @endif
     @else
         <h1>You re not logged in!</h1>
         @if (Auth::guest())

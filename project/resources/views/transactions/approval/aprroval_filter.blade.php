@@ -25,7 +25,7 @@
             <div class="form-group">
                 <label class="control-label col-sm-2" for="approved_by">Approved By:</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control " name="approved_by" id="approved_by">
+                    <input type="text" class="form-control " name="approved_by" id="approved_by" value="{{ Auth::user()->user_name}}" readonly>
                 </div>
             </div>
             <div>

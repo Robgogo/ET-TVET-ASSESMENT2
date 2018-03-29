@@ -92,7 +92,7 @@ Route::get('/get_open_package_id/{id}','PostPackageController@getPackageName');
 Route::get('/approve_package','ApproveController@index');
 Route::post('/approve_package','ApproveController@store');
 Route::get('/download_for_approve/{post_package_id}','ApproveController@download');
-Route::post('/post','ApproveController@storeStat');
+Route::post('/approve','ApproveController@storeStat');
 
 Route::get('/get_post_package_id/{id}','ApproveController@getPackageName');
 
@@ -112,11 +112,15 @@ Route::post('/user_permission','UserControlPermissionController@store');
 Route::get('/login','SessionController@index');
 Route::post('/login','SessionController@store');
 Route::get('/logout','SessionController@destroy');
-
+Route::get('/changepassword','SessionController@showPassword');
+Route::get('/cancel',function(){
+    return redirect('/');
+});
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
+
 
 Auth::routes();
 
@@ -138,6 +142,10 @@ Route::group(['namespace' => 'ViewController'], function() {
         Route::get('/created-package', 'SummaryController@createdPackage');
         Route::get('/opened-package', 'SummaryController@openedPackage');
         Route::get('/posted-package', 'SummaryController@postedPackage');
+        Route::get('/approve-package', 'SummaryController@approvedPackage');
+        Route::get('/user-summary','SummaryController@userSummary');
+        Route::get('/user-stat-summary','SummaryController@userStatSummary');
+        Route::get('/user-permission','SummaryController@userPermissionSummary');
     });
 });
 
@@ -159,6 +167,14 @@ Route::group(['namespace' => 'LogicController'], function() {
             'SummaryController@getOpenedPackage');
         Route::get('/posted-package/get-package/{id}/{date_from?}/{date_to?}',
             'SummaryController@getPostedPackage');
+        Route::get('/approve-package/get-package/{id}/{date_from?}/{date_to?}',
+            'SummaryController@getApprovedPackage');
+        Route::get('/user-summary/get-user/{id}/{date_from?}/{date_to?}',
+            'SummaryController@getUsers');
+        Route::get('/user-stat-summary/get-user/{id}/{status?}',
+            'SummaryController@getUserStat');
+        Route::get('/user-permission-summary/get-user/{id}/{maintenance?}/{transaction?}/{report?}',
+            'SummaryController@getUserPermission');
     });
 });
 

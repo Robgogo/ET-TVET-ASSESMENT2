@@ -134,15 +134,15 @@ class UserControlPermissionController extends Controller
                     ->get();
         return $transaction;
     }
-//report permissions
-//   public static function reportPermissions(User $user){
-//       $permission=UserControlPermissionController::permissions($user);
-//       $report_id=$permission[0]->transaction_permission_id;
-//       $report=DB::table('report_permissions')
-//           ->where('id',$report_id)
-//           ->get();
-//       return $report;
-//   }
+
+   public static function reportPermissions(User $user){
+       $permission=UserControlPermissionController::permissions($user);
+       $report_id=$permission[0]->transaction_permission_id;
+       $report=DB::table('report_permissions')
+           ->where('id',$report_id)
+           ->get();
+       return $report;
+   }
 
     public static function hasSectorPermission(User $user){
 
@@ -275,5 +275,134 @@ class UserControlPermissionController extends Controller
         }
     }
 
+    public static function hasSectorSummaryPermission(User $user){
+        $report=UserControlPermissionController::reportPermissions($user);
+        if($report[0]->sector_summary=="all" || $report[0]->sector_summary=="write"){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public static function hasSubsectorSummaryPermission(User $user){
+        $report=UserControlPermissionController::reportPermissions($user);
+        if($report[0]->sub_sector_summary=="all" || $report[0]->sub_sector_summary=="write"){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public static function hasOsSummaryPermission(User $user){
+        $report=UserControlPermissionController::reportPermissions($user);
+        if($report[0]->os_summary=="all" || $report[0]->os_summary=="write"){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public static function hasLevelSummaryPermission(User $user){
+        $report=UserControlPermissionController::reportPermissions($user);
+        if($report[0]->level_summary=="all" || $report[0]->level_summary=="write"){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public static function hasRegionSummaryPermission(User $user){
+        $report=UserControlPermissionController::reportPermissions($user);
+        if($report[0]->region_summary=="all" || $report[0]->region_summary=="write"){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public static function hasItemSummaryPermission(User $user){
+        $report=UserControlPermissionController::reportPermissions($user);
+        if($report[0]->item_doc_summary=="all" || $report[0]->item_doc_summary=="write"){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public static function hasPackageSummaryPermission(User $user){
+        $report=UserControlPermissionController::reportPermissions($user);
+        if($report[0]->package_summary=="all" || $report[0]->package_summary=="write"){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public static function hasAssesorSummaryPermission(User $user){
+        $report=UserControlPermissionController::reportPermissions($user);
+        if($report[0]->assesor_summary=="all" || $report[0]->assesor_summary=="write"){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public static function hasCreateSummaryPermission(User $user){
+        $report=UserControlPermissionController::reportPermissions($user);
+        if($report[0]->created_packages_summary=="all" || $report[0]->created_packages_summary=="write"){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public static function hasOpenSummaryPermission(User $user){
+        $report=UserControlPermissionController::reportPermissions($user);
+        if($report[0]->open_packages_summary=="all" || $report[0]->open_packages_summary=="write"){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public static function hasPostSummaryPermission(User $user){
+        $report=UserControlPermissionController::reportPermissions($user);
+        if($report[0]->post_packages_summary=="all" || $report[0]->post_packages_summary=="write"){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public static function hasApproveSummaryPermission(User $user){
+        $report=UserControlPermissionController::reportPermissions($user);
+        if($report[0]->approve_package_summary=="all" || $report[0]->approve_package_summary=="write"){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public static function hasAssesorInfoSummaryPermission(User $user){
+        $report=UserControlPermissionController::reportPermissions($user);
+        if($report[0]->assesor_info_summary=="all" || $report[0]->assesor_info_summary=="write"){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 
 }

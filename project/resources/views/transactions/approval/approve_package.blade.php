@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 @section('content')
 
-    <form role="form" method="POST" action="/post" enctype="multipart/form-data">
+    <form role="form" method="POST" action="/approve" enctype="multipart/form-data">
         {{csrf_field()}}
 
         <div class="form-group col-md-3">

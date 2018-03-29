@@ -28,6 +28,10 @@ class SessionController extends Controller
         return redirect('/');
     }
 
+    public function showPassword(){
+        return view('Auth.change_password');
+    }
+
     public function destroy(){
         auth()->logout();
         return redirect('/');

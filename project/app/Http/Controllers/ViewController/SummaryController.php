@@ -94,8 +94,29 @@ class SummaryController extends Controller
 
     public function postedPackage()
     {
-        return view('summary.opened_package')
+        return view('summary.posted_package')
             ->with('packages', \App\PostPackage::all());
+    }
+
+    public function approvedPackage()
+    {
+        return view('summary.approve_package')
+            ->with('packages', \App\Approve::all());
+    }
+
+    public function userSummary(){
+        return view('summary.user')
+            ->with('users',\App\EmployeeInfo::all());
+    }
+
+    public function userStatSummary(){
+        return view('summary.user_stat')
+            ->with('users',\App\EmployeeInfo::all());
+    }
+
+    public function userPermissionSummary(){
+        return view('summary.user_control_permission')
+            ->with('users',\App\EmployeeInfo::all());
     }
 
 }

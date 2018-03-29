@@ -2,43 +2,47 @@
 
 @section('content')
   @if(Auth::check())
-    <div class="row">
-      <div class="offset-sm-1 col-sm-4">
-        <form action="" method="GET" class="form-horizontal">
-          <div class="form-group">
-            <label for="lastname" style="font-size: 1.2em" class="col-sm-3 control-label">
-            Sector Code&nbsp;&nbsp;</label>
-            <div class="col-sm-8">
-              <select class="form-control"
-                  id="selectfield" name="selectfield">
-                    <option value=""></option>
-                    <option value="all">All</option>
-                    @foreach ($sectors as $sector)
-                      <option value="{{ $sector->Sectorcode }}">{{ $sector->Sectorcode }}</option>
-                    @endforeach
-              </select>
+    @if(\App\Http\Controllers\UserControlPermissionController::hasSectorSummaryPermission(Auth::user()))
+      <div class="row">
+        <div class="offset-sm-1 col-sm-4">
+          <form action="" method="GET" class="form-horizontal">
+            <div class="form-group">
+              <label for="lastname" style="font-size: 1.2em" class="col-sm-3 control-label">
+              Sector Code&nbsp;&nbsp;</label>
+              <div class="col-sm-8">
+                <select class="form-control"
+                    id="selectfield" name="selectfield">
+                      <option value=""></option>
+                      <option value="all">All</option>
+                      @foreach ($sectors as $sector)
+                        <option value="{{ $sector->Sectorcode }}">{{ $sector->Sectorcode }}</option>
+                      @endforeach
+                </select>
+              </div>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
-    </div>
-    <br>
-    <div class="row justify-content-center">
-      <div class="offset-sm-1 col-sm-8">
-        <table class="table table-hover table-bordered">
-          <thead>
-            <tr>
-              <th scope="col">Sector Code</th>
-              <th scope="col">Sector Name</th>
-              <th scope="col">Sector Description</th>
-            </tr>
-          </thead>
-          <tbody id="tablebody">
+      <br>
+      <div class="row justify-content-center">
+        <div class="offset-sm-1 col-sm-8">
+          <table class="table table-hover table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">Sector Code</th>
+                <th scope="col">Sector Name</th>
+                <th scope="col">Sector Description</th>
+              </tr>
+            </thead>
+            <tbody id="tablebody">
 
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
+    @else
+      <h1>Yo are not allowed to view this page!</h1>
+    @endif
   @else
     <h1>You re not logged in!</h1>
     @if (Auth::guest())

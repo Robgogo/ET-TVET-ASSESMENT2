@@ -23,9 +23,9 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2" for="posted_by">Opened By:</label>
+                <label class="control-label col-sm-2" for="posted_by">Posted By:</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control " name="posted_by" id="posted_by">
+                    <input type="text" class="form-control " name="posted_by" id="posted_by" value="{{ Auth::user()->user_name}}" readonly>
                 </div>
             </div>
             <div>
