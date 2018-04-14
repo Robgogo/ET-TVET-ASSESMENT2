@@ -13,6 +13,7 @@ use App\Region;
 use App\OpenPackage;
 use App\PostPackage;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class ApproveController extends Controller
 {
@@ -87,16 +88,25 @@ class ApproveController extends Controller
     public function storeStat(){
 
         if(null!==request('approve')){
-            $id=Approve::all()->last();
-            DB::table('approves')
-                ->where('id',$id->id)
+            $app=Approve::all()->last();
+            if(DB::table('approves')
+                ->where('id',$app->id)
                 ->update([
                     'approval_status'=>'approved'
-                ]);
-            return redirect('/');
+                ])){
+                $id=Auth::user()->employee_id;
+                UserActivityController::store($id,"Approved package ".$app->app_pack_no.".");
+                request()->session()->flash("alert-success","Approved Package");
+            }
+            else{
+                request()->session()->flash("alert-danger","An error occured while trying to approve,try again later.");
+            }
+
+            return redirect('/approve_package/show');
         }
         else{
-            return "not approved";
+            request()->session()->flash("alert-danger","Disapproved the package");
+            return redirect('/approve_package/show');
         }
     }
 
@@ -106,6 +116,9 @@ class ApproveController extends Controller
             ->first();
         $path = storage_path().'/'.'app'.'/'.$val->post_items_dir;
         if (file_exists($path)) {
+            $id=Auth::user()->employee_id;
+            UserActivityController::store($id,"Downloaded post package files for post package number of ".
+                PostPackage::where('id',$post_package_id)->get()->pluck("post_pack_no").".");
             return response()->download($path);
         }
         else
@@ -121,5 +134,11 @@ class ApproveController extends Controller
         $package_code=$created_package->pluck('package_code');
         $package=Package::get()->where('Packagecode',$package_code[0]);
         return response()->json($package);
+    }
+
+    public function show(){
+        $approved=Approve::all();
+
+        return view("transactions.approval.show")->with(compact("approved"));
     }
 }

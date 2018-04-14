@@ -119,4 +119,9 @@ class SummaryController extends Controller
             ->with('users',\App\EmployeeInfo::all());
     }
 
+    public function  userActivitySummary(){
+        return view('summary.user_activity_summary')
+            ->with('users',\App\EmployeeInfo::all());
+    }
+
 }

@@ -64,12 +64,14 @@ Route::post('/item/delete/{id}','ItemDocController@delete');
 Route::post('/saveitem','ItemDocController@store');
 
 Route::get('/create_package','CreatePackageController@index');
+Route::get('/create_package/show','CreatePackageController@show');
 //the route below is the code that is responsible to get therequest from ajax and 
 //process it and return the values needed
 Route::get('/get_package_id/{pack_no}','CreatePackageController@getId');
 Route::post('/creatpackages','CreatePackageController@store');
 
 Route::get('/open_package','OpenPackageController@index');
+Route::get('/open_package/show','OpenPackageController@show');
 Route::post('/open_package','OpenPackageController@store');
 Route::get('/download/{created_package_id}','OpenPackageController@download');
 Route::post('/open','OpenedPackageInfoController@store');
@@ -83,6 +85,7 @@ Route::get('/get_package_id/{id}','OpenPackageController@getPackageName');
 
 
 Route::get('/post_package','PostPackageController@index');
+Route::get('/post_package/show','PostPackageController@show');
 Route::post('/post_package','PostPackageController@store');
 Route::get('/download_for_post/{opened_package_id}','PostPackageController@download');
 Route::post('/post','PostPackageInfoController@store');
@@ -90,6 +93,7 @@ Route::post('/post','PostPackageInfoController@store');
 Route::get('/get_open_package_id/{id}','PostPackageController@getPackageName');
 
 Route::get('/approve_package','ApproveController@index');
+Route::get('/approve_package/show','ApproveController@show');
 Route::post('/approve_package','ApproveController@store');
 Route::get('/download_for_approve/{post_package_id}','ApproveController@download');
 Route::post('/approve','ApproveController@storeStat');
@@ -111,8 +115,9 @@ Route::post('/user_permission','UserControlPermissionController@store');
 
 Route::get('/login','SessionController@index');
 Route::post('/login','SessionController@store');
-Route::get('/logout','SessionController@destroy');
+Route::post('/logout','SessionController@destroy');
 Route::get('/changepassword','SessionController@showPassword');
+Route::post('/change','SessionController@changePassword');
 Route::get('/cancel',function(){
     return redirect('/');
 });
@@ -146,6 +151,7 @@ Route::group(['namespace' => 'ViewController'], function() {
         Route::get('/user-summary','SummaryController@userSummary');
         Route::get('/user-stat-summary','SummaryController@userStatSummary');
         Route::get('/user-permission','SummaryController@userPermissionSummary');
+        Route::get('/user-activity-summary','SummaryController@userActivitySummary');
     });
 });
 
@@ -175,6 +181,7 @@ Route::group(['namespace' => 'LogicController'], function() {
             'SummaryController@getUserStat');
         Route::get('/user-permission-summary/get-user/{id}/{maintenance?}/{transaction?}/{report?}',
             'SummaryController@getUserPermission');
+        Route::get('/user-activity-summary/get-user/{id}','SummaryController@getUserActivity');
     });
 });
 

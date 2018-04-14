@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCreatePackagesTable extends Migration
+class CreateUserActivityInfosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateCreatePackagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('create_packages', function (Blueprint $table) {
+        Schema::create('user_activity_infos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('cpack_no');
-            $table->string('package_code');
-            $table->string('creatd_by');
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ class CreateCreatePackagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('create_packages');
+        Schema::dropIfExists('user_activity_infos');
     }
 }

@@ -12,11 +12,11 @@
                 </div>
                 <div class="form-group col-md-4 " style="margin-left: 400px;">
                     <label for="region_name">Region Name:</label>
-                    <input type="text" class="form-control" name="region_name" id="region_name">
+                    <input type="text" class="form-control" name="region_name" id="region_name"value="{{$region->Regionname}}">
                 </div>
                 <div class="form-group col-md-4 " style="margin-left: 400px;">
                     <label for="region_description">Region Description:</label>
-                    <textarea name="region_description" class="form-control" id="region_description"></textarea>
+                    <textarea name="region_description" class="form-control" id="region_description">{{$region->Regiondesc}}</textarea>
                 </div>
                 <div class="form-group col-md-4 " style="margin-left: 400px;">
                     <button name="edit" class="form-control col-md-3 btn btn-primary" value="edit" type="submit">Edit</button>

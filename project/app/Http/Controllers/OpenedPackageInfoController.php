@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\OpenedPackageInfo;
 use App\OpenPackage;
 use DB;
+use Illuminate\Support\Facades\Auth;
 
 class OpenedPackageInfoController extends Controller
 {
@@ -44,7 +45,7 @@ class OpenedPackageInfoController extends Controller
 
         $pack->opened_items_dir=$dir."/".$file_name;
         $pack->opened_item_comment=request('new_comments');
-        $pack->save();
+
 
         $pack2=new OpenedPackageInfo;
         $pack2->open_package_id=$id;
@@ -55,7 +56,7 @@ class OpenedPackageInfoController extends Controller
         }
         $pack2->opened_items_dir=$dir."/".$file_name2    ;
         $pack2->opened_item_comment=request('new_comments2');
-        $pack2->save();
+
 
         $pack3=new OpenedPackageInfo;
         $pack3->open_package_id=$id;
@@ -66,7 +67,7 @@ class OpenedPackageInfoController extends Controller
         }
         $pack3->opened_items_dir=$dir."/".$file_name3    ;
         $pack3->opened_item_comment=request('new_comments3');
-        $pack3->save();
+
 
         $pack4=new OpenedPackageInfo;
         $pack4->open_package_id=$id;
@@ -77,7 +78,7 @@ class OpenedPackageInfoController extends Controller
         }
         $pack4->opened_items_dir=$dir."/".$file_name4;
         $pack4->opened_item_comment=request('new_comments4');
-        $pack4->save();
+        ;
 
         $pack5=new OpenedPackageInfo;
         $pack5->open_package_id=$id;
@@ -88,7 +89,7 @@ class OpenedPackageInfoController extends Controller
         }
         $pack5->opened_items_dir=$dir."/".$file_name5;
         $pack5->opened_item_comment=request('new_comments5');
-        $pack5->save();
+
 
         $pack6=new OpenedPackageInfo;
         $pack6->open_package_id=$id;
@@ -99,7 +100,7 @@ class OpenedPackageInfoController extends Controller
         }
         $pack6->opened_items_dir=$dir."/".$file_name6;
         $pack6->opened_item_comment=request('new_comments6');
-        $pack6->save();
+
 
         $pack7=new OpenedPackageInfo;
         $pack7->open_package_id=$id;
@@ -110,7 +111,7 @@ class OpenedPackageInfoController extends Controller
         }
         $pack7->opened_items_dir=$dir."/".$file_name7;
         $pack7->opened_item_comment=request('new_comments2');
-        $pack7->save();
+
 
         $pack8=new OpenedPackageInfo;
         $pack8->open_package_id=$id;
@@ -121,7 +122,7 @@ class OpenedPackageInfoController extends Controller
         }
         $pack8->opened_items_dir=$dir."/".$file_name8;
         $pack8->opened_item_comment=request('new_comments8');
-        $pack8->save();
+
 
         $pack9=new OpenedPackageInfo;
         $pack9->open_package_id=$id;
@@ -132,7 +133,7 @@ class OpenedPackageInfoController extends Controller
         }
         $pack9->opened_items_dir=$dir."/".$file_name9;
         $pack9->opened_item_comment=request('new_comments9');
-        $pack9->save();
+
 
         $pack10=new OpenedPackageInfo;
         $pack10->open_package_id=$id;
@@ -143,9 +144,22 @@ class OpenedPackageInfoController extends Controller
         }
         $pack10->opened_items_dir=$dir."/".$file_name10;
         $pack10->opened_item_comment=request('new_comments10');
-        $pack10->save();
 
-        return redirect('/');
+
+        if($pack->save()&&$pack2->save()&&$pack3->save()&&$pack4->save()&&
+            $pack5->save()&&$pack6->save()&&$pack7->save()&&$pack8->save()&&$pack9->save()&&$pack10->save()){
+
+            $id=Auth::user()->employee_id;
+            UserActivityController::store($id,"Opened package for ".$pac_name.".");
+            request()->session()->flash("alert-success","Package opened and saved successfully.");
+        }
+        else{
+            $id=$aa->id;
+            DB::table('open_packages')->where('id',$id)->delete();
+            request()->session()->flash("alert-danger","Could not save opened package files due to an error,try again later. We will fix it ASAP.");
+        }
+
+        return redirect('/open_package/show');
 
 
     }

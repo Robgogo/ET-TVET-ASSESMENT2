@@ -4,9 +4,19 @@
     @if(Auth::check())
         @if(\App\Http\Controllers\UserControlPermissionController::hasSectorPermission( Auth::user()))
             <div class="container">
+                <div class="flash-message">
+                    @foreach(['danger', 'warning', 'success', 'info'] as $msg)
+                        @if(\Illuminate\Support\Facades\Session::has('alert-' . $msg))
+                            <p class="alert alert-{{ $msg }}">
+                                {{ \Illuminate\Support\Facades\Session::get('alert-' . $msg) }}
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            </p>
+                        @endif
+                    @endforeach
+                </div>
                 <h1><a href="/sector/create" title="Add new"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a></h1>
                 <div class="form-group col-md-12 table-responsive">
-                    <table class="table table-striped table-bordered table-info">
+                    <table class="table">
                         <thead class="">
                         <tr>
                             <th scope="col">Sector code</th>
@@ -28,7 +38,7 @@
                                     <a href="/sector/edit/{{$sector->id}}"><button type="submit" class="btn btn-primary" >Update</button></a>
                                 </td>
                                 <td>
-                                    <button class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myDeleteModal">
+                                    <button class="btn btn-danger" data-toggle="modal" data-target="#myDeleteModal">
                                         Delete
                                     </button>
                                 </td>

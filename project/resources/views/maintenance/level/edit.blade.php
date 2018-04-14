@@ -8,15 +8,15 @@
 
                 <div class="form-group col-md-4 " style="margin-left: 400px;margin-top: 100px;">
                     <label for="level_code">Level Code:</label>
-                    <input type="text" class="form-control" name="level_code" id="level_code" value="{{$level->Levelname}}" readonly>
+                    <input type="text" class="form-control" name="level_code" id="level_code" value="{{$level->Levelcode}}" readonly>
                 </div>
                 <div class="form-group col-md-4 " style="margin-left: 400px;">
                     <label for="level_name">Level Name:</label>
-                    <input type="text" class="form-control" name="level_name" id="level_name">
+                    <input type="text" class="form-control" name="level_name" id="level_name" value="{{$level->Levelname}}">
                 </div>
                 <div class="form-group col-md-4 " style="margin-left: 400px;">
                     <label for="level_description">Level Description:</label>
-                    <textarea name="level_description" class="form-control" id="level_description"></textarea>
+                    <textarea name="level_description" class="form-control" id="level_description" value="{{$level->Leveldesc}}">{{$level->Leveldesc}}</textarea>
                 </div>
                 <div class="form-group col-md-4 " style="margin-left: 400px;">
                     <button name="edit" class="form-control col-md-3 btn btn-primary" value="edit" type="submit">Edit</button>

@@ -13,6 +13,7 @@ use App\Region;
 use App\OpenPackage;
 use App\PostPackage;
 use DB;
+use Illuminate\Support\Facades\Auth;
 
 class PostPackageController extends Controller
 {
@@ -48,37 +49,45 @@ class PostPackageController extends Controller
             'open_package_no'=>'required'
         ]);
 
-        $post_pack_no=request('postpackno');
-        $opened_pack_no=request('open_package_no');
-        $att=DB::table('open_packages')
+        $ppack=PostPackage::where('post_pack_no',request('postpackno'))->get();
+        if(!$ppack->isEmpty()){
+            request()->session()->flash("alert-danger","Ap post package with this package no already exists,try again with different input!");
+            return redirect('/post_package/show');
+        }
+        else{
+            $post_pack_no=request('postpackno');
+            $opened_pack_no=request('open_package_no');
+            $att=DB::table('open_packages')
                 ->where('open_pack_no',$opened_pack_no)
                 ->get();
-        //dd($att);
-        $opened_by=$att[0]->opened_by;
-        $date=$att[0]->created_at;
-        $opened_pack_id=$att[0]->id;
+            //dd($att);
+            $opened_by=$att[0]->opened_by;
+            $date=$att[0]->created_at;
+            $opened_pack_id=$att[0]->id;
 
 
-        $val=DB::table('opened_package_infos')
+            $val=DB::table('opened_package_infos')
                 ->where('open_package_id',$opened_pack_id)
                 ->get();
 
-        $items=DB::table('created_package_infos')
-                    ->where('created_package_id',$att[0]->created_package_id)
-                    ->get();
+            $items=DB::table('created_package_infos')
+                ->where('created_package_id',$att[0]->created_package_id)
+                ->get();
 
-        $post_pack->post_pack_no=$post_pack_no;
-        $post_pack->opened_package_id=$opened_pack_id;
-        $post_pack->created_by=request('posted_by');
-        $post_pack->sector_code=request('sector_code');
-        $post_pack->subsector_code=request('subsector_code');
-        $post_pack->os_code=request('os_code');
-        $post_pack->level_code=request('level_code');
-        $post_pack->region_code=request('region_code');
-        $post_pack->save();
+            $post_pack->post_pack_no=$post_pack_no;
+            $post_pack->opened_package_id=$opened_pack_id;
+            $post_pack->created_by=request('posted_by');
+            $post_pack->sector_code=request('sector_code');
+            $post_pack->subsector_code=request('subsector_code');
+            $post_pack->os_code=request('os_code');
+            $post_pack->level_code=request('level_code');
+            $post_pack->region_code=request('region_code');
+            $post_pack->save();
 
 
-        return view('transactions.post_package.post_package')->with(compact('opened_pack_no','date','opened_by','val','items'));
+            return view('transactions.post_package.post_package')->with(compact('opened_pack_no','date','opened_by','val','items'));
+        }
+
     }
 
     public function download($opened_package_id){
@@ -87,6 +96,9 @@ class PostPackageController extends Controller
             ->first();
         $path = storage_path().'/'.'app'.'/'.$val->opened_items_dir;
         if (file_exists($path)) {
+            $id=Auth::user()->employee_id;
+            UserActivityController::store($id,"Downloaded post package files for post package number of ".
+                OpenPackage::where('id',$opened_package_id)->get()->pluck("open_pack_no").".");
             return response()->download($path);
         }
         else
@@ -100,5 +112,11 @@ class PostPackageController extends Controller
         $package_code=$created_package->pluck('package_code');
         $package=Package::get()->where('Packagecode',$package_code[0]);
         return response()->json($package);
+    }
+
+    public function show(){
+        $posted=PostPackage::all();
+
+        return view("transactions.post_package.show")->with(compact("posted"));
     }
 }

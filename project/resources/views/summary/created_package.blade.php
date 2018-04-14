@@ -96,12 +96,12 @@
                 var cur_result = result[i];
                 var cur_item = items[i];
                 var cur_name=pack_name[i];
-                console.log(cur_name[0].Packagename);
+                console.log(cur_name.Packagename);
                 table_value += '<tr><td>' + cur_result.cpack_no + '</td>' +
                             '<td>' + cur_result.created_at + '</td>' +
                             '<td>' + cur_result.creatd_by + '</td>' +
                             '<td>' + cur_result.package_code + '</td>' +
-                            '<td>' + cur_name[0].Packagename + '</td>';
+                            '<td>' + cur_name.Packagename + '</td>';
                 table_value += '<td><table class="table table-hover "><tbody>';
                 for (var j=0; j<cur_item.length; j++)
                 {

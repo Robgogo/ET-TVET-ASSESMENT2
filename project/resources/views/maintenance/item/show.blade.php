@@ -4,7 +4,19 @@
     @if(Auth::check())
         @if(\App\Http\Controllers\UserControlPermissionController::hasSectorPermission( Auth::user()))
             <div class="container">
+                <div class="flash-message">
+                    @foreach(['danger', 'warning', 'success', 'info'] as $msg)
+                        @if(\Illuminate\Support\Facades\Session::has('alert-' . $msg))
+                            <p class="alert alert-{{ $msg }}">
+                                {{ \Illuminate\Support\Facades\Session::get('alert-' . $msg) }}
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            </p>
+                        @endif
+                    @endforeach
+                </div>
+                <hr>
                 <h1><a href="/item/create" title="Add new"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a></h1>
+                <hr>
                 <div class="form-group col-md-12 table-responsive">
                     <table class="table ">
                         <thead class="">
@@ -25,7 +37,7 @@
                                 <td>{{$item->Itemcode}}</td>
                                 <td>{{$item->Itemname}}</td>
                                 <td>{{$item->Itemdesc}}</td>
-                                <td>{{\App\Package::get()->where('id',$item->package_id)->pluck('Packagename')}}</td>
+                                <td>{{\App\Package::where('id',$item->package_id)->get()[0]->Packagename}}</td>
                                 <td>
                                     <a href="/item/edit/{{$item->id}}"><button type="submit" class="btn btn-primary " >Update</button></a>
                                 </td>

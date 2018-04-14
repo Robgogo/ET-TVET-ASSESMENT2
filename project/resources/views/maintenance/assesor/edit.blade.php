@@ -12,11 +12,11 @@
                 </div>
                 <div class="form-group col-md-4 " style="margin-left: 400px;">
                     <label for="assesor_name">Assesor Name:</label>
-                    <input type="text" class="form-control" name="assesor_name" id="assesor_name">
+                    <input type="text" class="form-control" name="assesor_name" id="assesor_name" value="{{$assesor->ASname}}">
                 </div>
                 <div class="form-group col-md-4 " style="margin-left: 400px;">
                     <label for="assesor_description">Assesor Description:</label>
-                    <textarea name="assesor_description" class="form-control" id="assesor_description"></textarea>
+                    <textarea name="assesor_description" class="form-control" id="assesor_description">{{$assesor->ASdesc}}</textarea>
                 </div>
                 <div class="form-group col-md-4 " style="margin-left: 400px;">
                     <button name="edit" class="form-control col-md-3 btn btn-primary" value="edit" type="submit">Edit</button>

@@ -12,16 +12,16 @@
                 </div>
                 <div class="form-group col-md-4 " style="margin-left: 350px;;">
                     <label for="subsector_name">Sub-Sector Name:</label>
-                    <input type="text" class="form-control" name="subsector_name" id="subsector_name">
+                    <input type="text" class="form-control" name="subsector_name" id="subsector_name" value="{{$subsector->Subsectorname}}">
                 </div>
                 <div class="form-group col-md-4 " style="margin-left: 350px;">
                     <label for="subsector_description">Sub-Sector Description:</label>
-                    <textarea name="subsector_description" class="form-control" id="subsector_description"></textarea>
+                    <textarea name="subsector_description" class="form-control" id="subsector_description">{{$subsector->Subsectordesc}}</textarea>
                 </div>
                 <div class="form-group col-md-4" style="margin-left: 350px;">
                     <label for="sector_id">Sector Code:</label>
                     <select class="form-control" name="sector_id" id="sector_id">
-                        <option value="">Choose sector belonging to:</option>
+                        <option value="{{$subsector->sector_id}}">{{\App\Sector::where('id',$subsector->sector_id)->get()[0]->Sectorcode}}</option>
                         @foreach($sector as $sec)
                             <option value="{{$sec["id"]}}">{{$sec["Sectorcode"]}}</option>
                         @endforeach

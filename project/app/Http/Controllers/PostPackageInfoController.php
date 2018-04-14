@@ -8,6 +8,7 @@ use App\PostPackage;
 use App\PostPackageInfo;
 use App\Package;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostPackageInfoController extends Controller
 {
@@ -41,7 +42,7 @@ class PostPackageInfoController extends Controller
         $postPack->item_no=request('item_no');
         $postPack->post_items_dir=$dir."/".$filename;
         $postPack->post_item_comment=request('new_comments');
-        $postPack->save();
+
 
         $postPack2=new PostPackageInfo;
         $filename2=request()->upload2->getClientOriginalName();
@@ -54,7 +55,7 @@ class PostPackageInfoController extends Controller
         $postPack2->item_no=request('item_no2');
         $postPack2->post_items_dir=$dir."/".$filename2;
         $postPack2->post_item_comment=request('new_comments2');
-        $postPack2->save();
+
 
         $postPack3=new PostPackageInfo;
         $filename3=request()->upload3->getClientOriginalName();
@@ -67,7 +68,7 @@ class PostPackageInfoController extends Controller
         $postPack3->item_no=request('item_no3');
         $postPack3->post_items_dir=$dir."/".$filename3;
         $postPack3->post_item_comment=request('new_comments3');
-        $postPack3->save();
+
 
         $postPack4=new PostPackageInfo;
         $filename4=request()->upload4->getClientOriginalName();
@@ -80,7 +81,7 @@ class PostPackageInfoController extends Controller
         $postPack4->item_no=request('item_no4');
         $postPack4->post_items_dir=$dir."/".$filename4;
         $postPack4->post_item_comment=request('new_comments4');
-        $postPack4->save();
+
 
         $postPack5=new PostPackageInfo;
         $filename5=request()->upload5->getClientOriginalName();
@@ -93,7 +94,7 @@ class PostPackageInfoController extends Controller
         $postPack5->item_no=request('item_no5');
         $postPack5->post_items_dir=$dir."/".$filename5;
         $postPack5->post_item_comment=request('new_comments5');
-        $postPack5->save();
+
 
         $postPack6=new PostPackageInfo;
         $filename6=request()->upload6->getClientOriginalName();
@@ -106,7 +107,7 @@ class PostPackageInfoController extends Controller
         $postPack6->item_no=request('item_no6');
         $postPack6->post_items_dir=$dir."/".$filename6;
         $postPack6->post_item_comment=request('new_comments6');
-        $postPack6->save();
+
 
         $postPack7=new PostPackageInfo;
         $filename7=request()->upload7->getClientOriginalName();
@@ -119,7 +120,7 @@ class PostPackageInfoController extends Controller
         $postPack7->item_no=request('item_no7');
         $postPack7->post_items_dir=$dir."/".$filename7;
         $postPack7->post_item_comment=request('new_comments7');
-        $postPack7->save();
+
 
         $postPack8=new PostPackageInfo;
         $filename8=request()->upload8->getClientOriginalName();
@@ -132,7 +133,7 @@ class PostPackageInfoController extends Controller
         $postPack8->item_no=request('item_no8');
         $postPack8->post_items_dir=$dir."/".$filename8;
         $postPack8->post_item_comment=request('new_comments8');
-        $postPack8->save();
+
 
         $postPack9=new PostPackageInfo;
         $filename9=request()->upload9->getClientOriginalName();
@@ -145,7 +146,7 @@ class PostPackageInfoController extends Controller
         $postPack9->item_no=request('item_no9');
         $postPack9->post_items_dir=$dir."/".$filename9;
         $postPack9->post_item_comment=request('new_comments9');
-        $postPack9->save();
+
 
         $postPack10=new PostPackageInfo;
         $filename10=request()->upload10->getClientOriginalName();
@@ -158,11 +159,23 @@ class PostPackageInfoController extends Controller
         $postPack10->item_no=request('item_no10');
         $postPack10->post_items_dir=$dir."/".$filename10;
         $postPack10->post_item_comment=request('new_comments10');
-        $postPack10->save();
 
+
+        if($postPack->save()&&$postPack2->save()&&$postPack3->save()&&$postPack4->save()&&
+            $postPack5->save()&&$postPack6->save()&&$postPack7->save()&&$postPack8->save()&&$postPack9->save()&&$postPack10->save()){
+
+            $id=Auth::user()->employee_id;
+            UserActivityController::store($id,"Opened package for ".$package_name.".");
+            request()->session()->flash("alert-success","Package opened and saved successfully.");
+        }
+        else{
+            $id=$post_package->id;
+            DB::table('open_packages')->where('id',$id)->delete();
+            request()->session()->flash("alert-danger","Could not save opened package files due to an error,try again later. We will fix it ASAP.");
+        }
 
         //dd($postPack);
-        return redirect('/');
+        return redirect('/post_package/show');
 
     }
 }

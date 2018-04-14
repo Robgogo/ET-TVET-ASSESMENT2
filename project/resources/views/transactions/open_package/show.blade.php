@@ -15,29 +15,37 @@
                     @endforeach
                 </div>
                 <hr>
-                <h1><a href="/create_package" title="Add new"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a></h1>
+                <h1><a href="/open_package" title="Add new"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a></h1>
                 <hr>
                 <div class="form-group col-md-12 table-responsive">
                     <table class="table table-info">
                         <thead class="">
                         <tr>
-                            <th scope="col">Package Number</th>
+                            <th scope="col">Open Pack. No.</th>
                             <th scope="col">Date</th>
-                            <th scope="col">Created By</th>
-                            <th scope="col">Package Code</th>
+                            <th scope="col">Opened By</th>
+                            <th scope="col">Sector</th>
+                            <th scope="col">Sub sector</th>
+                            <th scope="col" >OS code</th>
+                            <th scope="col" >Level</th>
+                            <th scope="col" >Region</th>
 
 
                         </tr>
                         </thead>
 
                         <tbody>
-                        @if(!$created->isEmpty())
-                            @foreach($created as $field)
+                        @if(!$opened->isEmpty())
+                            @foreach($opened as $field)
                                 <tr>
-                                    <td>{{$field->cpack_no}}</td>
+                                    <td>{{$field->open_pack_no}}</td>
                                     <td>{{$field->created_at}}</td>
-                                    <td>{{$field->creatd_by}}</td>
-                                    <td>{{$field->package_code}}</td>
+                                    <td>{{$field->opened_by}}</td>
+                                    <td>{{$field->sector_code}}</td>
+                                    <td>{{$field->subsector_code}}</td>
+                                    <td>{{$field->os_code}}</td>
+                                    <td>{{$field->level_code}}</td>
+                                    <td>{{$field->region_code}}</td>
                                 </tr>
                             @endforeach
                         </tbody>

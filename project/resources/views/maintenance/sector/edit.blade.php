@@ -13,12 +13,12 @@
                 </div>
                 <div class="form-group col-md-4" style="margin-left: 350px;">
                     <label for="sector_name">Sector Name:</label>
-                    <input class="form-control" type="text" name="sector_name" id="sector_name" >
+                    <input class="form-control" type="text" name="sector_name" id="sector_name" value="{{$sector->Sectorname}}">
 
                 </div>
                 <div class="form-group col-md-4" style="margin-left: 350px;">
                     <label for="sector_description">Sector Description:</label>
-                    <textarea class="form-control" name="sector_description" id="sector_description"></textarea>
+                    <textarea class="form-control" name="sector_description" id="sector_description">{{$sector->Sectordesc}}</textarea>
                 </div>
                 <div class="form-group col-md-4"  style="margin-left: 350px;">
                     <button class="form-control col-md-3 btn btn-primary" name="edit" value="edit" type="submit">Edit</button>

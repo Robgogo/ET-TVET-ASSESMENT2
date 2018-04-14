@@ -194,7 +194,7 @@
                 if (xhttp.readyState == 4 && xhttp.status == 200) {
                     responseObject=JSON.parse(xhttp.responseText);
                     sector_name=responseObject[0].Sectorname;
-                    console.log(responseObject[0].Sectorname);
+                    console.log(responseObject[0]);
                     var newcontent='';
                     //items is part of the response
                     document.getElementById("sector_name").value = sector_name;

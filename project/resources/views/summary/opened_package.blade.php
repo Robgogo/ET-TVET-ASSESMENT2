@@ -100,7 +100,7 @@
                             {
                                 var cur_result = result[i];
                                 var cur_pack=pack[i];
-                                console.log(cur_pack[0].cpack_no);
+                                //console.log(cur_pack[0].cpack_no);
                                 //console.log(cur_name.Packagename);
                                 table_value += '<tr><td>' + cur_result.open_pack_no + '</td>' +
                                     '<td>' + cur_result.created_at + '</td>' +
@@ -110,7 +110,7 @@
                                     '<td>' + cur_result.os_code + '</td>' +
                                     '<td>' + cur_result.level_code + '</td>' +
                                     '<td>' + cur_result.region_code + '</td>' +
-                                    '<td>' + cur_pack[0].cpack_no + '</td>' ;
+                                    '<td>' + cur_pack.cpack_no + '</td>' ;
                                 table_value += '</tr>';
                             }
 

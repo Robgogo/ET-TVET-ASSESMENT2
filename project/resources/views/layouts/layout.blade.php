@@ -50,10 +50,10 @@
                             </li>
                             <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#">Transaction </a>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li role="presentation"><a href="/create_package">Create Package</a></li>
-                                    <li role="presentation"><a href="/open_package">Open Package</a></li>
-                                    <li role="presentation"><a href="/post_package">Post Package</a></li>
-                                    <li role="presentation"><a href="/approve_package">Approve Package</a></li>
+                                    <li role="presentation"><a href="/create_package/show">Create Package</a></li>
+                                    <li role="presentation"><a href="/open_package/show">Open Package</a></li>
+                                    <li role="presentation"><a href="/post_package/show">Post Package</a></li>
+                                    <li role="presentation"><a href="/approve_package/show">Approve Package</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -132,13 +132,7 @@
 	</div>
 
 	<div class="container-fluid">
-        {{--@if(\App\Http\Controllers\EmployeeInfoController::isUserActive(Auth::user()))--}}
         @yield('content')
-        {{--@else--}}
-            {{--<h1>You are not allowed to view any page!</h1>--}}
-        {{--@endif--}}
-
-
 	</div>
 	<script type="text/javascript" src="{{asset('js/jquery.min.js')}}"></script>
 	<script type="text/javascript" src="{{asset('js/bootstrap.min.js')}}"></script>

@@ -14,7 +14,7 @@
                   <option value=""></option>
                   <option value="all">All</option>
                   @foreach ($users as $field)
-                    <option value="{{ $field->employee_id }}">{{ $field->employee_id }}</option>
+                    <option value="{{ $field->id }}">{{ $field->employee_id }}</option>
                   @endforeach
                 </select>
               </div>

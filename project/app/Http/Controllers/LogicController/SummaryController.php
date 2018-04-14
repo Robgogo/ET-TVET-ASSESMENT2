@@ -2,14 +2,21 @@
 
 namespace App\Http\Controllers\LogicController;
 
+use App\Assesor;
 use App\CreatePackage;
+use App\ItemDoc;
+use App\Level;
 use App\MaintenancePermission;
+use App\OccupationalStandard;
 use App\OpenPackage;
 use App\Package;
 use App\PostPackage;
+use App\Region;
 use App\ReportPermission;
 use App\TransactionPermission;
 use App\User;
+use App\Sector;
+use App\Subsector;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -24,7 +31,7 @@ class SummaryController extends Controller
     public function getSector($id)
     {
         if ($id == "all") {
-            return response()->json(["result" => \App\Sector::all()], 200);
+            return response()->json(["result" => Sector::all()], 200);
         }
         else {
             return response()->json(
@@ -40,11 +47,11 @@ class SummaryController extends Controller
     public function getSubSector($id)
     {
         if ($id == "all") {
-            return response()->json(["result" => \App\SubSector::all()], 200);
+            return response()->json(["result" => SubSector::all()], 200);
         }
         else {
             return response()->json(
-                ["result" => \App\SubSector::where('Subsectorcode' , $id)->get()], 200);
+                ["result" =>SubSector::where('Subsectorcode' , $id)->get()], 200);
         }
     }
 
@@ -56,11 +63,11 @@ class SummaryController extends Controller
     public function getOccupationStd($id)
     {
         if ($id == "all") {
-            return response()->json(["result" => \App\OccupationalStandard::all()], 200);
+            return response()->json(["result" => OccupationalStandard::all()], 200);
         }
         else {
             return response()->json(
-                ["result" => \App\OccupationalStandard::where('OScode' , $id)->get()], 200);
+                ["result" => OccupationalStandard::where('OScode' , $id)->get()], 200);
         }
     }
 
@@ -72,11 +79,11 @@ class SummaryController extends Controller
     public function getLevel($id)
     {
         if ($id == "all") {
-            return response()->json(["result" => \App\Level::all()], 200);
+            return response()->json(["result" => Level::all()], 200);
         }
         else {
             return response()->json(
-                ["result" => \App\Level::where('Levelcode' , $id)->get()], 200);
+                ["result" => Level::where('Levelcode' , $id)->get()], 200);
         }
     }
 
@@ -88,11 +95,11 @@ class SummaryController extends Controller
     public function getRegion($id)
     {
         if ($id == "all") {
-            return response()->json(["result" => \App\Region::all()], 200);
+            return response()->json(["result" => Region::all()], 200);
         }
         else {
             return response()->json(
-                ["result" => \App\Region::where('Regioncode' , $id)->get()], 200);
+                ["result" => Region::where('Regioncode' , $id)->get()], 200);
         }
     }
 
@@ -104,11 +111,11 @@ class SummaryController extends Controller
     public function getItem($id)
     {
         if ($id == "all") {
-            return response()->json(["result" => \App\ItemDoc::all()], 200);
+            return response()->json(["result" => ItemDoc::all()], 200);
         }
         else {
             return response()->json(
-                ["result" => \App\ItemDoc::where('Itemcode' , $id)->get()], 200);
+                ["result" => ItemDoc::where('Itemcode' , $id)->get()], 200);
         }
     }
 
@@ -120,11 +127,11 @@ class SummaryController extends Controller
     public function getPackage($id)
     {
         if ($id == "all") {
-            return response()->json(["result" => \App\Package::all()], 200);
+            return response()->json(["result" => Package::all()], 200);
         }
         else {
             return response()->json(
-                ["result" => \App\Package::where('Packagecode' , $id)->get()], 200);
+                ["result" => Package::where('Packagecode' , $id)->get()], 200);
         }
     }
 
@@ -136,11 +143,11 @@ class SummaryController extends Controller
     public function getAssessor($id)
     {
         if ($id == "all") {
-            return response()->json(["result" => \App\Assesor::all()], 200);
+            return response()->json(["result" => Assesor::all()], 200);
         }
         else {
             return response()->json(
-                ["result" => \App\Assesor::where('Ascode' , $id)->get()], 200);
+                ["result" => Assesor::where('Ascode' , $id)->get()], 200);
         }
     }
 
@@ -154,8 +161,8 @@ class SummaryController extends Controller
         $temp=[];
         if ($id == "all"){
             $packages = (is_null($date_from) && is_null($date_to)) ?
-                \App\CreatePackage::all() :
-                \App\CreatePackage::where('created_at', '>=', $date_from)
+                CreatePackage::all() :
+                CreatePackage::where('created_at', '>=', $date_from)
                     ->where('created_at', '<=', $date_to)->get();
             if($packages->isEmpty()){
 
@@ -169,8 +176,8 @@ class SummaryController extends Controller
         }
         else {
             $packages = (is_null($date_from)  && is_null($date_to)) ?
-                \App\CreatePackage::where('cpack_no' , $id)->get() :
-                \App\CreatePackage::where('created_at', '>=', $date_from)
+                CreatePackage::where('cpack_no' , $id)->get() :
+                CreatePackage::where('created_at', '>=', $date_from)
                     ->where('created_at', '<=', $date_to)
                     ->where('cpack_no' , $id)->get();
             if($packages->isEmpty()){
@@ -184,7 +191,7 @@ class SummaryController extends Controller
         $items = [];
         foreach ($packages as $pack) 
         {
-            $items[] = (\App\CreatePackage::find($pack->id)->info);
+            $items[] = (CreatePackage::find($pack->id)->info);
         }
 
         return response()->json(["result" => $packages, "items" => $items,"name"=>$packs], 200);
@@ -195,8 +202,8 @@ class SummaryController extends Controller
         $temp=[];
         if ($id == "all"){
             $packages = (is_null($date_from) && is_null($date_to)) ?
-                \App\OpenPackage::all() :
-                \App\OpenPackage::where('created_at', '>=', $date_from )
+                OpenPackage::all() :
+                OpenPackage::where('created_at', '>=', $date_from )
                     ->where('created_at','<=',$date_to)->get();
             //dd($packages);
             if($packages->isEmpty()){
@@ -211,8 +218,8 @@ class SummaryController extends Controller
         }
         else {
             $packages = (is_null($date_from) && is_null($date_to))?
-                \App\OpenPackage::where('open_pack_no' , $id)->get() :
-                \App\OpenPackage::where('created_at', '>=', $date_from)
+                OpenPackage::where('open_pack_no' , $id)->get() :
+                OpenPackage::where('created_at', '>=', $date_from)
                     ->where('created_at','<=',$date_to)
                     ->where('open_pack_no' , $id)->get();
             if($packages->isEmpty()){
@@ -327,10 +334,10 @@ class SummaryController extends Controller
         }
         else {
             $users = (is_null($date_from) && is_null($date_to))?
-                \App\EmployeeInfo::where('employee_id' , $id)->get() :
+                \App\EmployeeInfo::where('id' , $id)->get() :
                 \App\EmployeeInfo::where('created_at', '>=', $date_from)
                     ->where('created_at','<=',$date_to)
-                    ->where('employee_id' , $id)->get();
+                    ->where('id' , $id)->get();
             if($users->isEmpty()){
                 return response()->json(["result" => $temp ], 200);
             }
@@ -356,7 +363,7 @@ class SummaryController extends Controller
             $users = (is_null($status))?
                 \App\EmployeeInfo::where('id' , $id)->get() :
                 \App\EmployeeInfo::where('status',$status)
-                    ->where('employee_id' , $id)->get();
+                    ->where('id' , $id)->get();
             if($users->isEmpty()){
                 return response()->json(["result" => $temp ], 200);
             }
@@ -397,5 +404,23 @@ class SummaryController extends Controller
         //dd(response()->json(["result"=>$users,"maintenance"=>$maint,"transaction"=>$tran,"report"=>$rep]));
         return response()->json(["result"=>$users,"maintenance"=>$maint,"transaction"=>$tran,"report"=>$rep]);
     }
-    
+
+    public function getUserActivity($id){
+        $temp=[];
+        if($id=="all"){
+            $users_activity=\App\UserActivity::all();
+            if($users_activity->isEmpty()){
+                return response()->json(["result" => $temp ], 200);
+            }
+        }
+        else{
+            $emp_id=\App\EmployeeInfo::where('id' , $id)->get();
+            $users_activity=\App\UserActivity::where('employee_id',$emp_id[0]->employee_id)->get();
+            if($users_activity->isEmpty()){
+                return response()->json(["result" => $temp ], 200);
+            }
+        }
+
+        return response()->json(["result"=>$users_activity]);
+    }
 }

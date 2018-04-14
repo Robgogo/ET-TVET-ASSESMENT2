@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Package;
 use App\CreatePackage;
+use Illuminate\Support\Facades\Auth;
 
 
 class CreatePackageController extends Controller
@@ -59,27 +60,44 @@ class CreatePackageController extends Controller
 
         ]);
 
-
-        $createPackage->cpack_no=request('cpackno');
-        $createPackage->package_code=request('package_code');
-        $createPackage->creatd_by=request('created_by');
-        $createPackage->save();
-        $id=$createPackage->id;
-        $packagename=request('package_name');
-
-        $dir="public/files/create/".$packagename;
-        $filename=request()->upload->getClientOriginalName();
-
-        if(request()->hasFile('upload')){
-            request()->upload->storeAs($dir,$filename);
+        $cpack=CreatePackage::where('cpack_no',request('cpackno'))->get();
+        if(!$cpack->isEmpty()){
+            request()->session()->flash("alert-danger","A package with this package no already exists,try again with different input!");
+            return redirect('/create_package/show');
         }
+        else{
+            $cpack2=CreatePackage::where('package_code',request('package_code'))->get();
+            if(!$cpack2->isEmpty()){
+                request()->session()->flash("alert-danger","A package with this package code already exists,try again with different input!");
+                return redirect('/create_package/show');
+            }
+            else{
 
-        $packageInfo->store($id,$dir,$filename);
-    //dd($packageInfo);
+                $createPackage->cpack_no=request('cpackno');
+                $createPackage->package_code=request('package_code');
+                $createPackage->creatd_by=request('created_by');
 
+                if($createPackage->save()){
+                    $id=$createPackage->id;
+                    $packagename=request('package_name');
 
-            return redirect('/');
+                    $dir="public/files/create/".$packagename;
+                    $filename=request()->upload->getClientOriginalName();
 
+                    if(request()->hasFile('upload')){
+                        request()->upload->storeAs($dir,$filename);
+                    }
+                    $packageInfo->store($id,$dir,$filename);
+                    $id=Auth::user()->employee_id;
+                    UserActivityController::store($id,"Created package ".$packagename.".");
+                    request()->session()->flash("alert-success","Package created successfully.");
+                }
+                else{
+                    request()->session()->flash("alert-danger","Could not create package due to an error,try again later. We will fix it ASAP.");
+                }
+            }
+        }
+        return redirect('/create_package/show');
     }
 //this two functions process the request from ajax and return the response.
     public function getId($pack_no){
@@ -94,5 +112,11 @@ class CreatePackageController extends Controller
     	// dd(response()->json($items)->Itemnam;
     	return response()->json($package);
 //    	return response()->json(['item_name'=>$package["items"]->pluck('Itemname')]);
+    }
+
+    public function show(){
+        $created=CreatePackage::all();
+
+        return view('transactions.create.show')->with(compact("created"));
     }
 }

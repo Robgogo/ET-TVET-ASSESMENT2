@@ -12,11 +12,11 @@
                 </div>
                 <div class="form-group col-md-4 " style="margin-left: 400px;">
                     <label for="package_name">package Name:</label>
-                    <input type="text" class="form-control" name="package_name" id="package_name">
+                    <input type="text" class="form-control" name="package_name" id="package_name" value="{{$package->Packagename}}">
                 </div>
                 <div class="form-group col-md-4 " style="margin-left: 400px;">
                     <label for="package_description">package Description:</label>
-                    <textarea name="package_description" class="form-control" id="package_description"></textarea>
+                    <textarea name="package_description" class="form-control" id="package_description">{{$package->Packagedesc}}</textarea>
                 </div>
                 <div class="form-group col-md-4 " style="margin-left: 400px;">
                     <button name="edit" class="form-control col-md-3 btn btn-primary" value="edit" type="submit">Edit</button>

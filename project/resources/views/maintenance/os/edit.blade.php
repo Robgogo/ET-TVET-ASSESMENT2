@@ -12,11 +12,11 @@
                 </div>
                 <div class="form-group col-md-4 " style="margin-left: 400px;">
                     <label for="os_name">OS Name:</label>
-                    <input type="text" class="form-control" name="os_name" id="os_name">
+                    <input type="text" class="form-control" name="os_name" id="os_name" value="{{$os->OSname}}">
                 </div>
                 <div class="form-group col-md-4 " style="margin-left: 400px;">
                     <label for="os_description">OS Description:</label>
-                    <textarea name="os_description" class="form-control" id="os_description"></textarea>
+                    <textarea name="os_description" class="form-control" id="os_description">{{$os->OSdesc}}</textarea>
                 </div>
                 <div class="form-group col-md-4 " style="margin-left: 400px;">
                     <button name="edit" class="form-control col-md-3 btn btn-primary" value="edit" type="submit">Update</button>

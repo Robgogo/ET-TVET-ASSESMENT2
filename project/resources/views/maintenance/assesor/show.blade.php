@@ -4,7 +4,19 @@
     @if(Auth::check())
         @if(\App\Http\Controllers\UserControlPermissionController::hasSectorPermission( Auth::user()))
             <div class="container">
+                <div class="flash-message">
+                    @foreach(['danger', 'warning', 'success', 'info'] as $msg)
+                        @if(\Illuminate\Support\Facades\Session::has('alert-' . $msg))
+                            <p class="alert alert-{{ $msg }}">
+                                {{ \Illuminate\Support\Facades\Session::get('alert-' . $msg) }}
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            </p>
+                        @endif
+                    @endforeach
+                </div>
+                <hr>
                 <h1><a href="/assesor/create" title="Add new"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a></h1>
+                <hr>
                 <div class="form-group col-md-12 table-responsive">
                     <table class="table ">
                         <thead class="">
@@ -48,7 +60,7 @@
                             </div>
                             <form method="POST" action="/assesor/delete/{{$assesor->id}}">
                                 <div class="modal-body">
-                                    <p>Are you sure to delete the level {{$assesor->Asname}}?</p>
+                                    <p>Are you sure to delete the assessor {{$assesor->Asname}}?</p>
                                 </div>
                                 <div class="modal-footer">
 

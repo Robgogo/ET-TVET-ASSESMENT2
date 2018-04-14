@@ -9,20 +9,20 @@
 
                 <div class="form-group col-md-4 " style="margin-left: 400px;margin-top: 100px;">
                     <label for="item_code">Item Code:</label>
-                    <input type="text" class="form-control" name="item_code" id="item_code" value="{{$item->Itemcode}}">
+                    <input type="text" class="form-control" name="item_code" id="item_code" value="{{$item->Itemcode}}" readonly>
                 </div>
                 <div class="form-group col-md-4 " style="margin-left: 400px;">
                     <label for="item_name">Item Name:</label>
-                    <input type="text" class="form-control" name="item_name" id="item_name">
+                    <input type="text" class="form-control" name="item_name" id="item_name" value="{{$item->Itemname}}">
                 </div>
                 <div class="form-group col-md-4 " style="margin-left: 400px;">
                     <label for="item_description">Item Description:</label>
-                    <textarea name="item_description" class="form-control" id="item_description"></textarea>
+                    <textarea name="item_description" class="form-control" id="item_description">{{$item->Itemdesc}}</textarea>
                 </div>
                 <div class="form-group col-md-4" style="margin-left: 400px;">
                     <label for="package_no">Package Code:</label>
                     <select class="form-control" name="package_no" id="package_no">
-                        <option value="">Choose package belonging to:</option>
+                        <option value="{{$item->package_id}}">{{\App\Package::where('id',$item->package_id)->get()[0]->Packagecode}}</option>
                         @foreach($packages as $pack)
                             <option value="{{$pack["id"]}}">{{$pack["Packagecode"]}}</option>
                         @endforeach
