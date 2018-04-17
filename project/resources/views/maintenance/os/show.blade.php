@@ -2,7 +2,7 @@
 
 @section('content')
     @if(Auth::check())
-        @if(\App\Http\Controllers\UserControlPermissionController::hasSectorPermission( Auth::user()))
+        @if(\App\Http\Controllers\UserControlPermissionController::hasOsPermission( Auth::user()))
             <div class="container">
                 <div class="flash-message">
                     @foreach(['danger', 'warning', 'success', 'info'] as $msg)
@@ -15,7 +15,7 @@
                     @endforeach
                 </div>
                 <hr>
-                <h1><a href="/os/create" title="Add new"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a></h1>
+                <h1><a href="/os/create" title="Add new"><button class="btn btn-info">Add OS</button></a></h1>
                 <hr>
                 <div class="form-group col-md-12 table-responsive">
                     <table class="table ">
@@ -31,6 +31,7 @@
 
                         <tbody>
                         @if(!$occupationalStandards->isEmpty())
+                            <?php $i=0; ?>
                         @foreach($occupationalStandards as $os)
                             <tr>
                                 <td>{{$os->OScode}}</td>
@@ -40,7 +41,7 @@
                                     <a href="/os/edit/{{$os->id}}"><button type="submit" class="btn btn-primary " >Update</button></a>
                                 </td>
                                 <td>
-                                    <button class="btn btn-danger " data-toggle="modal" data-target="#myDeleteModal">
+                                    <button class="btn btn-danger " data-toggle="modal" data-target="#myDeleteModal{{$i}} <?php $i++; ?>">
                                         Delete
                                     </button>
                                 </td>
@@ -50,16 +51,17 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="modal fade" id="myDeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                @for($i=0;$i<$occupationalStandards->count();$i++)
+                <div class="modal fade" id="myDeleteModal{{$i}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                 <h4 class="modal-title" id="myModalLabel">Modal title</h4>
                             </div>
-                            <form method="POST" action="/os/delete/{{$os->id}}">
+                            <form method="POST" action="/os/delete/{{$occupationalStandards[$i]->id}}">
                                 <div class="modal-body">
-                                    <p>Are you sure to delete the occupational standard {{$os->OSname}}?</p>
+                                    <p>Are you sure to delete the occupational standard {{$occupationalStandards[$i]->pluck('OSname')[$i]}}?</p>
                                 </div>
                                 <div class="modal-footer">
 
@@ -73,6 +75,7 @@
                         </div><!-- /.modal-content -->
                     </div><!-- /.modal-dialog -->
                 </div><!-- /.modal -->
+                    @endfor
             </div>
         @else
             <tr><th>No records found</th></tr>

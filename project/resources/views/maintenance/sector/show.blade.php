@@ -14,7 +14,7 @@
                         @endif
                     @endforeach
                 </div>
-                <h1><a href="/sector/create" title="Add new"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a></h1>
+                <h1><a href="/sector/create" title="Add new"><button class="btn btn-info">Add Sector</button></a></h1>
                 <div class="form-group col-md-12 table-responsive">
                     <table class="table">
                         <thead class="">
@@ -29,6 +29,7 @@
 
                         <tbody>
                         @if(!$sectors->isEmpty())
+                            <?php $i=0; ?>
                         @foreach($sectors as $sector)
                             <tr>
                                 <td>{{$sector->Sectorcode}}</td>
@@ -38,7 +39,7 @@
                                     <a href="/sector/edit/{{$sector->id}}"><button type="submit" class="btn btn-primary" >Update</button></a>
                                 </td>
                                 <td>
-                                    <button class="btn btn-danger" data-toggle="modal" data-target="#myDeleteModal">
+                                    <button class="btn btn-danger" data-toggle="modal" data-target="#myDeleteModal{{$i}} <?php $i++; ?>">
                                         Delete
                                     </button>
                                 </td>
@@ -48,16 +49,17 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="modal fade" id="myDeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                @for($i=0;$i<$sectors->count();$i++)
+                <div class="modal fade" id="myDeleteModal{{$i}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                 <h4 class="modal-title" id="myModalLabel">Modal title</h4>
                             </div>
-                            <form method="POST" action="/sector/delete/{{$sector->id}}">
+                            <form method="POST" action="/sector/delete/{{$sectors[$i]->id}}">
                                 <div class="modal-body">
-                                    <p>Are you sure to delete this sector {{$sector->Sectorname}}?</p>
+                                    <p>Are you sure to delete this sector {{$sectors[$i]->pluck('Sectorname')[$i]}}?</p>
                                 </div>
                                 <div class="modal-footer">
 
@@ -71,6 +73,7 @@
                         </div><!-- /.modal-content -->
                     </div><!-- /.modal-dialog -->
                 </div><!-- /.modal -->
+                    @endfor
             </div>
         @else
             <tr><th>No records found</th></tr>

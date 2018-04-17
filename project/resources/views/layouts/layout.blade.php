@@ -46,6 +46,7 @@
                                     <li role="presentation"><a href="/level/show">Level</a></li>
                                     <li role="presentation"><a href="/item/show">Items</a></li>
                                     <li role="presentation"><a href="/assesor/show">Assesor</a></li>
+                                    <li role="presentation"><a href="/department/show">Department</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#">Transaction </a>

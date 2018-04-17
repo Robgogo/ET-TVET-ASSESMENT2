@@ -94,6 +94,9 @@ class ApproveController extends Controller
                 ->update([
                     'approval_status'=>'approved'
                 ])){
+
+                ApprovedDocumentsController::store($app);
+
                 $id=Auth::user()->employee_id;
                 UserActivityController::store($id,"Approved package ".$app->app_pack_no.".");
                 request()->session()->flash("alert-success","Approved Package");
@@ -105,9 +108,15 @@ class ApproveController extends Controller
             return redirect('/approve_package/show');
         }
         else{
-            request()->session()->flash("alert-danger","Disapproved the package");
-            return redirect('/approve_package/show');
+            //request()->session()->flash("alert-danger","Disapproved the package");
+            return view('transactions.approval.dissaprove');
         }
+    }
+
+    public function disapprove(){
+        //code to send mail and notifs with comment
+        request()->session()->flash("alert-danger","Disapproved the package");
+        return redirect('/approve_package/show');
     }
 
     public function download($post_package_id){

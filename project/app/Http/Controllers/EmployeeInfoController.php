@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Department;
 use App\EmployeeInfo;
 use App\User;
 use Illuminate\Http\Request;
@@ -18,16 +19,7 @@ class EmployeeInfoController extends Controller
         $subsector=Subsector::all();
         $level=Level::all();
         $region=Region::all();
-        $department=[[
-            'Dept_code'=>'123',
-            'Dept_name'=>'dep 1'
-        ],
-            [
-                'Dept_code'=>'124',
-                'Dept_name'=>'dep 2'
-            ]
-
-        ];
+        $department=Department::all();
 
         return view('admin.transactions.input_user')->with(compact('sector','subsector','level','region','department'));
 

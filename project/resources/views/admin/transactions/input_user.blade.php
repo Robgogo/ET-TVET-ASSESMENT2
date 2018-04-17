@@ -77,7 +77,7 @@
                         <option value="">Choose the department</option>
                         {{-- this part displays the data fetched from the database see the route and the controller files on how to pass the variable $package --}}
                         @foreach($department as $code)
-                            <option value="{{$code['Dept_code']}}">{{$code['Dept_name']}}</option>
+                            <option value="{{$code->Deptcode}}">{{$code->Deptname}}</option>
                         @endforeach
                     </select>
                 </div>

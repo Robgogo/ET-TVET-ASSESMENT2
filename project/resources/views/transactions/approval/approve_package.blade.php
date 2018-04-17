@@ -26,6 +26,7 @@
                     <th scope="col">Item Name</th>
                     <th scope="col">Download a document</th>
                     <th scope="col">Old comments</th>
+
                 </tr>
                 </thead>
 

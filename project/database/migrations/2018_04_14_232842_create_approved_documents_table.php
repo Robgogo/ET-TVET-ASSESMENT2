@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEmplloyeeInfosTable extends Migration
+class CreateApprovedDocumentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class CreateEmplloyeeInfosTable extends Migration
      */
     public function up()
     {
-        Schema::create('emplloyee_infos', function (Blueprint $table) {
+        Schema::create('approved_documents', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('item_name');
+            $table->string('level');
+            $table->string('dir');
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ class CreateEmplloyeeInfosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('emplloyee_infos');
+        Schema::dropIfExists('approved_documents');
     }
 }

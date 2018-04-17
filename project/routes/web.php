@@ -55,6 +55,13 @@ Route::post('/assesor/edit','AssesorController@edit');
 Route::post('/assesor/delete/{id}','AssesorController@delete');
 Route::post('/saveassesor','AssesorController@store');
 
+Route::get('/department/create','DepartmentController@index');
+Route::get('/department/show','DepartmentController@show');
+Route::get('/department/edit/{id}','DepartmentController@showEdit');
+Route::post('/department/edit','DepartmentController@edit');
+Route::post('/department/delete/{id}','DepartmentController@delete');
+Route::post('/savedept','DepartmentController@store');
+
 
 Route::get('/item/create','ItemDocController@index');
 Route::get('/item/show','ItemDocController@show');
@@ -97,6 +104,7 @@ Route::get('/approve_package/show','ApproveController@show');
 Route::post('/approve_package','ApproveController@store');
 Route::get('/download_for_approve/{post_package_id}','ApproveController@download');
 Route::post('/approve','ApproveController@storeStat');
+Route::post('/disapprove','ApproveController@disapprove');
 
 Route::get('/get_post_package_id/{id}','ApproveController@getPackageName');
 
