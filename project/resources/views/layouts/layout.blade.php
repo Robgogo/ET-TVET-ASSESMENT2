@@ -28,7 +28,7 @@
 	<div>
 	<nav class="navbar navbar-inverse nav">
 		<div class="container">
-			<div class="navbar-header"><a class="navbar-brand navbar-link" href="/">Brand</a>
+			<div class="navbar-header"><a class="navbar-brand navbar-link" href="/">MIS</a>
 				<button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span>
 					<span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
 			</div>
@@ -55,6 +55,7 @@
                                     <li role="presentation"><a href="/open_package/show">Open Package</a></li>
                                     <li role="presentation"><a href="/post_package/show">Post Package</a></li>
                                     <li role="presentation"><a href="/approve_package/show">Approve Package</a></li>
+                                    <li role="presentation"><a href="/assessor_info/show">Assessor Info</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -94,6 +95,15 @@
                                     </li>
                                 </ul>
                             </li>
+                            @if(\App\Http\Controllers\EmployeeInfoController::isUserAdmin(Auth::user()))
+                                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#">User Management </a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li role="presentation"><a href="/input_user">Add Employee</a></li>
+                                        <li role="presentation"><a href="/user_stat">Update User Status</a></li>
+                                        <li role="presentation"><a href="/user_permissions">Set User Permissions</a></li>
+                                    </ul>
+                                </li>
+                            @endif
                         @endif
                     @endif
                 </ul>
@@ -106,7 +116,7 @@
 					@else
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-								{{ Auth::user()->user_name }} <span class="caret"></span>
+								{{ Auth::user()->user_name }} <span class="badge">{{Auth::user()->new_notif_count}}</span> <span class="caret"></span>
 							</a>
 
 							<ul class="dropdown-menu" role="menu">
@@ -122,6 +132,7 @@
 									</form>
 								</li>
                                 <li><a href="/changepassword">Change Password</a> </li>
+                                <li><a href="/notification">Notification <span class="badge">{{Auth::user()->new_notif_count}}</span></a></li>    
 							</ul>
 						</li>
                         <li class=""><a role="button" href="{{ url('/home') }}">Home</a></li>

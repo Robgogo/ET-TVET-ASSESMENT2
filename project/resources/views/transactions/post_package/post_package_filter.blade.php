@@ -33,7 +33,7 @@
                      <div class="form-group">
                         <label class="control-label col-sm-2" for="sector_code">Sector Code:</label>
                          <div class="col-sm-6">
-                            <select id="sector_code" class="form-control " name="sector_code">
+                            <select id="sector_code" class="form-control" name="sector_code">
                                 <option value="">Choose the code</option>
                                 {{-- this part displays the data fetched from the database see the route and the controller files on how to pass the variable $package --}}
                                 @foreach($sector as $code)
@@ -172,6 +172,15 @@
         </form>
     </div>
     @include('layouts.errors')
+    @else
+        <h1>Not Allowed to view this page!</h1>
+    @endif
+    @else
+        <h1>You re not logged in!</h1>
+        @if (Auth::guest())
+            {{ view('Auth.login')}}
+        @endif
+    @endif
 @endsection
 
 @section('ajax')
@@ -194,6 +203,31 @@
                 }
             };
             xhttp.open("GET", "get_sector_id/" + sectorName.value, true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+            xhttp.send();
+        }
+
+        var xhttp = new XMLHttpRequest();
+        var sectorName = document.getElementById('sector_code');
+        sectorName.onchange=  function (){
+            var msg="NO Sub Sector found";
+            var new_content='<option value="">Choose the code</option>';
+            xhttp.onreadystatechange = function() {
+                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                    responseObject=JSON.parse(xhttp.responseText);
+                    if(responseObject.length===0){
+                        new_content+='<option value="">'+msg+'</option>';
+                    }else {
+                        for (var i = 0; i < responseObject.subsector.length; i++) {
+                            new_content += '<option value="' + responseObject.subsector[i].Subsectorcode + '">' + responseObject.subsector[i].Subsectorcode + '</option>';
+                        }
+                    }
+                    document.getElementById("sector_name").value=responseObject.sector[0].Sectorname;
+                    document.getElementById("subsector_code").innerHTML = new_content;
+                }
+            };
+            xhttp.open("GET", "get_subsector/" + sectorName.value, true);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
             xhttp.send();
@@ -298,14 +332,6 @@
 
 
     </script>
-    @else
-        <h1>Not Allowed to view this page!</h1>
-    @endif
-    @else
-        <h1>You re not logged in!</h1>
-        @if (Auth::guest())
-            {{ view('Auth.login')}}
-        @endif
-    @endif
+
 
 @endsection

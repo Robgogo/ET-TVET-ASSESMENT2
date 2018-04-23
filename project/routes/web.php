@@ -1,6 +1,5 @@
 <?php
 
-
 use App\EmployeeInfo;
 
 Route::get('/sector/create','SectorController@index');
@@ -72,7 +71,7 @@ Route::post('/saveitem','ItemDocController@store');
 
 Route::get('/create_package','CreatePackageController@index');
 Route::get('/create_package/show','CreatePackageController@show');
-//the route below is the code that is responsible to get therequest from ajax and 
+//the route below is the code that is responsible to get therequest from ajax and
 //process it and return the values needed
 Route::get('/get_package_id/{pack_no}','CreatePackageController@getId');
 Route::post('/creatpackages','CreatePackageController@store');
@@ -106,6 +105,12 @@ Route::get('/download_for_approve/{post_package_id}','ApproveController@download
 Route::post('/approve','ApproveController@storeStat');
 Route::post('/disapprove','ApproveController@disapprove');
 
+Route::get('/assessor_info','AssessorInfoController@index');
+Route::get('/assessor_info/show','AssessorInfoController@show');
+Route::post('/assessor_info','AssessorInfoController@store');
+Route::get('/get_subsector/{id}','AssessorInfoController@getSubsector');
+Route::get('/get_app_pack/{id}','AssessorInfoController@getAppPack');
+
 Route::get('/get_post_package_id/{id}','ApproveController@getPackageName');
 
 Route::get('/input_user','EmployeeInfoController@index');
@@ -129,6 +134,7 @@ Route::post('/change','SessionController@changePassword');
 Route::get('/cancel',function(){
     return redirect('/');
 });
+Route::get('/notification','NotificationsController@show');
 
 Route::get('/', function () {
     return view('home');

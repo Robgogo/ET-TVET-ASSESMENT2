@@ -15,7 +15,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+                <div class="panel-heading">MIS</div>
 
                 <div class="panel-body">
                     @if (session('status'))
@@ -23,8 +23,20 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    You are logged in!
+                    @if(Auth::check())
+                    <div class="row">
+                        <div class="col col-lg-10 col-lg-offset-1">
+                            <img src="{{ URL::asset('img/tvetbanner.PNG') }}" class="img-responsive" style="width:1000px;height:250px;" alt="Management Information System">
+                        </div>
+                    </div>
+                   
+                    @else
+                    <div class="row">
+                        <div class="col col-lg-8 col-lg-offset-2">
+                            <img src="{{ URL::asset('img/mis_front.PNG') }}" class="img-responsive" width="100%" alt="Management Information System">
+                        </div>
+                    </div> 
+                    @endif
                 </div>
             </div>
         </div>

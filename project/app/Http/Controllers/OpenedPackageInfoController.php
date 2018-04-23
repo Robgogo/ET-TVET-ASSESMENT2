@@ -17,7 +17,25 @@ class OpenedPackageInfoController extends Controller
 
         $this->validate(request(),[
             'new_comments'=>'required',
-            'upload'=>'required'
+            'new_comments2'=>'required',
+            'new_comments3'=>'required',
+            'new_comments4'=>'required',
+            'new_comments5'=>'required',
+            'new_comments6'=>'required',
+            'new_comments7'=>'required',
+            'new_comments8'=>'required',
+            'new_comments9'=>'required',
+            'new_comments10'=>'required',
+            'upload'=>'required|mimes:pdf',
+            'upload2'=>'required|mimes:pdf',
+            'upload3'=>'required|mimes:pdf',
+            'upload4'=>'required|mimes:pdf',
+            'upload5'=>'required|mimes:pdf',
+            'upload6'=>'required|mimes:pdf',
+            'upload7'=>'required|mimes:pdf',
+            'upload8'=>'required|mimes:pdf',
+            'upload9'=>'required|mimes:pdf',
+            'upload10'=>'required|mimes:pdf'
         ]);
         $aa= OpenPackage::all()->last();
         //dd($aa);

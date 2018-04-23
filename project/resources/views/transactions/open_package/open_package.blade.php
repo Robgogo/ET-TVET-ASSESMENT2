@@ -42,7 +42,7 @@
                                 <a href="/download/{{$val[0]->id}}" class="btn btn-primary " role="button">Download Files</a>
                             </td>
                             <td>
-                                <input type="file" class="form-control" name="upload" id="upload">
+                                <input type="file" class="form-control" name="upload" id="upload" accept="application/pdf">
                             </td>
                             <td>
                                 <input type="text" class="form-control" name="comments" id="comments" readonly="true" value="{{$val[0]->comments}}">
@@ -61,7 +61,7 @@
                                 <a href="/download/{{$val[1]->id}}"  class="btn btn-primary " role="button">Download Files</a>
                             </td>
                             <td>
-                                <input type="file" class="form-control" name="upload2" id="upload2">
+                                <input type="file" class="form-control" name="upload2" id="upload2" accept="application/pdf">
                             </td>
                             <td>
                                 <input type="text" class="form-control" name="comments2" id="comments2" readonly="true" value="{{$val[1]->comments}}">
@@ -80,7 +80,7 @@
                                 <a href="/download/{{$val[2]->id}}"  class="btn btn-primary " role="button">Download Files</a>
                             </td>
                             <td>
-                                <input type="file" class="form-control" name="upload3" id="upload3">
+                                <input type="file" class="form-control" name="upload3" id="upload3" accept="application/pdf">
                             </td>
                             <td>
                                 <input type="text" class="form-control" name="comments3" id="comments3" readonly="true" value="{{$val[2]->comments}}">
@@ -99,7 +99,7 @@
                                 <a href="/download/{{$val[3]->id}}"  class="btn btn-primary " role="button">Download Files</a>
                             </td>
                             <td>
-                                <input type="file" class="form-control" name="upload4" id="upload4">
+                                <input type="file" class="form-control" name="upload4" id="upload4" accept="application/pdf">
                             </td>
                             <td>
                                 <input type="text" class="form-control" name="comments4" id="comments4" readonly="true" value="{{$val[3]->comments}}">
@@ -118,7 +118,7 @@
                                 <a href="/download/{{$val[4]->id}}"  class="btn btn-primary " role="button">Download Files</a>
                             </td>
                             <td>
-                                <input type="file" class="form-control" name="upload5" id="upload5">
+                                <input type="file" class="form-control" name="upload5" id="upload5" accept="application/pdf">
                             </td>
                             <td>
                                 <input type="text" class="form-control" name="comments5" id="comments5" readonly="true" value="{{$val[4]->comments}}">
@@ -137,7 +137,7 @@
                                 <a href="/download/{{$val[5]->id}}"  class="btn btn-primary " role="button">Download Files</a>
                             </td>
                             <td>
-                                <input type="file" class="form-control" name="upload6" id="upload6">
+                                <input type="file" class="form-control" name="upload6" id="upload6" accept="application/pdf">
                             </td>
                             <td>
                                 <input type="text" class="form-control" name="comments6" id="comments6" readonly="true" value="{{$val[5]->comments}}">
@@ -156,7 +156,7 @@
                                 <a href="/download/{{$val[6]->id}}"  class="btn btn-primary " role="button">Download Files</a>
                             </td>
                             <td>
-                                <input type="file" class="form-control" name="upload7" id="upload7">
+                                <input type="file" class="form-control" name="upload7" id="upload7" accept="application/pdf">
                             </td>
                             <td>
                                 <input type="text" class="form-control"  name="comments7" id="comments7" readonly="true" value="{{$val[6]->comments}}">
@@ -175,7 +175,7 @@
                                 <a href="/download/{{$val[7]->id}}"  class="btn btn-primary " role="button">Download Files</a>
                             </td>
                             <td>
-                                <input type="file" class="form-control" name="upload8" id="upload8">
+                                <input type="file" class="form-control" name="upload8" id="upload8" accept="application/pdf">
                             </td>
                             <td>
                                 <input type="text" class="form-control" name="comments8" id="comments8" readonly="true" value="{{$val[7]->comments}}">
@@ -194,7 +194,7 @@
                                 <a href="/download/{{$val[8]->id}}"  class="btn btn-primary " role="button">Download Files</a>
                             </td>
                             <td>
-                                <input type="file" class="form-control" name="upload9" id="upload9">
+                                <input type="file" class="form-control" name="upload9" id="upload9" accept="application/pdf">
                             </td>
                             <td>
                                 <input type="text" class="form-control" name="comments9" id="comments9" readonly="true" value="{{$val[8]->comments}}">
@@ -213,7 +213,7 @@
                                 <a href="/download/{{$val[9]->id}}" class="btn btn-primary " role="button">Download Files</a>
                             </td>
                             <td>
-                                <input type="file" class="form-control" name="upload10" id="upload10">
+                                <input type="file" class="form-control" name="upload10" id="upload10" accept="application/pdf">
                             </td>
                             <td>
                                 <input type="text" class="form-control" name="comments10" id="comments10" readonly="true" value="{{$val[9]->comments}}">

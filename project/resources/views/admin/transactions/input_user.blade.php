@@ -147,3 +147,32 @@
         @endif
     @endif
 @endsection
+@section('ajax')
+    <script>
+        var xhttp = new XMLHttpRequest();
+        var sectorName = document.getElementById('sector');
+        sectorName.onchange=  function (){
+            var msg="NO Sub Sector found";
+            var new_content='<option value="">Choose the code</option>';
+            xhttp.onreadystatechange = function() {
+                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                    responseObject=JSON.parse(xhttp.responseText);
+                    if(responseObject.subsector.length===0){
+                        new_content+='<option value="">'+msg+'</option>';
+                    }else {
+                        for (var i = 0; i < responseObject.subsector.length; i++) {
+                            new_content += '<option value="' + responseObject.subsector[i].Subsectorcode + '">' + responseObject.subsector[i].Subsectorname + '</option>';
+                        }
+                    }
+                    //document.getElementById("sector_name").value=responseObject.sector[0].Sectorname;
+                    document.getElementById("subsector").innerHTML = new_content;
+                }
+            };
+            xhttp.open("GET", "get_subsector/" + sectorName.value, true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+            xhttp.send();
+        }
+    </script>
+
+    @endsection

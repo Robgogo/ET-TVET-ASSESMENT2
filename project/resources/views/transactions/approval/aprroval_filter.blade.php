@@ -200,6 +200,31 @@
             xhttp.send();
         }
 
+        var xhttp = new XMLHttpRequest();
+        var sectorName = document.getElementById('sector_code');
+        sectorName.onchange=  function (){
+            var msg="NO Sub Sector found";
+            var new_content='<option value="">Choose the code</option>';
+            xhttp.onreadystatechange = function() {
+                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                    responseObject=JSON.parse(xhttp.responseText);
+                    if(responseObject.length===0){
+                        new_content+='<option value="">'+msg+'</option>';
+                    }else {
+                        for (var i = 0; i < responseObject.subsector.length; i++) {
+                            new_content += '<option value="' + responseObject.subsector[i].Subsectorcode + '">' + responseObject.subsector[i].Subsectorcode + '</option>';
+                        }
+                    }
+                    document.getElementById("sector_name").value=responseObject.sector[0].Sectorname;
+                    document.getElementById("subsector_code").innerHTML = new_content;
+                }
+            };
+            xhttp.open("GET", "get_subsector/" + sectorName.value, true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+            xhttp.send();
+        }
+
         var subsectorName=document.getElementById('subsector_code');
         subsectorName.onchange=  function (){
             console.log("adfasfda");

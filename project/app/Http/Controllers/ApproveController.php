@@ -12,6 +12,7 @@ use App\Level;
 use App\Region;
 use App\OpenPackage;
 use App\PostPackage;
+use App\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -87,8 +88,9 @@ class ApproveController extends Controller
 
     public function storeStat(){
 
+        $app=Approve::all()->last();
         if(null!==request('approve')){
-            $app=Approve::all()->last();
+            
             if(DB::table('approves')
                 ->where('id',$app->id)
                 ->update([
@@ -108,14 +110,29 @@ class ApproveController extends Controller
             return redirect('/approve_package/show');
         }
         else{
+            $post=PostPackage::where('id',$app->post_package_id)->get();
+            $user=User::where('user_name',$post[0]->created_by)->get();
+            $user_id=$user[0]->id;
             //request()->session()->flash("alert-danger","Disapproved the package");
-            return view('transactions.approval.dissaprove');
+            return view('transactions.approval.dissaprove')->with(compact('user_id'));
         }
     }
 
     public function disapprove(){
         //code to send mail and notifs with comment
-        request()->session()->flash("alert-danger","Disapproved the package");
+        $from=Auth::user()->user_name;
+        $notification=request('comment');
+        $user_id=request('id');
+        $user=User::where('id',$user_id)->get();
+        $count=$user[0]->new_notif_count;
+        $count++;
+        DB::table('users')->where('id',$user_id)->update(['new_notif_count'=>$count]);
+        if(NotificationsController::notify($notification,$user_id,$from)){
+            request()->session()->flash("alert-danger","Disapproved the package");
+        }
+        else{
+            request()->session()->flash("alert-danger","Diss approved package ,but Failed to notify the user,Please try notifying");
+        }
         return redirect('/approve_package/show');
     }
 
@@ -128,7 +145,8 @@ class ApproveController extends Controller
             $id=Auth::user()->employee_id;
             UserActivityController::store($id,"Downloaded post package files for post package number of ".
                 PostPackage::where('id',$post_package_id)->get()->pluck("post_pack_no").".");
-            return response()->download($path);
+            return response()->file($path,200);
+            //return response()->download($path);
         }
         else
             return "File Not found";
