@@ -15,13 +15,13 @@
                 @endforeach
             </div>
             <hr>
-            <h1><a href="/assessor_info" title="Add new"><button class="btn btn-info">Add Assessor Info</button></a></h1>
+            <h1><a href="/assessor_info" title="Add new"><button class="btn btn-info">Add Developer Info</button></a></h1>
             <hr>
             <div class="form-group col-md-12 table-responsive">
                 <table class="table table-info">
                     <thead class="">
                     <tr>
-                        <th scope="col">Ass pack Number</th>
+                        <th scope="col">Dev pack Number</th>
                         <th scope="col">Date</th>
                         <th scope="col">Date of Exam</th>
                         <th scope="col">Created By</th>

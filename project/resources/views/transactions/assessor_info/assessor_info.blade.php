@@ -10,7 +10,7 @@
                     {{csrf_field()}}
 
                     <div class="form-group">
-                        <label for="ass_pack_no"class="control-label col-sm-2">Assessor Package No:</label>
+                        <label for="ass_pack_no"class="control-label col-sm-2">Developer Package No:</label>
                         <div class="col-sm-6">
                             <input type="text" class="form-control" name="ass_pack_no" id="ass_pack_no">
                         </div>
@@ -24,7 +24,7 @@
                     <div class="form-group">
                         <label for="created_by"class="control-label col-sm-2">Created By:</label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" name="created_by" id="created_by">
+                            <input type="text" class="form-control" name="created_by" id="created_by" value="{{Auth::user()->user_name}}" readonly>
                         </div>
                     </div>
                     <div class="form-group">
@@ -129,7 +129,7 @@
 
                             <tbody>
                             <tr>
-                                <td>Assessor 1</td>
+                                <td>Developer 1</td>
                                 <td><input type="text" class="form-control" name="fname1"></td>
                                 <td><input type="text" class="form-control" name="mname1"></td>
                                 <td><input type="text" class="form-control" name="lname1"></td>
@@ -140,7 +140,7 @@
                                 <td><input type="number" id="total1" name="total1" class="form-control" min="0" placeholder="0" readonly></td>
                             </tr>
                             <tr>
-                                <td>Assessor 2</td>
+                                <td>Developer 2</td>
                                 <td><input type="text" class="form-control" name="fname2"></td>
                                 <td><input type="text" class="form-control" name="mname2"></td>
                                 <td><input type="text" class="form-control" name="lname2"></td>
@@ -151,7 +151,7 @@
                                 <td><input type="number" id="total2" name="total2" class="form-control" min="0" placeholder="0" readonly></td>
                             </tr>
                             <tr>
-                                <td>Assessor 3</td>
+                                <td>Developer 3</td>
                                 <td><input type="text" class="form-control" name="fname3"></td>
                                 <td><input type="text" class="form-control" name="mname3"></td>
                                 <td><input type="text" class="form-control" name="lname3"></td>
@@ -162,7 +162,7 @@
                                 <td><input type="number" id="total3" name="total3" class="form-control" min="0" placeholder="0" readonly></td>
                             </tr>
                             <tr>
-                                <td>Assessor 4</td>
+                                <td>Developer 4</td>
                                 <td><input type="text" class="form-control" name="fname4"></td>
                                 <td><input type="text" class="form-control" name="mname4"></td>
                                 <td><input type="text" class="form-control" name="lname4"></td>
@@ -173,7 +173,7 @@
                                 <td><input type="number" id="total4" name="total4" class="form-control" min="0" placeholder="0" readonly></td>
                             </tr>
                             <tr>
-                                <td>Assessor 5</td>
+                                <td>Developer 5</td>
                                 <td><input type="text" class="form-control" name="fname5"></td>
                                 <td><input type="text" class="form-control" name="mname5"></td>
                                 <td><input type="text" class="form-control" name="lname5"></td>
