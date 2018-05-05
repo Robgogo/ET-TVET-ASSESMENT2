@@ -2,6 +2,7 @@
 
 @section('content')
     @if(Auth::check())
+    @if(\App\Http\Controllers\EmployeeInfoController::isUserActive(Auth::user()))
         <div class="container">
             <div class="flash-message">
                 @foreach(['danger', 'warning', 'success', 'info'] as $msg)
@@ -78,6 +79,9 @@
         </div>
     @else
         <tr><th>No records found</th></tr>
+    @endif
+    @else
+    <h2>Your account has been set to in active. contact your system adminstrator!</h2>
     @endif
     @else
         <h1>You re not logged in!</h1>

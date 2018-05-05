@@ -33,6 +33,11 @@
                 </div>
             </div>
             <br>
+            <div>
+            <?php $title="Sector Summarry"; ?>
+              <a href="/summary/export/open"><span class="glyphicon glyphicon-export"></span> Export To Excel</a>
+            </div>
+            <hr>
             <div class="row justify-content-center">
                 <div class="col-sm-11">
                     <table class="table table-hover table-bordered">
@@ -47,7 +52,6 @@
                             <th scope="col" >Level</th>
                             <th scope="col" >Region</th>
                             <th scope="col" >Created Pack code</th>
-                            <th scope="col" >Status</th>
                         </tr>
                         </thead>
                         <tbody id="tablebody">
@@ -110,7 +114,7 @@
                                     '<td>' + cur_result.os_code + '</td>' +
                                     '<td>' + cur_result.level_code + '</td>' +
                                     '<td>' + cur_result.region_code + '</td>' +
-                                    '<td>' + cur_pack.cpack_no + '</td>' ;
+                                    '<td>' + cur_pack[0].cpack_no + '</td>' ;
                                 table_value += '</tr>';
                             }
 

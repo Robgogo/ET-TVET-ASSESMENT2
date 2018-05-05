@@ -144,44 +144,44 @@
                                 <td><input type="text" class="form-control" name="fname2"></td>
                                 <td><input type="text" class="form-control" name="mname2"></td>
                                 <td><input type="text" class="form-control" name="lname2"></td>
-                                <td><input type="number" name="com_fem2" class="form-control" min="0" placeholder="0"></td>
-                                <td><input type="number" name="com_male2" class="form-control" min="0" placeholder="0"></td>
-                                <td><input type="number" name="incomp_fem2" class="form-control" min="0" placeholder="0"></td>
-                                <td><input type="number" name="incomp_male2" class="form-control" min="0" placeholder="0"></td>
-                                <td><input type="number" name="total2" class="form-control" min="0" placeholder="0" readonly></td>
+                                <td><input type="number" id="com_fem2" name="com_fem2" class="form-control" min="0" placeholder="0"></td>
+                                <td><input type="number" id="com_male2" name="com_male2" class="form-control" min="0" placeholder="0"></td>
+                                <td><input type="number" id="incomp_fem2" name="incomp_fem2" class="form-control" min="0" placeholder="0"></td>
+                                <td><input type="number" id="incomp_male2" name="incomp_male2" class="form-control" min="0" placeholder="0"></td>
+                                <td><input type="number" id="total2" name="total2" class="form-control" min="0" placeholder="0" readonly></td>
                             </tr>
                             <tr>
                                 <td>Assessor 3</td>
                                 <td><input type="text" class="form-control" name="fname3"></td>
                                 <td><input type="text" class="form-control" name="mname3"></td>
                                 <td><input type="text" class="form-control" name="lname3"></td>
-                                <td><input type="number" name="com_fem3" class="form-control" min="0" placeholder="0"></td>
-                                <td><input type="number" name="com_male3" class="form-control" min="0" placeholder="0"></td>
-                                <td><input type="number" name="incomp_fem3" class="form-control" min="0" placeholder="0"></td>
-                                <td><input type="number" name="incomp_male3" class="form-control" min="0" placeholder="0"></td>
-                                <td><input type="number" name="total3" class="form-control" min="0" placeholder="0" readonly></td>
+                                <td><input type="number" id="com_fem3" name="com_fem3" class="form-control" min="0" placeholder="0"></td>
+                                <td><input type="number" id="com_male3" name="com_male3" class="form-control" min="0" placeholder="0"></td>
+                                <td><input type="number" id="incomp_fem3" name="incomp_fem3" class="form-control" min="0" placeholder="0"></td>
+                                <td><input type="number" id="incomp_male3" name="incomp_male3" class="form-control" min="0" placeholder="0"></td>
+                                <td><input type="number" id="total3" name="total3" class="form-control" min="0" placeholder="0" readonly></td>
                             </tr>
                             <tr>
                                 <td>Assessor 4</td>
                                 <td><input type="text" class="form-control" name="fname4"></td>
                                 <td><input type="text" class="form-control" name="mname4"></td>
                                 <td><input type="text" class="form-control" name="lname4"></td>
-                                <td><input type="number" name="com_fem4" class="form-control" min="0" placeholder="0"></td>
-                                <td><input type="number" name="com_male4" class="form-control" min="0" placeholder="0"></td>
-                                <td><input type="number" name="incomp_fem4" class="form-control" min="0" placeholder="0"></td>
-                                <td><input type="number" name="incomp_male4" class="form-control" min="0" placeholder="0"></td>
-                                <td><input type="number" name="total4" class="form-control" min="0" placeholder="0" readonly></td>
+                                <td><input type="number"id="com_fem4" name="com_fem4" class="form-control" min="0" placeholder="0"></td>
+                                <td><input type="number" id="com_male4" name="com_male4" class="form-control" min="0" placeholder="0"></td>
+                                <td><input type="number" id="incomp_fem4" name="incomp_fem4" class="form-control" min="0" placeholder="0"></td>
+                                <td><input type="number" id="incomp_male4" name="incomp_male4" class="form-control" min="0" placeholder="0"></td>
+                                <td><input type="number" id="total4" name="total4" class="form-control" min="0" placeholder="0" readonly></td>
                             </tr>
                             <tr>
                                 <td>Assessor 5</td>
                                 <td><input type="text" class="form-control" name="fname5"></td>
                                 <td><input type="text" class="form-control" name="mname5"></td>
                                 <td><input type="text" class="form-control" name="lname5"></td>
-                                <td><input type="number" name="com_fem5" class="form-control" min="0" placeholder="0"></td>
-                                <td><input type="number" name="com_male5" class="form-control" min="0" placeholder="0"></td>
-                                <td><input type="number" name="incomp_fem5" class="form-control" min="0" placeholder="0"></td>
-                                <td><input type="number" name="incomp_male5" class="form-control" min="0" placeholder="0"></td>
-                                <td><input type="number" name="total5" class="form-control" min="0" placeholder="0" readonly></td>
+                                <td><input type="number" id="com_fem5" name="com_fem5" class="form-control" min="0" placeholder="0"></td>
+                                <td><input type="number" id="com_male5" name="com_male5" class="form-control" min="0" placeholder="0"></td>
+                                <td><input type="number" id="incomp_fem5" name="incomp_fem5" class="form-control" min="0" placeholder="0"></td>
+                                <td><input type="number" id="incomp_male5" name="incomp_male5" class="form-control" min="0" placeholder="0"></td>
+                                <td><input type="number" id="total5" name="total5" class="form-control" min="0" placeholder="0" readonly></td>
                             </tr>
                             </tbody>
                         </table>
@@ -253,22 +253,213 @@
             xhttp.send();
         }
 
-        var com_fem1=document.getElementById('com_fem1');
-        var total=0;
-        var val=0;
+         function calculateTotal(a,b,c,d){
+            return a+b+c+d;
+        }
 
-        com_fem1.onchange= function (){
-            val=Number.parseInt(com_fem1.value);
-            console.log(document.getElementById('total1').value);
+        var com_fem1=document.getElementById('com_fem1');
+        var com_male1=document.getElementById('com_male1');
+        var incomp_fem1=document.getElementById('incomp_fem1');
+        var incomp_male1=document.getElementById('incomp_male1');
+
+        
+        com_fem1.onchange=com_male1.onchange=incomp_fem1.onchange=incomp_male1.onchange= function (){
+            var total=0;
+            var val=0;
+            console.log(total);
+            var num1=Number.parseInt(com_fem1.value);
+            var num2=Number.parseInt(com_male1.value);
+            var num3=Number.parseInt(incomp_fem1.value);
+            var num4=Number.parseInt(incomp_male1.value);
+            if(Number.isNaN(num1)){
+                num1=0;
+            }
+            if(Number.isNaN(num2)){
+                num2=0;
+            }
+            if(Number.isNaN(num3)){
+                num3=0;
+            }
+            if(Number.isNaN(num4)){
+                num4=0;
+            }
+            
+            //val=Number.parseInt(com_fem1.value);
+            //console.log(document.getElementById('total1').value);
             total=Number.parseInt(document.getElementById('total1').value);
             if(Number.isNaN(total)){
                 console.log("echo");
                 total=0;
             }
             console.log(total);
-            total+=val;
+            total=calculateTotal(num1,num2,num3,num4);
             console.log(total);
             document.getElementById('total1').value=total;
+
+        }
+
+
+        var com_fem2=document.getElementById('com_fem2');
+        var com_male2=document.getElementById('com_male2');
+        var incomp_fem2=document.getElementById('incomp_fem2');
+        var incomp_male2=document.getElementById('incomp_male2');
+
+        
+        com_fem2.onchange=com_male2.onchange=incomp_fem2.onchange=incomp_male2.onchange= function (){
+            var total=0;
+            var val=0;
+            console.log(total);
+            var num1=Number.parseInt(com_fem2.value);
+            var num2=Number.parseInt(com_male2.value);
+            var num3=Number.parseInt(incomp_fem2.value);
+            var num4=Number.parseInt(incomp_male2.value);
+            if(Number.isNaN(num1)){
+                num1=0;
+            }
+            if(Number.isNaN(num2)){
+                num2=0;
+            }
+            if(Number.isNaN(num3)){
+                num3=0;
+            }
+            if(Number.isNaN(num4)){
+                num4=0;
+            }
+            
+            //val=Number.parseInt(com_fem1.value);
+            //console.log(document.getElementById('total1').value);
+            total=Number.parseInt(document.getElementById('total2').value);
+            if(Number.isNaN(total)){
+                console.log("echo");
+                total=0;
+            }
+            console.log(total);
+            total=calculateTotal(num1,num2,num3,num4);
+            console.log(total);
+            document.getElementById('total2').value=total;
+
+        }
+
+        var com_fem3=document.getElementById('com_fem3');
+        var com_male3=document.getElementById('com_male3');
+        var incomp_fem3=document.getElementById('incomp_fem3');
+        var incomp_male3=document.getElementById('incomp_male3');
+
+        
+        com_fem3.onchange=com_male3.onchange=incomp_fem3.onchange=incomp_male3.onchange= function (){
+            var total=0;
+            var val=0;
+            console.log(total);
+            var num1=Number.parseInt(com_fem3.value);
+            var num2=Number.parseInt(com_male3.value);
+            var num3=Number.parseInt(incomp_fem3.value);
+            var num4=Number.parseInt(incomp_male3.value);
+            if(Number.isNaN(num1)){
+                num1=0;
+            }
+            if(Number.isNaN(num2)){
+                num2=0;
+            }
+            if(Number.isNaN(num3)){
+                num3=0;
+            }
+            if(Number.isNaN(num4)){
+                num4=0;
+            }
+            
+            //val=Number.parseInt(com_fem1.value);
+            //console.log(document.getElementById('total1').value);
+            total=Number.parseInt(document.getElementById('total3').value);
+            if(Number.isNaN(total)){
+                console.log("echo");
+                total=0;
+            }
+            console.log(total);
+            total=calculateTotal(num1,num2,num3,num4);
+            console.log(total);
+            document.getElementById('total3').value=total;
+
+        }
+
+        var com_fem4=document.getElementById('com_fem4');
+        var com_male4=document.getElementById('com_male4');
+        var incomp_fem4=document.getElementById('incomp_fem4');
+        var incomp_male4=document.getElementById('incomp_male4');
+
+        
+        com_fem4.onchange=com_male4.onchange=incomp_fem4.onchange=incomp_male4.onchange= function (){
+            var total=0;
+            var val=0;
+            console.log(total);
+            var num1=Number.parseInt(com_fem4.value);
+            var num2=Number.parseInt(com_male4.value);
+            var num3=Number.parseInt(incomp_fem4.value);
+            var num4=Number.parseInt(incomp_male4.value);
+            if(Number.isNaN(num1)){
+                num1=0;
+            }
+            if(Number.isNaN(num2)){
+                num2=0;
+            }
+            if(Number.isNaN(num3)){
+                num3=0;
+            }
+            if(Number.isNaN(num4)){
+                num4=0;
+            }
+            
+            //val=Number.parseInt(com_fem1.value);
+            //console.log(document.getElementById('total1').value);
+            total=Number.parseInt(document.getElementById('total4').value);
+            if(Number.isNaN(total)){
+                console.log("echo");
+                total=0;
+            }
+            console.log(total);
+            total=calculateTotal(num1,num2,num3,num4);
+            console.log(total);
+            document.getElementById('total4').value=total;
+
+        }
+
+        var com_fem5=document.getElementById('com_fem5');
+        var com_male5=document.getElementById('com_male5');
+        var incomp_fem5=document.getElementById('incomp_fem5');
+        var incomp_male5=document.getElementById('incomp_male5');
+
+        
+        com_fem5.onchange=com_male5.onchange=incomp_fem5.onchange=incomp_male5.onchange= function (){
+            var total=0;
+            var val=0;
+            console.log(total);
+            var num1=Number.parseInt(com_fem5.value);
+            var num2=Number.parseInt(com_male5.value);
+            var num3=Number.parseInt(incomp_fem5.value);
+            var num4=Number.parseInt(incomp_male5.value);
+            if(Number.isNaN(num1)){
+                num1=0;
+            }
+            if(Number.isNaN(num2)){
+                num2=0;
+            }
+            if(Number.isNaN(num3)){
+                num3=0;
+            }
+            if(Number.isNaN(num4)){
+                num4=0;
+            }
+            
+            //val=Number.parseInt(com_fem1.value);
+            //console.log(document.getElementById('total1').value);
+            total=Number.parseInt(document.getElementById('total5').value);
+            if(Number.isNaN(total)){
+                console.log("echo");
+                total=0;
+            }
+            console.log(total);
+            total=calculateTotal(num1,num2,num3,num4);
+            console.log(total);
+            document.getElementById('total5').value=total;
 
         }
 

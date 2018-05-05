@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 
 class NotificationsController extends Controller
 {
-    public function show(){
-        $notifs=Notifications::all();
+    public function show($id){
+        $notifs=Notifications::where('user_id',$id)->get();
 
         return view('notifications')->with(compact('notifs'));
     }

@@ -25,6 +25,11 @@
                 </div>
             </div>
             <br>
+            <div>
+        <?php $title="Sector Summarry"; ?>
+        <a href="/summary/export/permission"><span class="glyphicon glyphicon-export"></span> Export To Excel</a>
+      </div>
+      <hr>
             <div class="row justify-content-center">
                 <div class="col-sm-11">
                     <table class="table table-hover table-bordered">

@@ -98,7 +98,7 @@ class PostPackageController extends Controller
         if (file_exists($path)) {
             $id=Auth::user()->employee_id;
             UserActivityController::store($id,"Downloaded post package files for post package number of ".
-                OpenPackage::where('id',$opened_package_id)->get()->pluck("open_pack_no").".");
+                OpenPackage::where('id',$opened_package_id)->get()->pluck('open_pack_no').".");
             return response()->file($path);
         }
         else

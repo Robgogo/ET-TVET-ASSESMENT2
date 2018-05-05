@@ -33,6 +33,11 @@
                 </div>
             </div>
             <br>
+            <div>
+            <?php $title="Sector Summarry"; ?>
+              <a href="/summary/export/post"><span class="glyphicon glyphicon-export"></span> Export To Excel</a>
+            </div>
+            <hr>
             <div class="row justify-content-center">
                 <div class="col-sm-11">
                     <table class="table table-hover table-bordered">
@@ -47,7 +52,6 @@
                             <th scope="col" >Level</th>
                             <th scope="col" >Region</th>
                             <th scope="col" >Created Pack code</th>
-                            <th scope="col" >Status</th>
                         </tr>
                         </thead>
                         <tbody id="tablebody">

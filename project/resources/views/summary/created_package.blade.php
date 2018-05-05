@@ -33,6 +33,11 @@
               </div>
             </div>
             <br>
+            <div>
+            <?php $title="Sector Summarry"; ?>
+              <a href="/summary/export/create"><span class="glyphicon glyphicon-export"></span> Export To Excel</a>
+            </div>
+            <hr>
             <div class="row justify-content-center">
               <div class="col-sm-11">
                 <table class="table table-hover table-bordered">
@@ -101,7 +106,7 @@
                             '<td>' + cur_result.created_at + '</td>' +
                             '<td>' + cur_result.creatd_by + '</td>' +
                             '<td>' + cur_result.package_code + '</td>' +
-                            '<td>' + cur_name.Packagename + '</td>';
+                            '<td>' + cur_name[0].Packagename + '</td>';
                 table_value += '<td><table class="table table-hover "><tbody>';
                 for (var j=0; j<cur_item.length; j++)
                 {

@@ -9,7 +9,7 @@
     <link href="{{ URL::asset('css/bootstrap-submenu.min.css') }}" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!-- WARNING: Respond.js dont work if you view the page via file:// -->
     <script src="{{ URL::asset('js/html5shiv.min.js') }}"></script>
     <script src="{{ URL::asset('js/respond.min.js') }}"></script>
 	<title>ET-TVET SYSTEM</title>
@@ -55,7 +55,7 @@
                                     <li role="presentation"><a href="/open_package/show">Open Package</a></li>
                                     <li role="presentation"><a href="/post_package/show">Post Package</a></li>
                                     <li role="presentation"><a href="/approve_package/show">Approve Package</a></li>
-                                    <li role="presentation"><a href="/assessor_info/show">Assessor Info</a></li>
+                                    <li role="presentation"><a href="/assessor_info/show">Developer Info</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -81,7 +81,7 @@
                                                 <li role="presentation"><a href="/summary/opened-package">Opened Package Summary</a></li>
                                                 <li role="presentation"><a href="/summary/posted-package">Posted Package Summary</a></li>
                                                 <li role="presentation"><a href="/summary/approve-package">Approved Package Summary</a></li>
-                                                <li role="presentation"><a href="/summary/ass-info-package">Assesor Info Summary</a></li>
+                                                <!-- <li role="presentation"><a href="/summary/ass-info-package">Developer Info Summary</a></li> -->
                                             </ul>
                                     </li>
                                     <li class="dropdown-submenu">
@@ -132,7 +132,7 @@
 									</form>
 								</li>
                                 <li><a href="/changepassword">Change Password</a> </li>
-                                <li><a href="/notification">Notification <span class="badge">{{Auth::user()->new_notif_count}}</span></a></li>    
+                                <li><a href="/notification/{{Auth::user()->id}}">Notification <span class="badge">{{Auth::user()->new_notif_count}}</span></a></li>    
 							</ul>
 						</li>
                         <li class=""><a role="button" href="{{ url('/home') }}">Home</a></li>

@@ -20,6 +20,7 @@ use App\Subsector;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Excel;
 
 class SummaryController extends Controller
 {
@@ -187,13 +188,13 @@ class SummaryController extends Controller
             $packs=Package::where('Packagecode',$packages->pluck('package_code'))->get();
 
         }
-        //dd($packs);
+        
         $items = [];
         foreach ($packages as $pack) 
         {
             $items[] = (CreatePackage::find($pack->id)->info);
         }
-
+        // dd($items[0]);
         return response()->json(["result" => $packages, "items" => $items,"name"=>$packs], 200);
       
     }
@@ -423,4 +424,186 @@ class SummaryController extends Controller
 
         return response()->json(["result"=>$users_activity]);
     }
+
+    public function exportExcel($data,$title){
+
+        Excel::create($title,function($excel)
+            use($data){
+                $excel->sheet('Sheet 1',function($sheet)
+                    use($data){
+                        $sheet->fromArray($data);
+                    });
+            })->export('xlsx');
+
+            return 0;
+    }
+
+    public function sectorExport(){
+
+        $sector=Sector::all();
+        $title="Sector_Summary";
+        $this->exportExcel($sector,$title);
+
+        return back();
+
+    }
+
+    public function subSectorExport(){
+
+        $subsector=Subsector::all();
+        $title="Sub-Sector_Summary";
+        $this->exportExcel($subsector,$title);
+
+        return back();
+
+    }
+
+    public function regionExport(){
+
+        $region=Region::all();
+        $title="Region_Summary";
+        $this->exportExcel($region,$title);
+
+        return back();
+
+    }
+
+    public function levelExport(){
+
+        $level=Level::all();
+        $title="Level_Summary";
+        $this->exportExcel($level,$title);
+
+        return back();
+
+    }
+
+     public function itemExport(){
+
+        $item=ItemDoc::all();
+        $title="Item_Summary";
+        $this->exportExcel($item,$title);
+
+        return back();
+
+    }
+
+    public function packageExport(){
+
+        $package=Package::all();
+        $title="Package_Summary";
+        $this->exportExcel($package,$title);
+
+        return back();
+
+    }
+
+    public function assessorExport(){
+
+        $assessor=Assesor::all();
+        $title="Developer_Summary";
+        $this->exportExcel($assessor,$title);
+
+        return back();
+
+    }
+
+    public function osExport(){
+
+        $os=OccupationalStandard::all();
+        $title="OS_Summary";
+        $this->exportExcel($os,$title);
+
+        return back();
+
+    }
+
+    public function createExport(){
+
+        $create=CreatePackage::all();
+        $items=[];
+        $item=[];
+        foreach ($create as $pack) 
+        {
+            $items[] = (CreatePackage::find($pack->id)->info);
+        }
+        // $item=[$create.$items[0]];
+        // dd($item);
+        $title="Creted_Package_Summary";
+        $this->exportExcel($create,$title);
+        // $title2="Creted_Package_Info_Summary";
+        // $this->exportExcel($items[0],$title2);
+
+        return back();
+
+    }
+
+    public function openExport(){
+
+        $open=OpenPackage::all();
+        $title="Opened_Package_Summary";
+        $this->exportExcel($open,$title);
+
+        return back();
+
+    }
+
+    public function postExport(){
+
+        $post=PostPackage::all();
+        $title="Posted_Package_Summary";
+        $this->exportExcel($post,$title);
+
+        return back();
+
+    }
+
+    public function approveExport(){
+
+        $approve=\App\Approve::all();
+        $title="Approved_Package_Summary";
+        $this->exportExcel($approve,$title);
+
+        return back();
+
+    }
+
+    public function assessorInfoExport(){
+
+        $assessor=AssessorInfo::all();
+        $title="Assessor_Info_Package_Summary";
+        $this->exportExcel($assessor,$title);
+
+        return back();
+
+    }
+
+    public function userExport(){
+
+        $employee=\App\EmployeeInfo::all();
+        $title="Employee_Info_Summary";
+        $this->exportExcel($employee,$title);
+
+        return back();
+
+    }
+
+    public function maintenancePermissionExport(){
+
+        $permission=\App\UserControlPermission::all();
+        // $perm=[];
+        foreach($permission as $per){
+            $mperm=MaintenancePermission::where('employee_id',$per->employee_id)->get();
+            $tperm=TransactionPermission::where('employee_id',$per->employee_id)->get();
+            $rperm=ReportPermission::where('employee_id',$per->employee_id)->get();
+        }
+        $perm=[$mperm,$tperm,$rperm];
+        // dd($perm);
+        $title="User_Permission_Summary";
+        $this->exportExcel($mperm,$title);
+
+        return back();
+
+    }
+
 }

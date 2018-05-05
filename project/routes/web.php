@@ -134,7 +134,7 @@ Route::post('/change','SessionController@changePassword');
 Route::get('/cancel',function(){
     return redirect('/');
 });
-Route::get('/notification','NotificationsController@show');
+Route::get('/notification/{id}','NotificationsController@show');
 
 Route::get('/', function () {
     return view('home');
@@ -196,6 +196,21 @@ Route::group(['namespace' => 'LogicController'], function() {
         Route::get('/user-permission-summary/get-user/{id}/{maintenance?}/{transaction?}/{report?}',
             'SummaryController@getUserPermission');
         Route::get('/user-activity-summary/get-user/{id}','SummaryController@getUserActivity');
+        Route::get('/export/sector','SummaryController@sectorExport');
+        Route::get('/export/subsector','SummaryController@subSectorExport');
+        Route::get('/export/region','SummaryController@regionExport');
+        Route::get('/export/level','SummaryController@levelExport');
+        Route::get('/export/items','SummaryController@itemExport');
+        Route::get('/export/package','SummaryController@packageExport');
+        Route::get('/export/assessor','SummaryController@assessorExport');
+        Route::get('/export/os','SummaryController@osExport');
+        Route::get('/export/create','SummaryController@createExport');
+        Route::get('/export/open','SummaryController@openExport');
+        Route::get('/export/post','SummaryController@postExport');
+        Route::get('/export/approve','SummaryController@approveExport');
+        Route::get('/export/assessor_info','SummaryController@assessorInfoExport');
+        Route::get('/export/users','SummaryController@userExport');
+        Route::get('/export/permission','SummaryController@maintenancePermissionExport');
     });
 });
 
