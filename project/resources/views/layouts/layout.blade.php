@@ -13,15 +13,16 @@
     <script src="{{ URL::asset('js/html5shiv.min.js') }}"></script>
     <script src="{{ URL::asset('js/respond.min.js') }}"></script>
 	<title>ET-TVET SYSTEM</title>
-	{{--<style>--}}
-		{{--.nav{--}}
-			{{--background: lightgray;--}}
-		{{--}--}}
-		{{--body{--}}
-			{{--background: ;--}}
-			{{--color: black;--}}
-		{{--}--}}
-	{{--</style>--}}
+	<style>
+        .footer {
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            /* Set the fixed height of the footer here */
+            height: 60px;
+            background-color: #f5f5f5;
+        }
+	</style>
 </head>
 <body>
 
@@ -153,6 +154,8 @@
         $('.dropdown-submenu > a').submenupicker();
     </script>
 	@yield('ajax')
+
+    @include('layouts.footer')
 
 </body>
 </html>

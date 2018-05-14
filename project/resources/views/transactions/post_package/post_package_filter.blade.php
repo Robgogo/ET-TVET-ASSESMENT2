@@ -37,17 +37,10 @@
                                 <option value="">Choose the code</option>
                                 {{-- this part displays the data fetched from the database see the route and the controller files on how to pass the variable $package --}}
                                 @foreach($sector as $code)
-                                    <option value="{{$code->Sectorcode}}">{{$code->Sectorcode}}</option>
+                                    <option value="{{$code->Sectorcode}}">{{$code->Sectorname}}</option>
                                 @endforeach
                             </select>
                          </div>
-                     </div>
-                     <div class="form-group">
-                        <label class="control-label col-sm-2" for="sector_name">Sector Name:</label>
-                         <div class="col-sm-6">
-                             <input type="text" class="form-control " name="sector_name" id="sector_name" readonly="true">
-                         </div>
-
                      </div>
                 </span>
             </div>
@@ -60,17 +53,11 @@
                             <option value="">Choose the code</option>
                             {{-- this part displays the data fetched from the database see the route and the controller files on how to pass the variable $package --}}
                             @foreach($subsector as $code)
-                                <option value="{{$code->Subsectorcode}}">{{$code->Subsectorcode}}</option>
+                                <option value="{{$code->Subsectorcode}}">{{$code->Subsectorname}}</option>
                             @endforeach
                         </select>
                         </div>
                      </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" for="subsector_name">Subsector Name:</label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" name="subsector_name" id="subsector_name" readonly="true">
-                        </div>
-                    </div>
                 </span>
             </div>
             <div>
@@ -82,17 +69,11 @@
                                 <option value="">Choose the code</option>
                                 {{-- this part displays the data fetched from the database see the route and the controller files on how to pass the variable $package --}}
                                 @foreach($os as $code)
-                                    <option value="{{$code->OScode}}">{{$code->OScode}}</option>
+                                    <option value="{{$code->OScode}}">{{$code->OSname}}</option>
                                 @endforeach
                             </select>
                         </div>
 
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" for="os_name">OS Name:</label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" name="os_name" id="os_name" readonly="true">
-                        </div>
                     </div>
                 </span>
             </div>
@@ -106,15 +87,9 @@
                             <option value="">Choose the code</option>
                             {{-- this part displays the data fetched from the database see the route and the controller files on how to pass the variable $package --}}
                             @foreach($level as $code)
-                                <option value="{{$code->Levelcode}}">{{$code->Levelcode}}</option>
+                                <option value="{{$code->Levelcode}}">{{$code->Levelname}}</option>
                             @endforeach
                         </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" for="level_name">Level Name:</label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" name="level_name" id="level_name" readonly="true">
                         </div>
                     </div>
                 </span>
@@ -130,17 +105,11 @@
                             <option value="">Choose the code</option>
                             {{-- this part displays the data fetched from the database see the route and the controller files on how to pass the variable $package --}}
                             @foreach($region as $code)
-                                <option value="{{$code->Regioncode}}">{{$code->Regioncode}}</option>
+                                <option value="{{$code->Regioncode}}">{{$code->Regionname}}</option>
                             @endforeach
                         </select>
                         </div>
                      </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" for="region_name">Region Name:</label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" name="region_name" id="region_name" readonly="true">
-                        </div>
-                    </div>
                 </span>
             </div>
             <div>
@@ -216,14 +185,14 @@
             xhttp.onreadystatechange = function() {
                 if (xhttp.readyState == 4 && xhttp.status == 200) {
                     responseObject=JSON.parse(xhttp.responseText);
-                    if(responseObject.length===0){
+                    if(responseObject.subsector.length===0){
                         new_content+='<option value="">'+msg+'</option>';
                     }else {
                         for (var i = 0; i < responseObject.subsector.length; i++) {
-                            new_content += '<option value="' + responseObject.subsector[i].Subsectorcode + '">' + responseObject.subsector[i].Subsectorcode + '</option>';
+                            new_content += '<option value="' + responseObject.subsector[i].Subsectorcode + '">' + responseObject.subsector[i].Subsectorname + '</option>';
                         }
                     }
-                    document.getElementById("sector_name").value=responseObject.sector[0].Sectorname;
+                  //  console.log(responseObject);
                     document.getElementById("subsector_code").innerHTML = new_content;
                 }
             };
@@ -233,83 +202,8 @@
             xhttp.send();
         }
 
-        var subsectorName=document.getElementById('subsector_code');
-        subsectorName.onchange=  function (){
-            console.log("adfasfda");
-            var subsector_name='';
-            xhttp.onreadystatechange = function() {
-                if (xhttp.readyState == 4 && xhttp.status == 200) {
-                    responseObject=JSON.parse(xhttp.responseText);
-                    subsector_name=responseObject[0].Subsectorname;
-                    console.log(responseObject);
-                    var newcontent='';
-                    //items is part of the response
-                    document.getElementById("subsector_name").value = subsector_name;
-
-                }
-            };
-            xhttp.open("GET", "get_subsector_id/" + subsectorName.value, true);
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-            xhttp.send();
-        }
-
-        var osName=document.getElementById('os_code');
-        osName.onchange=  function (){
-            console.log("adfasfda");
-            var os_name='';
-            xhttp.onreadystatechange = function() {
-                if (xhttp.readyState == 4 && xhttp.status == 200) {
-                    responseObject=JSON.parse(xhttp.responseText);
-                    os_name=responseObject[0].OSname;
-                    console.log(responseObject);
-                    document.getElementById("os_name").value = os_name;
-
-                }
-            };
-            xhttp.open("GET", "get_os_id/" + osName.value, true);
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-            xhttp.send();
-        }
-
-        var levelName=document.getElementById('level_code');
-        levelName.onchange=  function (){
-            console.log("adfasfda");
-            var level_name='';
-            xhttp.onreadystatechange = function() {
-                if (xhttp.readyState == 4 && xhttp.status == 200) {
-                    responseObject=JSON.parse(xhttp.responseText);
-                    level_name=responseObject[0].Levelname;
-                    console.log(responseObject);
-                    document.getElementById("level_name").value = level_name;
-
-                }
-            };
-            xhttp.open("GET", "get_level_id/" + levelName.value, true);
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-            xhttp.send();
-        }
-
-        var regionName=document.getElementById('region_code');
-        regionName.onchange=  function (){
-            console.log("adfasfda");
-            var region_name='';
-            xhttp.onreadystatechange = function() {
-                if (xhttp.readyState == 4 && xhttp.status == 200) {
-                    responseObject=JSON.parse(xhttp.responseText);
-                    region_name=responseObject[0].Regionname;
-                    console.log(responseObject);
-                    document.getElementById("region_name").value = region_name;
-
-                }
-            };
-            xhttp.open("GET", "get_region_id/" + regionName.value, true);
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-            xhttp.send();
-        }
+        
+        
 
         var packageName=document.getElementById('open_package_no');
         packageName.onchange=  function (){

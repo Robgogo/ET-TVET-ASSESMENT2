@@ -106,11 +106,12 @@ class PostPackageController extends Controller
     }
 
     public function getPackageName($id){
-        $open_package=OpenPackage::get()->where('open_pack_no',$id);
-        $created_package_id=$open_package->pluck('id');
-        $created_package=CreatePackage::get()->where('id',$created_package_id[0]);
-        $package_code=$created_package->pluck('package_code');
-        $package=Package::get()->where('Packagecode',$package_code[0]);
+        $open_package=OpenPackage::where('open_pack_no',$id)->get();
+        $created_package_id=$open_package[0]->created_package_id;
+        $created_package=CreatePackage::where('id',$created_package_id)->get();
+        $package_code=$created_package[0]->package_code;
+        $package=Package::where('Packagecode',$package_code)->get();
+        //dd(response()->json($package));
         return response()->json($package);
     }
 

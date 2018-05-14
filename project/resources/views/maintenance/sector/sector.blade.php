@@ -23,7 +23,7 @@
 				<div class="form-group col-md-4"  style="margin-left: 350px;">
 					<button class="form-control col-md-3 btn btn-success" name="save" value="save" type="submit">Save</button>
 				</div>
-				@include('layouts.errors');
+				@include('layouts.errors')
 
 			</form>
 		@else

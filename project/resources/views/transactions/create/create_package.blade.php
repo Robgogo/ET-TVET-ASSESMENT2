@@ -27,17 +27,11 @@
 				<option value="">Choose the code</option>
 				{{-- this part displays the data fetched from the database see the route and the controller files on how to pass the variable $package --}}
 				@foreach($package as $code)
-					<option value="{{$code->Packagecode}}">{{$code->Packagecode}}</option>
+					<option value="{{$code->Packagecode}}">{{$code->Packagename}}</option>
 				@endforeach
 			</select>
 		</div>
 
-	</div>
-	<div class="form-group">
-		<label class="control-label col-sm-2" for="package_name">Package Name:</label>
-		<div class="col-sm-4">
-			<input type="text" class="form-control" name="package_name" id="package_name" readonly="true">
-		</div>
 	</div>
 	<div class="form-group">
 		<label class="control-label col-sm-2" for="created_by">Created By:</label>
@@ -224,9 +218,26 @@
 		<button name="save" class="form-control btn btn-primary col-sm-5" style="margin-left: 1275px;" type="submit">Save</button>
 	</div>
 
+	@include('layouts.errors')
+
 
 </form>
 
+
+
+@else
+			<h1>Not Allowed to view this page!</h1>
+@endif
+	@include('layouts.errors');
+@else
+	<h1>You re not logged in!</h1>
+	@if (Auth::guest())
+		{{ view('Auth.login')}}
+	@endif
+@endif
+@endsection
+
+@section('ajax')
 <script type="text/javascript">
 	
 //this is the Ajax script that fetches the 
@@ -239,7 +250,6 @@
  	xhttp.onreadystatechange = function() {
     if (xhttp.readyState == 4 && xhttp.status == 200) {
  	   	responseObject=JSON.parse(xhttp.responseText);
- 	   	package_name=responseObject.Packagename;
     	console.log(responseObject);
     	var newcontent='';
     	//items is part of the response
@@ -258,7 +268,6 @@
         document.getElementById("item_name8").innerHTML = newcontent;
         document.getElementById("item_name9").innerHTML = newcontent;
         document.getElementById("item_name10").innerHTML = newcontent;
-        document.getElementById("package_name").value=package_name;
         //document.getElementById("package_name");
     }
   };
@@ -269,14 +278,5 @@
  }
 
 </script>
-@else
-			<h1>Not Allowed to view this page!</h1>
-@endif
-	@include('layouts.errors');
-@else
-	<h1>You re not logged in!</h1>
-	@if (Auth::guest())
-		{{ view('Auth.login')}}
-	@endif
-@endif
+
 @endsection

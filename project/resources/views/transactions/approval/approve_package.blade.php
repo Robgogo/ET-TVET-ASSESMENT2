@@ -190,6 +190,7 @@
             <button name="approve" class="form-control col-md-5 btn btn-primary" style="margin-left:10px;" value="approve" type="submit">Approve</button>
 
         </div>
+        @include('layouts.errors')
     </form>
 
 

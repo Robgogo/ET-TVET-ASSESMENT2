@@ -118,33 +118,33 @@
                                                 <tbody>
                                                 <tr>
                                                     <td>Create Package</td>
-                                                    <td><input type="radio" name="create_package_permission" value="read" id="create_package_permission"> </td>
-                                                    <td><input type="radio" name="create_package_permission" value="write" id="create_package_permission"> </td>
-                                                    <td><input type="radio" name="create_package_permission" value="all" id="create_package_permission"> </td>
+                                                    <td><input type="radio" name="create_package_permission" value="read" id="create_package_permission_r"> </td>
+                                                    <td><input type="radio" name="create_package_permission" value="write" id="create_package_permission_w"> </td>
+                                                    <td><input type="radio" name="create_package_permission" value="all" id="create_package_permission_a"> </td>
                                                 </tr>
                                                 <tr>
                                                     <td>Open Package</td>
-                                                    <td><input type="radio" name="open_package_permission" value="read" id="open_package_permission"> </td>
-                                                    <td><input type="radio" name="open_package_permission" value="write" id="open_package_permission"> </td>
-                                                    <td><input type="radio" name="open_package_permission" value="all" id="open_package_permission"> </td>
+                                                    <td><input type="radio" name="open_package_permission" value="read" id="open_package_permission_r"> </td>
+                                                    <td><input type="radio" name="open_package_permission" value="write" id="open_package_permission_w"> </td>
+                                                    <td><input type="radio" name="open_package_permission" value="all" id="open_package_permission_a"> </td>
                                                 </tr>
                                                 <tr>
                                                     <td>Post Package</td>
-                                                    <td><input type="radio" name="post_package_permission" value="read" id="post_package_permission"> </td>
-                                                    <td><input type="radio" name="post_package_permission" value="write" id="post_package_permission"> </td>
-                                                    <td><input type="radio" name="post_package_permission" value="all" id="post_package_permission"> </td>
+                                                    <td><input type="radio" name="post_package_permission" value="read" id="post_package_permission_r"> </td>
+                                                    <td><input type="radio" name="post_package_permission" value="write" id="post_package_permission_w"> </td>
+                                                    <td><input type="radio" name="post_package_permission" value="all" id="post_package_permission_a"> </td>
                                                 </tr>
                                                 <tr>
                                                     <td>Approve Package</td>
-                                                    <td><input type="radio" name="approve_package_permission" value="read" id="approve_package_permission"> </td>
-                                                    <td><input type="radio" name="approve_package_permission" value="write" id="approve_package_permission"> </td>
-                                                    <td><input type="radio" name="approve_package_permission" value="all" id="approve_package_permission"> </td>
+                                                    <td><input type="radio" name="approve_package_permission" value="read" id="approve_package_permission_r"> </td>
+                                                    <td><input type="radio" name="approve_package_permission" value="write" id="approve_package_permission_w"> </td>
+                                                    <td><input type="radio" name="approve_package_permission" value="all" id="approve_package_permission_a"> </td>
                                                 </tr>
                                                 <tr>
                                                     <td>Assesor Info</td>
-                                                    <td><input type="radio" name="assesor_info_permission" value="read" id="assesor_info_permission"> </td>
-                                                    <td><input type="radio" name="assesor_info_permission" value="write" id="assesor_info_permission"> </td>
-                                                    <td><input type="radio" name="assesor_info_permission" value="all" id="assesor_info_permission"> </td>
+                                                    <td><input type="radio" name="assesor_info_permission" value="read" id="assesor_info_permission_r"> </td>
+                                                    <td><input type="radio" name="assesor_info_permission" value="write" id="assesor_info_permission_w"> </td>
+                                                    <td><input type="radio" name="assesor_info_permission" value="all" id="assesor_info_permission_a"> </td>
                                                 </tr>
                                                 </tbody>
                                             </table>
@@ -177,51 +177,51 @@
                                                 <tbody>
                                                 <tr>
                                                     <td>Sector</td>
-                                                    <td><input type="radio" name="sector_permission" value="read" id="sector_permission"> </td>
-                                                    <td><input type="radio" name="sector_permission" value="write" id="sector_permission"> </td>
-                                                    <td><input type="radio" name="sector_permission" value="all" id="sector_permission"> </td>
+                                                    <td><input type="radio" name="sector_permission" value="read" id="sector_permission_r"> </td>
+                                                    <td><input type="radio" name="sector_permission" value="write" id="sector_permission_w"> </td>
+                                                    <td><input type="radio" name="sector_permission" value="all" id="sector_permission_a"> </td>
                                                 </tr>
                                                 <tr>
                                                     <td>Sub sector</td>
-                                                    <td><input type="radio" name="subsector_permission" value="read" id="subsector_permission"> </td>
-                                                    <td><input type="radio" name="subsector_permission" value="write" id="subsector_permission"> </td>
-                                                    <td><input type="radio" name="subsector_permission" value="all" id="subsector_permission"> </td>
+                                                    <td><input type="radio" name="subsector_permission" value="read" id="subsector_permission_r"> </td>
+                                                    <td><input type="radio" name="subsector_permission" value="write" id="subsector_permission_w"> </td>
+                                                    <td><input type="radio" name="subsector_permission" value="all" id="subsector_permission_a"> </td>
                                                 </tr>
                                                 <tr>
                                                     <td>Os</td>
-                                                    <td><input type="radio" name="os_permission" value="read" id="os_permission"> </td>
-                                                    <td><input type="radio" name="os_permission" value="write" id="os_permission"> </td>
-                                                    <td><input type="radio" name="os_permission" value="all" id="os_permission"> </td>
+                                                    <td><input type="radio" name="os_permission" value="read" id="os_permission_r"> </td>
+                                                    <td><input type="radio" name="os_permission" value="write" id="os_permission_w"> </td>
+                                                    <td><input type="radio" name="os_permission" value="all" id="os_permission_a"> </td>
                                                 </tr>
                                                 <tr>
                                                     <td>Level</td>
-                                                    <td><input type="radio" name="level_permission" value="read" id="level_permission"> </td>
-                                                    <td><input type="radio" name="level_permission" value="write" id="level_permission"> </td>
-                                                    <td><input type="radio" name="level_permission" value="all" id="level_permission"> </td>
+                                                    <td><input type="radio" name="level_permission" value="read" id="level_permission_r"> </td>
+                                                    <td><input type="radio" name="level_permission" value="write" id="level_permission_w"> </td>
+                                                    <td><input type="radio" name="level_permission" value="all" id="level_permission_a"> </td>
                                                 </tr>
                                                 <tr>
                                                     <td>Region</td>
-                                                    <td><input type="radio" name="region_permission" value="read" id="region_permission"> </td>
-                                                    <td><input type="radio" name="region_permission" value="write" id="region_permission"> </td>
-                                                    <td><input type="radio" name="region_permission" value="all" id="region_permission"> </td>
+                                                    <td><input type="radio" name="region_permission" value="read" id="region_permission_r"> </td>
+                                                    <td><input type="radio" name="region_permission" value="write" id="region_permission_w"> </td>
+                                                    <td><input type="radio" name="region_permission" value="all" id="region_permission_a"> </td>
                                                 </tr>
                                                 <tr>
                                                     <td>Item Doc</td>
-                                                    <td><input type="radio" name="itemdoc_permission" value="read" id="itemdoc_permission"> </td>
-                                                    <td><input type="radio" name="itemdoc_permission" value="write" id="itemdoc_permission"> </td>
-                                                    <td><input type="radio" name="itemdoc_permission" value="all" id="itemdoc_permission"> </td>
+                                                    <td><input type="radio" name="itemdoc_permission" value="read" id="itemdoc_permission_r"> </td>
+                                                    <td><input type="radio" name="itemdoc_permission" value="write" id="itemdoc_permission_w"> </td>
+                                                    <td><input type="radio" name="itemdoc_permission" value="all" id="itemdoc_permission_a"> </td>
                                                 </tr>
                                                 <tr>
                                                     <td>Package</td>
-                                                    <td><input type="radio" name="package_permission" value="read" id="package_permission"> </td>
-                                                    <td><input type="radio" name="package_permission" value="write" id="package_permission"> </td>
-                                                    <td><input type="radio" name="package_permission" value="all" id="package_permission"> </td>
+                                                    <td><input type="radio" name="package_permission" value="read" id="package_permission_r"> </td>
+                                                    <td><input type="radio" name="package_permission" value="write" id="package_permission_w"> </td>
+                                                    <td><input type="radio" name="package_permission" value="all" id="package_permission_a"> </td>
                                                 </tr>
                                                 <tr>
                                                     <td>Assesor</td>
-                                                    <td><input type="radio" name="assesor_permission" value="read" id="assesor_permission"> </td>
-                                                    <td><input type="radio" name="assesor_permission" value="write" id="assesor_permission"> </td>
-                                                    <td><input type="radio" name="assesor_permission" value="all" id="assesor_permission"> </td>
+                                                    <td><input type="radio" name="assesor_permission" value="read" id="assesor_permission_r"> </td>
+                                                    <td><input type="radio" name="assesor_permission" value="write" id="assesor_permission_w"> </td>
+                                                    <td><input type="radio" name="assesor_permission" value="all" id="assesor_permission_a"> </td>
                                                 </tr>
                                                 </tbody>
                                             </table>
@@ -254,81 +254,81 @@
                                                 <tbody>
                                                 <tr>
                                                     <td>Sector summary</td>
-                                                    <td><input type="radio" name="sector_summary_permission" value="read" id="sector_summary_permission"> </td>
-                                                    <td><input type="radio" name="sector_summary_permission" value="write" id="sector_summary_permission"> </td>
-                                                    <td><input type="radio" name="sector_summary_permission" value="all" id="sector_summary_permission"> </td>
+                                                    <td><input type="radio" name="sector_summary_permission" value="read" id="sector_summary_permission_r"> </td>
+                                                    <td><input type="radio" name="sector_summary_permission" value="write" id="sector_summary_permission_w"> </td>
+                                                    <td><input type="radio" name="sector_summary_permission" value="all" id="sector_summary_permission_a"> </td>
                                                 </tr>
                                                 <tr>
                                                     <td>Sub sector summary</td>
-                                                    <td><input type="radio" name="subsector_summary_permission" value="read" id="subsector_summary_permission"> </td>
-                                                    <td><input type="radio" name="subsector_summary_permission" value="write" id="subsector_summary_permission"> </td>
-                                                    <td><input type="radio" name="subsector_summary_permission" value="all" id="subsector_summary_permission"> </td>
+                                                    <td><input type="radio" name="subsector_summary_permission" value="read" id="subsector_summary_permission_r"> </td>
+                                                    <td><input type="radio" name="subsector_summary_permission" value="write" id="subsector_summary_permission_w"> </td>
+                                                    <td><input type="radio" name="subsector_summary_permission" value="all" id="subsector_summary_permission_a"> </td>
                                                 </tr>
                                                 <tr>
                                                     <td>Os summary</td>
-                                                    <td><input type="radio" name="os_summary_permission" value="read" id="os_summary_permission"> </td>
-                                                    <td><input type="radio" name="os_summary_permission" value="write" id="os_summary_permission"> </td>
-                                                    <td><input type="radio" name="os_summary_permission" value="all" id="os_summary_permission"> </td>
+                                                    <td><input type="radio" name="os_summary_permission" value="read" id="os_summary_permission_r"> </td>
+                                                    <td><input type="radio" name="os_summary_permission" value="write" id="os_summary_permission_w"> </td>
+                                                    <td><input type="radio" name="os_summary_permission" value="all" id="os_summary_permission_a"> </td>
                                                 </tr>
                                                 <tr>
                                                     <td>Level summary</td>
-                                                    <td><input type="radio" name="level_summary_permission" value="read" id="level_summary_permission"> </td>
-                                                    <td><input type="radio" name="level_summary_permission" value="write" id="level_summary_permission"> </td>
-                                                    <td><input type="radio" name="level_summary_permission" value="all" id="level_summary_permission"> </td>
+                                                    <td><input type="radio" name="level_summary_permission" value="read" id="level_summary_permission_r"> </td>
+                                                    <td><input type="radio" name="level_summary_permission" value="write" id="level_summary_permission_w"> </td>
+                                                    <td><input type="radio" name="level_summary_permission" value="all" id="level_summary_permission_a"> </td>
                                                 </tr>
                                                 <tr>
                                                     <td>Region summary</td>
-                                                    <td><input type="radio" name="region_summary_permission" value="read" id="region_summary_permission"> </td>
-                                                    <td><input type="radio" name="region_summary_permission" value="write" id="region_summary_permission"> </td>
-                                                    <td><input type="radio" name="region_summary_permission" value="all" id="region_summary_permission"> </td>
+                                                    <td><input type="radio" name="region_summary_permission" value="read" id="region_summary_permission_r"> </td>
+                                                    <td><input type="radio" name="region_summary_permission" value="write" id="region_summary_permission_w"> </td>
+                                                    <td><input type="radio" name="region_summary_permission" value="all" id="region_summary_permission_a"> </td>
                                                 </tr>
                                                 <tr>
                                                     <td>Item Doc summary</td>
-                                                    <td><input type="radio" name="itemdoc_summary_permission" value="read" id="itemdoc_summary_permission"> </td>
-                                                    <td><input type="radio" name="itemdoc_summary_permission" value="write" id="itemdoc_summary_permission"> </td>
-                                                    <td><input type="radio" name="itemdoc_summary_permission" value="all" id="itemdoc_summary_permission"> </td>
+                                                    <td><input type="radio" name="itemdoc_summary_permission" value="read" id="itemdoc_summary_permission_r"> </td>
+                                                    <td><input type="radio" name="itemdoc_summary_permission" value="write" id="itemdoc_summary_permission_w"> </td>
+                                                    <td><input type="radio" name="itemdoc_summary_permission" value="all" id="itemdoc_summary_permission_a"> </td>
                                                 </tr>
                                                 <tr>
                                                     <td>Package summary</td>
-                                                    <td><input type="radio" name="package_summary_permission" value="read" id="package_summary_permission"> </td>
-                                                    <td><input type="radio" name="package_summary_permission" value="write" id="package_summary_permission"> </td>
-                                                    <td><input type="radio" name="package_summary_permission" value="all" id="package_summary_permission"> </td>
+                                                    <td><input type="radio" name="package_summary_permission" value="read" id="package_summary_permission_r"> </td>
+                                                    <td><input type="radio" name="package_summary_permission" value="write" id="package_summary_permission_w"> </td>
+                                                    <td><input type="radio" name="package_summary_permission" value="all" id="package_summary_permission_a"> </td>
                                                 </tr>
                                                 <tr>
                                                     <td>Assesor</td>
-                                                    <td><input type="radio" name="assesor_summary_permission" value="read" id="assesor_summary_permission"> </td>
-                                                    <td><input type="radio" name="assesor_summary_permission" value="write" id="assesor_summary_permission"> </td>
-                                                    <td><input type="radio" name="assesor_summary_permission" value="all" id="assesor_summary_permission"> </td>
+                                                    <td><input type="radio" name="assesor_summary_permission" value="read" id="assesor_summary_permission_r"> </td>
+                                                    <td><input type="radio" name="assesor_summary_permission" value="write" id="assesor_summary_permission_w"> </td>
+                                                    <td><input type="radio" name="assesor_summary_permission" value="all" id="assesor_summary_permission_a"> </td>
                                                 </tr>
                                                 <tr>
                                                     <td>Create Package summary</td>
-                                                    <td><input type="radio" name="create_package_summary_permission" value="read" id="create_summary_package_permission"> </td>
-                                                    <td><input type="radio" name="create_package_summary_permission" value="write" id="create_summary_package_permission"> </td>
-                                                    <td><input type="radio" name="create_package_summary_permission" value="all" id="create_summary_package_permission"> </td>
+                                                    <td><input type="radio" name="create_package_summary_permission" value="read" id="create_summary_package_permission_r"> </td>
+                                                    <td><input type="radio" name="create_package_summary_permission" value="write" id="create_summary_package_permission_w"> </td>
+                                                    <td><input type="radio" name="create_package_summary_permission" value="all" id="create_summary_package_permission_a"> </td>
                                                 </tr>
                                                 <tr>
                                                     <td>Open Package summary</td>
-                                                    <td><input type="radio" name="open_package_summary_permission" value="read" id="open_package_summary_permission"> </td>
-                                                    <td><input type="radio" name="open_package_summary_permission" value="write" id="open_package_summary_permission"> </td>
-                                                    <td><input type="radio" name="open_package_summary_permission" value="all" id="open_package_summary_permission"> </td>
+                                                    <td><input type="radio" name="open_package_summary_permission" value="read" id="open_package_summary_permission_r"> </td>
+                                                    <td><input type="radio" name="open_package_summary_permission" value="write" id="open_package_summary_permission_w"> </td>
+                                                    <td><input type="radio" name="open_package_summary_permission" value="all" id="open_package_summary_permission_a"> </td>
                                                 </tr>
                                                 <tr>
                                                     <td>Post Package summary</td>
-                                                    <td><input type="radio" name="post_package_summary_permission" value="read" id="post_package_summary_permission"> </td>
-                                                    <td><input type="radio" name="post_package_summary_permission" value="write" id="post_package_summary_permission"> </td>
-                                                    <td><input type="radio" name="post_package_summary_permission" value="all" id="post_packag_summarye_permission"> </td>
+                                                    <td><input type="radio" name="post_package_summary_permission" value="read" id="post_package_summary_permission_r"> </td>
+                                                    <td><input type="radio" name="post_package_summary_permission" value="write" id="post_package_summary_permission_w"> </td>
+                                                    <td><input type="radio" name="post_package_summary_permission" value="all" id="post_package_summary_permission_a"> </td>
                                                 </tr>
                                                 <tr>
                                                     <td>Approve Package summary</td>
-                                                    <td><input type="radio" name="approve_package_summary_permission" value="read" id="approve_package_summary_permission"> </td>
-                                                    <td><input type="radio" name="approve_package_summary_permission" value="write" id="approve_package_summary_permission"> </td>
-                                                    <td><input type="radio" name="approve_package_summary_permission" value="all" id="approve_package_summary_permission"> </td>
+                                                    <td><input type="radio" name="approve_package_summary_permission" value="read" id="approve_package_summary_permission_r"> </td>
+                                                    <td><input type="radio" name="approve_package_summary_permission" value="write" id="approve_package_summary_permission_w"> </td>
+                                                    <td><input type="radio" name="approve_package_summary_permission" value="all" id="approve_package_summary_permission_a"> </td>
                                                 </tr>
                                                 <tr>
                                                     <td>Assesor Info summary</td>
-                                                    <td><input type="radio" name="assesor_info_summary_permission" value="read" id="assesor_info_summary_permission"> </td>
-                                                    <td><input type="radio" name="assesor_info_summary_permission" value="write" id="assesor_info_summary_permission"> </td>
-                                                    <td><input type="radio" name="assesor_info_summary_permission" value="all" id="assesor_info_summary_permission"> </td>
+                                                    <td><input type="radio" name="assesor_info_summary_permission" value="read" id="assesor_info_summary_permission_r"> </td>
+                                                    <td><input type="radio" name="assesor_info_summary_permission" value="write" id="assesor_info_summary_permission_w"> </td>
+                                                    <td><input type="radio" name="assesor_info_summary_permission" value="all" id="assesor_info_summary_permission_a"> </td>
                                                 </tr>
                                                 </tbody>
                                             </table>
@@ -351,6 +351,8 @@
         </form>
     </div>
 
+    @include('layouts.errors')
+
 @endsection
 @section('ajax')
     <script type="text/javascript">
@@ -370,22 +372,21 @@
             xhttp.onreadystatechange = function() {
                 if (xhttp.readyState == 4 && xhttp.status == 200) {
                     responseObject=JSON.parse(xhttp.responseText);
-                    first_name=responseObject.first_name;
-                    middle_name=responseObject.middle_name;
-                    last_name=responseObject.last_name;
-                    sector=responseObject.sector_code;
-                    subsector=responseObject.subsector_code;
-                    region=responseObject.region_code;
-                    department=responseObject.department;
-                    position=responseObject.position;
-                    src=responseObject.image_dir;
+                    console.log(responseObject);
+                    first_name=responseObject.employee.first_name;
+                    middle_name=responseObject.employee.middle_name;
+                    last_name=responseObject.employee.last_name;
+                    sector=responseObject.employee.sector_code;
+                    subsector=responseObject.employee.subsector_code;
+                    region=responseObject.employee.region_code;
+                    department=responseObject.employee.department;
+                    position=responseObject.employee.position;
+                    src=responseObject.employee.image_dir;
                     var test='{{asset('storage/')}}'+'/'+src;
                     var img="<img src='{{asset('storage/')}}"+"/"+src+"' id='picture'>";
-                    console.log(img);
-                    console.log(responseObject);
+                   
                     //document.getElementById("image").appendChild("");
-                    console.log(responseObject.status);
-
+                   
 
                     document.getElementById("first_name").value = first_name;
                     document.getElementById("middle_name").value = middle_name;
@@ -396,14 +397,271 @@
                     document.getElementById("position").value = position;
                     document.getElementById("region").value = region;
                     document.getElementById('picture').src="{{asset('storage/')}}"+"/"+src;
-                    if(responseObject.status.toString()=="active"){
-                        document.getElementById("active").setAttribute('checked','checked');
-                    }
-                    else{
-                        document.getElementById("not_active").setAttribute('checked','checked');
+                    if(responseObject.maintenance){
+                        if(responseObject.maintenance.sector.toString()=="all"){
+                            document.getElementById('sector_permission_a').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.maintenance.sector.toString()=="read"){
+                            document.getElementById('sector_permission_r').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.maintenance.sector.toString()=="write"){
+                            document.getElementById('sector_permission_w').setAttribute('checked','checked');
+                        }
+
+                        if(responseObject.maintenance.sub_sector.toString()=="all"){
+                            document.getElementById('subsector_permission_a').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.maintenance.sub_sector.toString()=="read"){
+                            document.getElementById('subsector_permission_r').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.maintenance.sub_sector.toString()=="write"){
+                            document.getElementById('subsector_permission_w').setAttribute('checked','checked');
+                        }
+
+                        if(responseObject.maintenance.os.toString()=="all"){
+                            document.getElementById('os_permission_a').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.maintenance.os.toString()=="read"){
+                            document.getElementById('os_permission_r').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.maintenance.os.toString()=="write"){
+                            document.getElementById('os_permission_w').setAttribute('checked','checked');
+                        }
+
+                        if(responseObject.maintenance.level.toString()=="all"){
+                            document.getElementById('level_permission_a').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.maintenance.level.toString()=="read"){
+                            document.getElementById('level_permission_r').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.maintenance.level.toString()=="write"){
+                            document.getElementById('level_permission_w').setAttribute('checked','checked');
+                        }
+
+                        if(responseObject.maintenance.region.toString()=="all"){
+                            document.getElementById('region_permission_a').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.maintenance.region.toString()=="read"){
+                            document.getElementById('region_permission_r').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.maintenance.region.toString()=="write"){
+                            document.getElementById('region_permission_w').setAttribute('checked','checked');
+                        }
+
+                        if(responseObject.maintenance.item_doc.toString()=="all"){
+                            document.getElementById('itemdoc_permission_a').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.maintenance.item_doc.toString()=="read"){
+                            document.getElementById('itemdoc_permission_r').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.maintenance.item_doc.toString()=="write"){
+                            document.getElementById('itemdoc_permission_w').setAttribute('checked','checked');
+                        }
+                        
+                        if(responseObject.maintenance.package.toString()=="all"){
+                            document.getElementById('package_permission_a').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.maintenance.package.toString()=="read"){
+                            document.getElementById('package_permission_r').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.maintenance.package.toString()=="write"){
+                            document.getElementById('package_permission_w').setAttribute('checked','checked');
+                        }
+                        
+                        if(responseObject.maintenance.assesor.toString()=="all"){
+                            document.getElementById('assesor_permission_a').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.maintenance.assesor.toString()=="read"){
+                            document.getElementById('assesor_permission_r').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.maintenance.assesor.toString()=="write"){
+                            document.getElementById('assesor_permission_w').setAttribute('checked','checked');
+                        }
                     }
 
+                    if(responseObject.transaction){
+                        if(responseObject.transaction.create_package.toString()=="all"){
+                            document.getElementById('create_package_permission_a').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.transaction.create_package.toString()=="read"){
+                            document.getElementById('create_package_permission_r').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.transaction.create_package.toString()=="write"){
+                            document.getElementById('create_package_permission_w').setAttribute('checked','checked');
+                        }
 
+                        if(responseObject.transaction.open_package.toString()=="all"){
+                            document.getElementById('open_package_permission_a').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.transaction.open_package.toString()=="read"){
+                            document.getElementById('open_package_permission_r').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.transaction.open_package.toString()=="write"){
+                            document.getElementById('open_package_permission_w').setAttribute('checked','checked');
+                        }
+
+                        if(responseObject.transaction.post_package.toString()=="all"){
+                            document.getElementById('post_package_permission_a').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.transaction.post_package.toString()=="read"){
+                            document.getElementById('post_package_permission_r').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.transaction.post_package.toString()=="write"){
+                            document.getElementById('post_package_permission_w').setAttribute('checked','checked');
+                        }
+
+                        if(responseObject.transaction.approve_package.toString()=="all"){
+                            document.getElementById('approve_package_permission_a').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.transaction.approve_package.toString()=="read"){
+                            document.getElementById('approve_package_permission_r').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.transaction.approve_package.toString()=="write"){
+                            document.getElementById('approve_package_permission_w').setAttribute('checked','checked');
+                        }
+
+                        if(responseObject.transaction.assesor_info.toString()=="all"){
+                            document.getElementById('assesor_info_permission_a').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.transaction.assesor_info.toString()=="read"){
+                            document.getElementById('assesor_info_permission_r').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.transaction.assesor_info.toString()=="write"){
+                            document.getElementById('assesor_info_permission_w').setAttribute('checked','checked');
+                        }
+                    }
+
+                    if(responseObject.report){
+                        if(responseObject.report.sector_summary.toString()=="all"){
+                            document.getElementById('sector_summary_permission_a').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.report.sector_summary.toString()=="read"){
+                            document.getElementById('sector_summary_permission_r').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.report.sector_summary.toString()=="write"){
+                            document.getElementById('sector_summary_permission_w').setAttribute('checked','checked');
+                        }
+
+                        if(responseObject.report.sub_sector_summary.toString()=="all"){
+                            document.getElementById('subsector_summary_permission_a').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.report.sub_sector_summary.toString()=="read"){
+                            document.getElementById('subsector_summary_permission_r').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.report.sub_sector_summary.toString()=="write"){
+                            document.getElementById('subsector_summary_permission_w').setAttribute('checked','checked');
+                        }
+
+                        if(responseObject.report.os_summary.toString()=="all"){
+                            document.getElementById('os_summary_permission_a').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.report.os_summary.toString()=="read"){
+                            document.getElementById('os_summary_permission_r').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.report.os_summary.toString()=="write"){
+                            document.getElementById('os_summary_permission_w').setAttribute('checked','checked');
+                        }
+
+                        if(responseObject.report.level_summary.toString()=="all"){
+                            document.getElementById('level_summary_permission_a').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.report.level_summary.toString()=="read"){
+                            document.getElementById('level_summary_permission_r').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.report.level_summary.toString()=="write"){
+                            document.getElementById('level_summary_permission_w').setAttribute('checked','checked');
+                        }
+
+                        if(responseObject.report.region_summary.toString()=="all"){
+                            document.getElementById('region_summary_permission_a').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.report.region_summary.toString()=="read"){
+                            document.getElementById('region_summary_permission_r').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.report.region_summary.toString()=="write"){
+                            document.getElementById('region_summary_permission_w').setAttribute('checked','checked');
+                        }
+
+                        if(responseObject.report.item_doc_summary.toString()=="all"){
+                            document.getElementById('itemdoc_summary_permission_a').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.report.item_doc_summary.toString()=="read"){
+                            document.getElementById('itemdoc_summary_permission_r').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.report.item_doc_summary.toString()=="write"){
+                            document.getElementById('itemdoc_summary_permission_w').setAttribute('checked','checked');
+                        }
+
+                        if(responseObject.report.package_summary.toString()=="all"){
+                            document.getElementById('package_summary_permission_a').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.report.package_summary.toString()=="read"){
+                            document.getElementById('package_summary_permission_r').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.report.package_summary.toString()=="write"){
+                            document.getElementById('package_summary_permission_w').setAttribute('checked','checked');
+                        }
+
+                        if(responseObject.report.assesor_summary.toString()=="all"){
+                            document.getElementById('assesor_summary_permission_a').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.report.assesor_summary.toString()=="read"){
+                            document.getElementById('assesor_summary_permission_r').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.report.assesor_summary.toString()=="write"){
+                            document.getElementById('assesor_summary_permission_w').setAttribute('checked','checked');
+                        }
+                        
+                        if(responseObject.report.created_packages_summary.toString()=="all"){
+                            document.getElementById('create_summary_package_permission_a').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.report.created_packages_summary.toString()=="read"){
+                            document.getElementById('create_summary_package_permission_r').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.report.created_packages_summary.toString()=="write"){
+                            document.getElementById('create_summary_package_permission_w').setAttribute('checked','checked');
+                        }
+
+                        if(responseObject.report.open_packages_summary.toString()=="all"){
+                            document.getElementById('open_package_summary_permission_a').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.report.open_packages_summary.toString()=="read"){
+                            document.getElementById('open_package_summary_permission_r').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.report.open_packages_summary.toString()=="write"){
+                            document.getElementById('open_package_summary_permission_w').setAttribute('checked','checked');
+                        }
+
+                        if(responseObject.report.post_packages_summary.toString()=="all"){
+                            document.getElementById('post_package_summary_permission_a').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.report.post_packages_summary.toString()=="read"){
+                            document.getElementById('post_package_summary_permission_r').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.report.post_packages_summary.toString()=="write"){
+                            document.getElementById('post_package_summary_permission_w').setAttribute('checked','checked');
+                        }
+
+                        if(responseObject.report.approve_package_summary.toString()=="all"){
+                            document.getElementById('approve_package_summary_permission_a').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.report.approve_package_summary.toString()=="read"){
+                            document.getElementById('approve_package_summary_permission_r').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.report.approve_package_summary.toString()=="write"){
+                            document.getElementById('approve_package_summary_permission_w').setAttribute('checked','checked');
+                        }
+
+                        if(responseObject.report.assesor_info_summary.toString()=="all"){
+                            document.getElementById('assesor_info_summary_permission_a').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.report.assesor_info_summary.toString()=="read"){
+                            document.getElementById('assesor_info_summary_permission_r').setAttribute('checked','checked');
+                        }
+                        else if(responseObject.report.assesor_info_summary.toString()=="write"){
+                            document.getElementById('assesor_info_summary_permission_w').setAttribute('checked','checked');
+                        }
+                    }
                 }
             };
             xhttp.open("GET", "get_emp_info/" + employee.value, true);

@@ -10,6 +10,10 @@ use App\Sector;
 use App\Subsector;
 use App\Level;
 use App\Region;
+use App\UserControlPermission;
+use App\ReportPermission;
+use App\MaintenancePermission;
+use App\TransactionPermission;
 use Illuminate\Support\Facades\DB;
 
 class EmployeeInfoController extends Controller
@@ -83,8 +87,20 @@ class EmployeeInfoController extends Controller
 
     public function details($id){
         $employee=EmployeeInfo::findOrFail($id);
+        $permission=UserControlPermission::where('employee_id',$id)->get();
+        if(!($permission->isEmpty())){
+            $rep_id=$permission[0]->report_permission_id;
+            $main_id=$permission[0]->maintenance_permission_id;
+            $tran_id=$permission[0]->transaction_permission_id;
 
-        return response()->json($employee);
+            $report=ReportPermission::findOrFail($rep_id);
+            $maintenance=MaintenancePermission::findOrFail($main_id);
+            $transaction=TransactionPermission::findOrFail($tran_id);
+            // dd(response()->json(["employee"=>$employee,"maintenance"=>$maintenance,"transaction"=>$transaction,"report"=>$report]));
+            return response()->json(["employee"=>$employee,"maintenance"=>$maintenance,"transaction"=>$transaction,"report"=>$report]);
+        }
+
+        return response()->json(["employee"=>$employee]);
     }
 
     public function updateStat(){

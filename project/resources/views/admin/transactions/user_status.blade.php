@@ -113,21 +113,18 @@
             xhttp.onreadystatechange = function() {
                 if (xhttp.readyState == 4 && xhttp.status == 200) {
                     responseObject=JSON.parse(xhttp.responseText);
-                    first_name=responseObject.first_name;
-                    middle_name=responseObject.middle_name;
-                    last_name=responseObject.last_name;
-                    sector=responseObject.sector_code;
-                    subsector=responseObject.subsector_code;
-                    region=responseObject.region_code;
-                    department=responseObject.department;
-                    position=responseObject.position;
-                    src=responseObject.image_dir;
+                    first_name=responseObject.employee.first_name;
+                    middle_name=responseObject.employee.middle_name;
+                    last_name=responseObject.employee.last_name;
+                    sector=responseObject.employee.sector_code;
+                    subsector=responseObject.employee.subsector_code;
+                    region=responseObject.employee.region_code;
+                    department=responseObject.employee.department;
+                    position=responseObject.employee.position;
+                    src=responseObject.employee.image_dir;
                     var test='{{asset('storage/')}}'+'/'+src;
                     var img="<img src='{{asset('storage/')}}"+"/"+src+"' id='picture'>";
-                    console.log(img);
-                    console.log(responseObject);
-                    //document.getElementById("image").appendChild("");
-                    console.log(responseObject.status);
+                   
 
 
                     document.getElementById("first_name").value = first_name;
@@ -139,7 +136,7 @@
                     document.getElementById("position").value = position;
                     document.getElementById("region").value = region;
                     document.getElementById('picture').src="{{asset('storage/')}}"+"/"+src;
-                    if(responseObject.status.toString()=="active"){
+                    if(responseObject.employee.status.toString()=="active"){
                         document.getElementById("active").setAttribute('checked','checked');
                     }
                     else{

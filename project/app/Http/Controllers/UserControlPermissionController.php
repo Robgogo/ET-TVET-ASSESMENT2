@@ -49,58 +49,98 @@ class UserControlPermissionController extends Controller
             'approve_package_summary_permission'=>'required',
             'assesor_info_summary_permission'=>'required'
         ]);
+        $perm=UserControlpermission::where('employee_id',request('employee_id'))->get();
+        if($perm->isEmpty()){
+            $maintenance_permission=new MaintenancePermission;
+            $transaction_permission=new TransactionPermission;
+            $reports_permission=new ReportPermission;
+            $user_permissions=new UserControlPermission;
 
-        $maintenance_permission=new MaintenancePermission;
-        $transaction_permission=new TransactionPermission;
-        $reports_permission=new ReportPermission;
-        $user_permissions=new UserControlPermission;
+            $maintenance_permission->employee_id=request('employee_id');
+            $maintenance_permission->sector=request('sector_permission');
+            $maintenance_permission->sub_sector=request('subsector_permission');
+            $maintenance_permission->os=request('os_permission');
+            $maintenance_permission->level=request('level_permission');
+            $maintenance_permission->region=request('region_permission');
+            $maintenance_permission->item_doc=request('itemdoc_permission');
+            $maintenance_permission->package=request('package_permission');
+            $maintenance_permission->assesor=request('assesor_permission');
+            $maintenance_permission->save();
+            $maintenace=$maintenance_permission->id;
 
-        $maintenance_permission->employee_id=request('employee_id');
-        $maintenance_permission->sector=request('sector_permission');
-        $maintenance_permission->sub_sector=request('subsector_permission');
-        $maintenance_permission->os=request('os_permission');
-        $maintenance_permission->level=request('level_permission');
-        $maintenance_permission->region=request('region_permission');
-        $maintenance_permission->item_doc=request('itemdoc_permission');
-        $maintenance_permission->package=request('package_permission');
-        $maintenance_permission->assesor=request('assesor_permission');
-        $maintenance_permission->save();
-        $maintenace=$maintenance_permission->id;
+            $transaction_permission->employee_id=request('employee_id');
+            $transaction_permission->create_package=request('create_package_permission');
+            $transaction_permission->open_package=request('open_package_permission');
+            $transaction_permission->post_package=request('post_package_permission');
+            $transaction_permission->approve_package=request('approve_package_permission');
+            $transaction_permission->assesor_info=request('assesor_info_permission');
+            $transaction_permission->save();
+            $transaction=$transaction_permission->id;
 
-        $transaction_permission->employee_id=request('employee_id');
-        $transaction_permission->create_package=request('create_package_permission');
-        $transaction_permission->open_package=request('open_package_permission');
-        $transaction_permission->post_package=request('post_package_permission');
-        $transaction_permission->approve_package=request('approve_package_permission');
-        $transaction_permission->assesor_info=request('assesor_info_permission');
-        $transaction_permission->save();
-        $transaction=$transaction_permission->id;
-
-        $reports_permission->employee_id=request('employee_id');
-        $reports_permission->sector_summary=request('sector_summary_permission');
-        $reports_permission->sub_sector_summary=request('subsector_summary_permission');
-        $reports_permission->os_summary=request('os_summary_permission');
-        $reports_permission->level_summary=request('level_summary_permission');
-        $reports_permission->region_summary=request('region_summary_permission');
-        $reports_permission->item_doc_summary=request('itemdoc_summary_permission');
-        $reports_permission->package_summary=request('package_summary_permission');
-        $reports_permission->assesor_summary=request('assesor_summary_permission');
-        $reports_permission->created_packages_summary=request('create_package_summary_permission');
-        $reports_permission->open_packages_summary=request('open_package_summary_permission');
-        $reports_permission->post_packages_summary=request('post_package_summary_permission');
-        $reports_permission->approve_package_summary=request('approve_package_summary_permission');
-        $reports_permission->assesor_info_summary=request('assesor_info_summary_permission');
-        $reports_permission->save();
-        $report=$reports_permission->id;
+            $reports_permission->employee_id=request('employee_id');
+            $reports_permission->sector_summary=request('sector_summary_permission');
+            $reports_permission->sub_sector_summary=request('subsector_summary_permission');
+            $reports_permission->os_summary=request('os_summary_permission');
+            $reports_permission->level_summary=request('level_summary_permission');
+            $reports_permission->region_summary=request('region_summary_permission');
+            $reports_permission->item_doc_summary=request('itemdoc_summary_permission');
+            $reports_permission->package_summary=request('package_summary_permission');
+            $reports_permission->assesor_summary=request('assesor_summary_permission');
+            $reports_permission->created_packages_summary=request('create_package_summary_permission');
+            $reports_permission->open_packages_summary=request('open_package_summary_permission');
+            $reports_permission->post_packages_summary=request('post_package_summary_permission');
+            $reports_permission->approve_package_summary=request('approve_package_summary_permission');
+            $reports_permission->assesor_info_summary=request('assesor_info_summary_permission');
+            $reports_permission->save();
+            $report=$reports_permission->id;
 
 
-        $user_permissions->permission_no=request('permission_no');
-        $user_permissions->employee_id=request('employee_id');
-        $user_permissions->maintenance_permission_id=$maintenace;
-        $user_permissions->transaction_permission_id=$transaction;
-        $user_permissions->report_permission_id=$report;
-        $user_permissions->save();
+            $user_permissions->permission_no=request('permission_no');
+            $user_permissions->employee_id=request('employee_id');
+            $user_permissions->maintenance_permission_id=$maintenace;
+            $user_permissions->transaction_permission_id=$transaction;
+            $user_permissions->report_permission_id=$report;
+            $user_permissions->save();
+        }
+        else{
+            DB::table('maintenance_permissions')->where('employee_id',request('employee_id'))
+                ->update([
+                    "sector"=>request('sector_permission'),
+                    "sub_sector"=>request('subsector_permission'),
+                    "os"=>request('os_permission'),
+                    "level"=>request('level_permission'),
+                    "region"=>request('region_permission'),
+                    "item_doc"=>request('itemdoc_permission'),
+                    "package"=>request('package_permission'),
+                    "assesor"=>request('assesor_permission')
+                ]);
 
+            DB::table('transaction_permissions')->where('employee_id',request('employee_id'))
+                ->update([
+                    "create_package"=>request('create_package_permission'),
+                    "open_package"=>request('open_package_permission'),
+                    "post_package"=>request('post_package_permission'),
+                    "approve_package"=>request('approve_package_permission'),
+                    "assesor_info"=>request('assesor_info_permission')
+            ]);
+
+            DB::table('report_permissions')->where('employee_id',request('employee_id'))
+                ->update([
+                    "sector_summary"=>request('sector_summary_permission'),
+                    "sub_sector_summary"=>request('subsector_summary_permission'),
+                    "os_summary"=>request('os_summary_permission'),
+                    "level_summary"=>request('level_summary_permission'),
+                    "region_summary"=>request('region_summary_permission'),
+                    "item_doc_summary"=>request('itemdoc_summary_permission'),
+                    "package_summary"=>request('package_summary_permission'),
+                    "assesor_summary"=>request('assesor_summary_permission'),
+                    "created_packages_summary"=>request('create_package_summary_permission'),
+                    "open_packages_summary"=>request('open_package_summary_permission'),
+                    "post_packages_summary"=>request('post_package_summary_permission'),
+                    "approve_package_summary"=>request('approve_package_summary_permission'),
+                    "assesor_info_summary"=>request('assesor_info_summary_permission')
+                ]);
+        }
         return redirect('/');
     }
 

@@ -134,6 +134,7 @@ class OpenPackageController extends Controller
 
     public function getPackageName($id){
         $package=Package::where('package_code',$id)->get();
+        // dd(response()->json($package));
         return response()->json($package);
     }
 

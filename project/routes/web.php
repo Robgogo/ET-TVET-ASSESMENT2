@@ -140,6 +140,10 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('/developer',function(){
+    return view('developer');
+});
+
 
 Auth::routes();
 

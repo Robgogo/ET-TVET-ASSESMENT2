@@ -12,6 +12,7 @@ use App\Level;
 use App\Region;
 use App\OpenPackage;
 use App\PostPackage;
+use App\Package;
 use App\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -153,13 +154,14 @@ class ApproveController extends Controller
     }
 
     public function getPackageName($id){
-        $post_package=PostPackage::get()->where('post_pack_no',$id);
-        $opened_package_id=$post_package->pluck('id');
-        $opened_package=OpenPackage::get()->where('id',$opened_package_id[0]);
-        $created_package_id=$opened_package->pluck('id');
-        $created_package=CreatePackage::get()->where('id',$created_package_id[0]);
-        $package_code=$created_package->pluck('package_code');
-        $package=Package::get()->where('Packagecode',$package_code[0]);
+        $post_package=PostPackage::where('post_pack_no',$id)->get();
+        $opened_package_id=$post_package[0]->opened_package_id;
+        $opened_package=OpenPackage::where('id',$opened_package_id)->get();
+        $created_package_id=$opened_package[0]->created_package_id;
+        $created_package=CreatePackage::where('id',$created_package_id)->get();
+        $package_code=$created_package[0]->package_code;
+        $package=Package::where('Packagecode',$package_code)->get();
+        // dd(response()->json($package));
         return response()->json($package);
     }
 

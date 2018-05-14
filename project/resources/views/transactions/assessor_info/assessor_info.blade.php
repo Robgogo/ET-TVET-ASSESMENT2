@@ -83,7 +83,7 @@
                             <select id="os" class="form-control" name="os">
                                 <option value=""></option>
                                 @foreach($os as $field)
-                                    <option value="{{$field->OScode}}">{{$field->OScode}}</option>
+                                    <option value="{{$field->OScode}}">{{$field->OSname}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -94,7 +94,7 @@
                             <select id="level" class="form-control" name="level">
                                 <option value=""></option>
                                 @foreach($level as $field)
-                                    <option value="{{$field->Levelcode}}">{{$field->Levelcode}}</option>
+                                    <option value="{{$field->Levelcode}}">{{$field->Levelname}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -105,7 +105,7 @@
                             <select id="region" class="form-control" name="region">
                                 <option value=""></option>
                                 @foreach($region as $field)
-                                    <option value="{{$field->Regioncode}}">{{$field->Regioncode}}</option>
+                                    <option value="{{$field->Regioncode}}">{{$field->Regionname}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -189,6 +189,7 @@
                     <div class="form-group col-sm-2">
                         <button class="form-control col-sm-8 btn btn-primary" style="margin-left: 980px;" name="save" value="save" type="submit">Save</button>
                     </div>
+                    @include('layouts.errors')
                 </form>
             </div>
 

@@ -82,6 +82,10 @@
         </div>
     @else
         <tr><th>No records found</th></tr>
+        </tbody>
+        </table>
+        </div>
+        </div>
     @endif
     @else
     <h2>Your account has been set to in active. contact your system adminstrator!</h2>
