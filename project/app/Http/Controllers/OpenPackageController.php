@@ -73,6 +73,8 @@ class OpenPackageController extends Controller
                 ->where('created_package_id',$created_package_id)
                 ->get();
 
+            $count=$val->count();
+
 
 
             $open_pack->open_pack_no=$open_pack_no;
@@ -85,7 +87,7 @@ class OpenPackageController extends Controller
             $open_pack->region_code=request('region_code');
             $open_pack->save();
             //dd($val);
-            return view('transactions.open_package.open_package')->with(compact('cpack_no','created_by','date','val','created_package_id'));
+            return view('transactions.open_package.open')->with(compact('cpack_no','created_by','date','val','created_package_id','count'));
         }
 
 

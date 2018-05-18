@@ -7,7 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap-grid.min.css')}}">
     <link href="{{ URL::asset('css/bootstrap-theme.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('css/bootstrap-submenu.min.css') }}" rel="stylesheet">
-
+    <link href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js dont work if you view the page via file:// -->
     <script src="{{ URL::asset('js/html5shiv.min.js') }}"></script>
@@ -15,7 +15,7 @@
 	<title>ET-TVET SYSTEM</title>
 	<style>
         .footer {
-            position: relative;
+            position: absolute;
             bottom: 0;
             width: 100%;
             /* Set the fixed height of the footer here */

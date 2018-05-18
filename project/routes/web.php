@@ -75,12 +75,14 @@ Route::get('/create_package/show','CreatePackageController@show');
 //process it and return the values needed
 Route::get('/get_package_id/{pack_no}','CreatePackageController@getId');
 Route::post('/creatpackages','CreatePackageController@store');
+Route::post('/create_packages','CreatePackageController@store2');
 
 Route::get('/open_package','OpenPackageController@index');
 Route::get('/open_package/show','OpenPackageController@show');
 Route::post('/open_package','OpenPackageController@store');
 Route::get('/download/{created_package_id}','OpenPackageController@download');
 Route::post('/open','OpenedPackageInfoController@store');
+Route::post('/openPackages','OpenedPackageInfoController@store2');
 Route::get('/get_sector_id/{id}','OpenPackageController@getSectorName');
 Route::get('/get_subsector_id/{id}','OpenPackageController@getSubsectorName');
 Route::get('/get_os_id/{id}','OpenPackageController@getOsName');
@@ -95,6 +97,7 @@ Route::get('/post_package/show','PostPackageController@show');
 Route::post('/post_package','PostPackageController@store');
 Route::get('/download_for_post/{opened_package_id}','PostPackageController@download');
 Route::post('/post','PostPackageInfoController@store');
+Route::post('/postPackages','PostPackageInfoController@store2');
 
 Route::get('/get_open_package_id/{id}','PostPackageController@getPackageName');
 
@@ -154,6 +157,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['namespace' => 'ViewController'], function() {
     //Sector Section
     Route::group(['prefix' => 'summary'], function() {
+        Route::get('/test','SummaryController@getData');
+        Route::get('/testDT','SummaryController@getDataTable');
         Route::get('/sector', 'SummaryController@sector');
         Route::get('/subsector', 'SummaryController@subSector');
         Route::get('/occupationstd', 'SummaryController@occupationStd');

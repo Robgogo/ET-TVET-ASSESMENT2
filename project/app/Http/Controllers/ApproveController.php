@@ -84,7 +84,7 @@ class ApproveController extends Controller
         $approve_pack->approval_status="not approved";
         $approve_pack->save();
 
-        return view('transactions.approval.approve_package')->with(compact('posted_pack_no','date','posted_by','val','items'));
+        return view('transactions.approval.approve')->with(compact('posted_pack_no','date','posted_by','val','items'));
     }
 
     public function storeStat(){
@@ -98,7 +98,7 @@ class ApproveController extends Controller
                     'approval_status'=>'approved'
                 ])){
 
-                ApprovedDocumentsController::store($app);
+                ApprovedDocumentsController::store2($app);
 
                 $id=Auth::user()->employee_id;
                 UserActivityController::store($id,"Approved package ".$app->app_pack_no.".");
@@ -146,7 +146,7 @@ class ApproveController extends Controller
             $id=Auth::user()->employee_id;
             UserActivityController::store($id,"Downloaded post package files for post package number of ".
                 PostPackage::where('id',$post_package_id)->get()->pluck("post_pack_no").".");
-            return response()->file($path,200);
+            return response()->file($path);
             //return response()->download($path);
         }
         else
@@ -166,7 +166,7 @@ class ApproveController extends Controller
     }
 
     public function show(){
-        $approved=Approve::all();
+        $approved=Approve::orderBy('created_at','desc')->get();
 
         return view("transactions.approval.show")->with(compact("approved"));
     }

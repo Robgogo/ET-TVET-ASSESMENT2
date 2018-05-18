@@ -85,7 +85,7 @@ class PostPackageController extends Controller
             $post_pack->save();
 
 
-            return view('transactions.post_package.post_package')->with(compact('opened_pack_no','date','opened_by','val','items'));
+            return view('transactions.post_package.post')->with(compact('opened_pack_no','date','opened_by','val','items'));
         }
 
     }

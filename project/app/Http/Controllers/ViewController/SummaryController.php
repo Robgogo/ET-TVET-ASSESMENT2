@@ -4,12 +4,21 @@ namespace App\Http\Controllers\ViewController;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use DataTables;
 
 class SummaryController extends Controller
 {
     /**
      * Route Request to Sector sumary
      */
+
+     public function getDataTable(){
+        return Datatables::eloquent(\App\Sector::query())->make(true);
+     }
+     public function getData(){
+        return view('summary.datatable');
+     }
+
     public function sector() 
     {
         return view('summary.sector')->with('sectors', \App\Sector::all());
