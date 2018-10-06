@@ -49,7 +49,7 @@ class OccupationalStandardController extends Controller
     }
 
     public function show(){
-        $occupationalStandards=OccupationalStandard::all();
+        $occupationalStandards=OccupationalStandard::orderBy('id','desc')->paginate(20);
         //dd($sectors);
         return view('maintenance.os.show')->with(compact('occupationalStandards'));
     }

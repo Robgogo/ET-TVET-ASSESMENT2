@@ -18,6 +18,7 @@ class CreateApprovedDocumentsTable extends Migration
             $table->string('item_name');
             $table->string('level');
             $table->string('dir');
+            $table->integer('approve_id');
             $table->timestamps();
         });
     }

@@ -67,7 +67,7 @@
 						</select> 
 					</td>
 					<td>
-						<input type="file" class="form-control name_list" name="upload[]" id="upload[]">
+						<input type="file" class="form-control name_list" name="upload[]" id="upload[]" accept="application/pdf">
 					</td>
 					<td>
 						<input type="text" class="form-control name_list" name="comments[]" id="comments[]">
@@ -80,8 +80,46 @@
 
 <br>
 	<div class="form-group col-sm-2">
-		<button name="save" class="form-control btn btn-primary col-sm-5" style="margin-left: 1275px;" id="save" type="submit">Save</button>
+		<button name="save" class="form-control btn btn-primary col-sm-5" data-toggle="modal" data-target="#mySaveModal" style="margin-left: 1275px;" id="save" type="button" onclick="printelement()">Save</button>
 	</div>
+	<div class="modal fade" id="mySaveModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">Check your Input</h4>
+				</div>
+				<div class="modal-body">
+					<p>Here is your input are u sure to proceed?</p>
+					<p id="pack_no"></p>
+					<p id="dat"></p>
+					<p id="package"></p>
+					<p id="by"></p>
+					<script>
+
+                        //console.log("afasdfasf");
+
+                        function printelement(){
+                            var pack_no=document.getElementById("cpackno");
+                            var date=document.getElementById("date");
+                            var package=document.getElementById("package_code");
+                            var by=document.getElementById("created_by");
+                            console.log(pack_no.value);
+                            document.getElementById('pack_no').innerHTML='<p id="pack_no">Package number:'+pack_no.value+'</p>';
+                            document.getElementById('dat').innerHTML='<p id="date">Date:'+date.value+'</p>';
+                            document.getElementById('package').innerHTML='<p id="package">Package:'+package.options[package.selectedIndex].text+'</p>';
+                            document.getElementById('by').innerHTML='<p id="by">Created By:'+by.value+'</p>';
+                        }
+
+					</script>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-success" >Save</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Back</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
 
 	@include('layouts.errors')
 
@@ -123,7 +161,7 @@
 						'</select>'+ 
 					'</td>'+
 					'<td>'+
-						'<input type="file" class="form-control name_list" name="upload[]" id="upload'+i+'">'+
+						'<input type="file" class="form-control name_list" name="upload[]" id="upload'+i+'" accept="application/pdf">'+
 					'</td>'+
 					'<td>'+
 						'<input type="text" class="form-control name_list" name="comments[]" id="comments'+i+'">'+

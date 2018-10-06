@@ -21,7 +21,7 @@
         $('#test').DataTable({
             processing: true,
             serverSide: true,
-            ajax: 'http://localhost:13890/summary/testDT',
+            ajax: '/summary/testDT',
             columns: [
                 {data: 'Sectorcode'},
                 {data: 'Sectorname'},

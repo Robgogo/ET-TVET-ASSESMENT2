@@ -141,7 +141,7 @@ class OpenPackageController extends Controller
     }
 
     public function show(){
-        $opened=OpenPackage::all();
+        $opened=OpenPackage::orderBy('id','desc')->paginate(20);
 
         return view("transactions.open_package.show")->with(compact("opened"));
     }

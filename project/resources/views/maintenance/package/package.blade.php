@@ -18,9 +18,44 @@
 					<label for="package_description">package Description:</label>
 					<textarea name="package_description" class="form-control" id="package_description"></textarea>
 				</div>
-				<div class="form-group col-md-4 " style="margin-left: 400px;">
-					<button name="save" class="form-control col-md-3 btn btn-success" value="save" type="submit">Save</button>
+				<div class="form-group col-md-4"  style="margin-left: 400px;">
+					<button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#mySaveModal" onclick="printelement()">Save</button>
 				</div>
+				<div class="modal fade" id="mySaveModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+								<h4 class="modal-title" id="myModalLabel">Check your Input</h4>
+							</div>
+							<div class="modal-body">
+								<p>Here is your input are u sure to proceed?</p>
+								<p id="code"></p>
+								<p id="name"></p>
+								<p id="desc"></p>
+								<script>
+
+                                    //console.log("afasdfasf");
+
+                                    function printelement(){
+                                        var seccode=document.getElementById("package_code");
+                                        var secname=document.getElementById("package_name");
+                                        var secdesc=document.getElementById("package_description");
+                                        console.log(seccode.value);
+                                        document.getElementById('code').innerHTML='<p id="code">Package Code:'+seccode.value+'</p>';
+                                        document.getElementById('name').innerHTML='<p id="name">Package name:'+secname.value+'</p>';
+                                        document.getElementById('desc').innerHTML='<p id="desc">Package Description:'+secdesc.value+'</p>';
+                                    }
+
+								</script>
+							</div>
+							<div class="modal-footer">
+								<button type="submit" class="btn btn-success" >Save</button>
+								<button type="button" class="btn btn-default" data-dismiss="modal">Back</button>
+							</div>
+						</div><!-- /.modal-content -->
+					</div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->
 
 				@include('layouts.errors');
 			</form>

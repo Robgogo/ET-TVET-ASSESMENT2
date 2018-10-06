@@ -56,8 +56,8 @@
                 </table>
             </div>
             <br>
-            <div class="form-group col-md-3">
-                <button name="save" class="form-control col-md-5 btn btn-primary" style="margin-left:1250px;" type="submit">Save</button>
+            <div class="form-group col-sm-2">
+                <button name="save" class="form-control btn btn-primary col-sm-5" data-toggle="modal" data-target="#mySaveModal" style="margin-left: 1275px;" id="save" type="submit" >Save</button>
             </div>
             @include('layouts.errors')
         </form>

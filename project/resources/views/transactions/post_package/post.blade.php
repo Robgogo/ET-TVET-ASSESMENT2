@@ -31,35 +31,43 @@
                 </tr>
                 </thead>
                 <tbody>
-                @for($i=0;$i<$val->count();$i++)
-                     <tr>
-                        <input type="hidden" value="{{$i+1}}" name="item_no[]">
-                        <td>Item {{$i+1}}</td>
-                        <td>
-                            <input type="text" class="form-control" readonly="true" value="{{$items[$i]->item_name}}">
-                        </td>
-                        <td>
-                            <a href="/download_for_post/{{$val[$i]->id}}" class="btn btn-primary " role="button">Download Files</a>
-                        </td>
-                        <td>
-                            <input type="file" class="form-control" name="upload[]" id="upload">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control" name="comments[]" id="comments" readonly="true" value="{{$val[$i]->opened_item_comment}}">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control" name="new_comments[]" id="new_comments">
-                        </td>
-                    </tr>
-                    @endfor
-                </tbody>
-            </table>
-        </div>
-        <br>
-        <div class="form-group col-md-3">
-            <button name="save" class="form-control col-md-5 btn btn-primary" style="margin-left:1250px;" type="submit">Save</button>
-        </div>
+                @if(!$val->isEmpty())
+                    @for($i=0;$i<$val->count();$i++)
+                         <tr>
+                            <input type="hidden" value="{{$i+1}}" name="item_no[]">
+                            <td>Item {{$i+1}}</td>
+                            <td>
+                                <input type="text" class="form-control" readonly="true" value="{{$items[$i]->item_name}}">
+                            </td>
+                            <td>
+                                <a href="/download_for_post/{{$val[$i]->id}}" class="btn btn-primary " role="button">Download Files</a>
+                            </td>
+                            <td>
+                                <input type="file" class="form-control" name="upload[]" id="upload">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" name="comments[]" id="comments" readonly="true" value="{{$val[$i]->opened_item_comment}}">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" name="new_comments[]" id="new_comments">
+                            </td>
+                         </tr>
 
+                    @endfor
+                            </tbody>
+                        </table>
+                    </div>
+                    <br>
+                    <div class="form-group col-md-3">
+                        <button name="save" class="form-control col-md-5 btn btn-primary" style="margin-left:1250px;" type="submit">Save</button>
+                    </div>
+
+                @else
+                                <tr><td></td><td><b>No Open items found</b></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                @endif
         @include('layouts.errors')
     </form>
 

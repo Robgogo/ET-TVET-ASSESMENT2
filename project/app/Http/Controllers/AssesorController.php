@@ -51,7 +51,7 @@ class AssesorController extends Controller
     }
 
     public function show(){
-        $assesors=Assesor::all();
+        $assesors=Assesor::orderBy('id','desc')->paginate(20);
         //dd($assesors);
         return view('maintenance.assesor.show')->with(compact('assesors'));
     }

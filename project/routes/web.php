@@ -107,6 +107,9 @@ Route::post('/approve_package','ApproveController@store');
 Route::get('/download_for_approve/{post_package_id}','ApproveController@download');
 Route::post('/approve','ApproveController@storeStat');
 Route::post('/disapprove','ApproveController@disapprove');
+Route::get('/searchdoc','ApprovedDocumentsController@index');
+Route::post('/searchdoc','ApprovedDocumentsController@show');
+Route::get('/downloaddoc/{id}','ApprovedDocumentsController@download');
 
 Route::get('/assessor_info','AssessorInfoController@index');
 Route::get('/assessor_info/show','AssessorInfoController@show');

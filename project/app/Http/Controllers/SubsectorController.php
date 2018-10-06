@@ -57,7 +57,7 @@ class SubsectorController extends Controller
     }
 
     public function show(){
-        $subsectors=Subsector::all();
+        $subsectors=Subsector::orderBy('id','desc')->paginate(20);
         //dd($sectors);
         return view('maintenance.subsector.show')->with(compact('subsectors'));
     }

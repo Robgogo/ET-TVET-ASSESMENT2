@@ -51,7 +51,7 @@ class SectorController extends Controller
     }
 
     public function show(){
-        $sectors=Sector::all();
+        $sectors=Sector::orderBy('id','desc')->paginate(20);
         //dd($sectors);
         return view('maintenance.sector.show')->with(compact('sectors'));
     }

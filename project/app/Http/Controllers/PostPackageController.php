@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\CreatePackage;
 use App\Package;
+use Faker\Provider\DateTime;
 use Illuminate\Http\Request;
 use App\Sector;
 use App\Subsector;
@@ -58,33 +59,39 @@ class PostPackageController extends Controller
             $post_pack_no=request('postpackno');
             $opened_pack_no=request('open_package_no');
             $att=DB::table('open_packages')
-                ->where('open_pack_no',$opened_pack_no)
+                ->where('open_pack_no',$opened_pack_no)->where('sector_code',request('sector_code'))
+                ->where('subsector_code',request('subsector_code'))->where('os_code',request('os_code'))
+                ->where('level_code',request('level_code'))
                 ->get();
-            //dd($att);
-            $opened_by=$att[0]->opened_by;
-            $date=$att[0]->created_at;
-            $opened_pack_id=$att[0]->id;
+//            dd($att);
+            if(!$att->isEmpty()){
+                $opened_by=$att[0]->opened_by;
+                $date=$att[0]->created_at;
+                $opened_pack_id=$att[0]->id;
+                $val=DB::table('opened_package_infos')
+                    ->where('open_package_id',$opened_pack_id)
+                    ->get();
 
+                $items=DB::table('created_package_infos')
+                    ->where('created_package_id',$att[0]->created_package_id)
+                    ->get();
 
-            $val=DB::table('opened_package_infos')
-                ->where('open_package_id',$opened_pack_id)
-                ->get();
-
-            $items=DB::table('created_package_infos')
-                ->where('created_package_id',$att[0]->created_package_id)
-                ->get();
-
-            $post_pack->post_pack_no=$post_pack_no;
-            $post_pack->opened_package_id=$opened_pack_id;
-            $post_pack->created_by=request('posted_by');
-            $post_pack->sector_code=request('sector_code');
-            $post_pack->subsector_code=request('subsector_code');
-            $post_pack->os_code=request('os_code');
-            $post_pack->level_code=request('level_code');
-            $post_pack->region_code=request('region_code');
-            $post_pack->save();
-
-
+                $post_pack->post_pack_no=$post_pack_no;
+                $post_pack->opened_package_id=$opened_pack_id;
+                $post_pack->created_by=request('posted_by');
+                $post_pack->sector_code=request('sector_code');
+                $post_pack->subsector_code=request('subsector_code');
+                $post_pack->os_code=request('os_code');
+                $post_pack->level_code=request('level_code');
+                $post_pack->region_code=request('region_code');
+                $post_pack->save();
+            }
+            else{
+                $date='Nothing';
+                $opened_by="No One";
+                $items=$att;
+                $val=$att;
+            }
             return view('transactions.post_package.post')->with(compact('opened_pack_no','date','opened_by','val','items'));
         }
 
@@ -116,7 +123,7 @@ class PostPackageController extends Controller
     }
 
     public function show(){
-        $posted=PostPackage::all();
+        $posted=PostPackage::orderBy('id','desc')->paginate(20);
 
         return view("transactions.post_package.show")->with(compact("posted"));
     }

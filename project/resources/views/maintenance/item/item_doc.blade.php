@@ -24,13 +24,50 @@
 					<select class="form-control" name="package_no" id="package_no">
 						<option value="">Choose package belonging to:</option>
 						@foreach($packages as $pack)
-							<option value="{{$pack["id"]}}">{{$pack["Packagecode"]}}</option>
+							<option value="{{$pack["id"]}}">{{$pack["Packagename"]}}</option>
 						@endforeach
 					</select>
 				</div>
-				<div class="form-group col-md-4 " style="margin-left: 400px;">
-					<button name="save" class="form-control col-md-3 btn btn-success" value="save" type="submit">Save</button>
+				<div class="form-group col-md-4"  style="margin-left: 400px;">
+					<button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#mySaveModal" onclick="printelement()">Save</button>
 				</div>
+				<div class="modal fade" id="mySaveModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+								<h4 class="modal-title" id="myModalLabel">Check your Input</h4>
+							</div>
+							<div class="modal-body">
+								<p>Here is your input are u sure to proceed?</p>
+								<p id="code"></p>
+								<p id="name"></p>
+								<p id="desc"></p>
+								<p id="sect"></p>
+								<script>
+
+                                    function printelement(){
+                                        var seccode=document.getElementById("item_code");
+                                        var secname=document.getElementById("item_name");
+                                        var secdesc=document.getElementById("item_description");
+                                        var sec=document.getElementById('package_no');
+                                        console.log(seccode.value);
+                                        document.getElementById('code').innerHTML='<p id="code">Item Code:'+seccode.value+'</p>';
+                                        document.getElementById('name').innerHTML='<p id="name">Item name:'+secname.value+'</p>';
+                                        document.getElementById('desc').innerHTML='<p id="desc">Item Description:'+secdesc.value+'</p>';
+                                        document.getElementById('sect').innerHTML='<p id="sect">Package Code:'+sec.options[sec.selectedIndex].text;+'</p>';
+                                    }
+
+								</script>
+							</div>
+							<div class="modal-footer">
+								<button type="submit" class="btn btn-success" >Save</button>
+								<button type="button" class="btn btn-default" data-dismiss="modal">Back</button>
+							</div>
+						</div><!-- /.modal-content -->
+					</div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->
+
 
 				@include('layouts.errors');
 

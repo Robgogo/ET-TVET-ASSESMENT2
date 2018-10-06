@@ -49,7 +49,7 @@ class RegionController extends Controller
     }
 
     public function show(){
-        $regions=Region::all();
+        $regions=Region::orderBy('id','desc')->paginate(20);
         //dd($sectors);
         return view('maintenance.region.show')->with(compact('regions'));
     }

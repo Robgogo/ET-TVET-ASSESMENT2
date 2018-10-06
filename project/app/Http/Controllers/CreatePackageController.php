@@ -182,7 +182,7 @@ class CreatePackageController extends Controller
     }
 
     public function show(){
-        $created=CreatePackage::all();
+        $created=CreatePackage::orderBy('id','desc')->paginate(20);
 
         return view('transactions.create.show')->with(compact("created"));
     }

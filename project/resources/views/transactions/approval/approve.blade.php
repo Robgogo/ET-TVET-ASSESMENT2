@@ -31,32 +31,39 @@
                 </thead>
 
                 <tbody>
-                @for($i=0;$i<$val->count();$i++)
-                    <tr>
-                        <input type="hidden" value="{{$i+1}}" name="item_no">
-                        <td>Item {{$i+1}}</td>
-                        <td>
-                            <input type="text" class="form-control" readonly="true" value="{{$items[$i]->item_name}}">
-                        </td>
-                        <td>
-                            <a href="/download_for_approve/{{$val[$i]->id}}" class="btn btn-primary " role="button">Download Files</a>
-                        </td>
+                @if(!$val->isEmpty())
+                            @for($i=0;$i<$val->count();$i++)
+                                <tr>
+                                    <input type="hidden" value="{{$i+1}}" name="item_no">
+                                    <td>Item {{$i+1}}</td>
+                                    <td>
+                                        <input type="text" class="form-control" readonly="true" value="{{$items[$i]->item_name}}">
+                                    </td>
+                                    <td>
+                                        <a href="/download_for_approve/{{$val[$i]->id}}" class="btn btn-primary " role="button">Download Files</a>
+                                    </td>
 
-                        <td>
-                            <input type="text" class="form-control" name="comments" id="comments" readonly="true" value="{{$val[$i]->post_item_comment}}">
-                        </td>
+                                    <td>
+                                        <input type="text" class="form-control" name="comments" id="comments" readonly="true" value="{{$val[$i]->post_item_comment}}">
+                                    </td>
 
-                    </tr>
-                @endfor
-                </tbody>
-            </table>
-        </div>
-        <br>
-        <div class="form-group col-md-3"  style="margin-left:1100px;">
-            <button name="disapprove" class="form-control col-md-5 btn btn-danger" value="Disapprove" type="submit">Disapprove</button>
-            <button name="approve" class="form-control col-md-5 btn btn-primary" style="margin-left:10px;" value="approve" type="submit">Approve</button>
+                                </tr>
+                            @endfor
+                            </tbody>
+                        </table>
+                    </div>
+                    <br>
+                    <div class="form-group col-md-3"  style="margin-left:1100px;">
+                        <button name="disapprove" class="form-control col-md-5 btn btn-danger" value="Disapprove" type="submit">Disapprove</button>
+                        <button name="approve" class="form-control col-md-5 btn btn-primary" style="margin-left:10px;" value="approve" type="submit">Approve</button>
 
-        </div>
+                    </div>
+                @else
+                    <tr><td></td><td><b>No Open items found</b></td></tr>
+                    </tbody>
+                    </table>
+                    </div>
+                @endif
         @include('layouts.errors')
     </form>
 

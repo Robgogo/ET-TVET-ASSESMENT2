@@ -15,11 +15,12 @@
 	<title>ET-TVET SYSTEM</title>
 	<style>
         .footer {
-            position: absolute;
+            position: relative;
             bottom: 0;
+            margin-top: 50px;
             width: 100%;
             /* Set the fixed height of the footer here */
-            height: 60px;
+            height: 300px;
             background-color: #f5f5f5;
         }
 	</style>
@@ -57,6 +58,7 @@
                                     <li role="presentation"><a href="/post_package/show">Post Package</a></li>
                                     <li role="presentation"><a href="/approve_package/show">Approve Package</a></li>
                                     <li role="presentation"><a href="/assessor_info/show">Developer Info</a></li>
+                                    <li role="presentation"><a href="/searchdoc">Download Exam Sheet</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown">

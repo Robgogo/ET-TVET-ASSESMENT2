@@ -50,7 +50,7 @@ class LevelController extends Controller
     }
 
     public function show(){
-        $levels=Level::all();
+        $levels=Level::orderBy('id','desc')->paginate(20);
         //dd($levels);
         return view('maintenance.level.show')->with(compact('levels'));
     }

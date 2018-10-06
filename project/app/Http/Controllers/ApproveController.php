@@ -52,39 +52,55 @@ class ApproveController extends Controller
             'post_package_no'=>'required'
         ]);
 
-        $approve_pack_no=request('approve_packno');
-        $posted_pack_no=request('post_package_no');
+        $ppack=Approve::where('app_pack_no',request('approve_packno'))->get();
+        if(!$ppack->isEmpty()){
+            request()->session()->flash("alert-danger","A package with this package no already exists,try again with different input!");
+            return redirect('/approve_package/show');
+        }
+        else {
+            $approve_pack_no = request('approve_packno');
+            $posted_pack_no = request('post_package_no');
 
-        $att=DB::table('post_packages')
-                ->where('post_pack_no',$posted_pack_no)
+            $att = DB::table('post_packages')
+                ->where('post_pack_no', $posted_pack_no)->where('sector_code', request('sector_code'))
+                ->where('subsector_code', request('subsector_code'))->where('os_code', request('os_code'))
+                ->where('level_code', request('level_code'))
                 ->get();
-        $posted_by=$att[0]->created_by;
-        $date=$att[0]->created_at;
-        $posted_pack_id=$att[0]->id;
+            if (!$att->isEmpty()) {
+                $posted_by = $att[0]->created_by;
+                $date = $att[0]->created_at;
+                $posted_pack_id = $att[0]->id;
 
-        $val=DB::table('post_package_infos')
-                ->where('post_package_id',$posted_pack_id)
-                ->get();
-        $open_packages=DB::table('open_packages')
-                        ->where('id',$att[0]->opened_package_id)
-                        ->get();
+                $val = DB::table('post_package_infos')
+                    ->where('post_package_id', $posted_pack_id)
+                    ->get();
+                $open_packages = DB::table('open_packages')
+                    ->where('id', $att[0]->opened_package_id)
+                    ->get();
 
-        $items=DB::table('created_package_infos')
-            ->where('created_package_id',$open_packages[0]->created_package_id)
-            ->get();
+                $items = DB::table('created_package_infos')
+                    ->where('created_package_id', $open_packages[0]->created_package_id)
+                    ->get();
 
-        $approve_pack->app_pack_no=$approve_pack_no;
-        $approve_pack->post_package_id=$posted_pack_id;
-        $approve_pack->approved_by=request('approved_by');
-        $approve_pack->sector_code=request('sector_code');
-        $approve_pack->subsector_code=request('subsector_code');
-        $approve_pack->os_code=request('os_code');
-        $approve_pack->level_code=request('level_code');
-        $approve_pack->region_code=request('region_code');
-        $approve_pack->approval_status="not approved";
-        $approve_pack->save();
+                $approve_pack->app_pack_no = $approve_pack_no;
+                $approve_pack->post_package_id = $posted_pack_id;
+                $approve_pack->approved_by = request('approved_by');
+                $approve_pack->sector_code = request('sector_code');
+                $approve_pack->subsector_code = request('subsector_code');
+                $approve_pack->os_code = request('os_code');
+                $approve_pack->level_code = request('level_code');
+                $approve_pack->region_code = request('region_code');
+                $approve_pack->approval_status = "not approved";
+                $approve_pack->save();
+            } else {
+                $date = '- - -';
+                $opened_by = "No One";
+                $items = $att;
+                $val = $att;
+            }
 
-        return view('transactions.approval.approve')->with(compact('posted_pack_no','date','posted_by','val','items'));
+            return view('transactions.approval.approve')->with(compact('posted_pack_no', 'date', 'posted_by', 'val', 'items'));
+        }
     }
 
     public function storeStat(){
@@ -166,7 +182,7 @@ class ApproveController extends Controller
     }
 
     public function show(){
-        $approved=Approve::orderBy('created_at','desc')->get();
+        $approved=Approve::orderBy('id','desc')->paginate(20);
 
         return view("transactions.approval.show")->with(compact("approved"));
     }

@@ -29,10 +29,10 @@ class OpenedPackageInfoController extends Controller
 
         if($validator->passes()){
             $aa= OpenPackage::all()->last();
-            $id=$aa->id;
+            $ids=$aa->id;
 
             $package_id=$aa->created_package_id;
-        // dd($package_id);
+        //  dd($package_id);
             $pack_code=CreatePackage::where('id',$package_id)->get();
             $package=Package::where('Packagecode',$pack_code[0]->package_code)->get();
             $pac_name=$package[0]->Packagename;
@@ -44,12 +44,14 @@ class OpenedPackageInfoController extends Controller
             for($i=0;$i<count($item_no);$i++){
                 $file_name=request('upload')[$i]->getClientOriginalName();
                 request('upload')[$i]->storeAs($dir,$file_name);
+//                dd($id);
                 $pack=new OpenedPackageInfo([
-                    'open_package_id'=>$id,
+                    'open_package_id'=>$ids,
                     'item_no'=>$item_no[$i],
                     'opened_items_dir'=>$dir."/".$file_name,
                     'opened_item_comment'=>$comments[$i]
                 ]);
+//                dd($pack);
                 if($pack->save()){
                     $id=Auth::user()->employee_id;
                     UserActivityController::store($id,"Opened package for ".$pac_name.".");

@@ -9,10 +9,52 @@ use App\CreatePackage;
 use App\OpenPackage;
 use App\PostPackage;
 use App\PostPackageInfo;
+use App\Package;
+use Illuminate\Support\Facades\DB;
+use App\ItemDoc;
 use Illuminate\Http\Request;
 
 class ApprovedDocumentsController extends Controller
 {
+    public function index(){
+
+        $package=Package::all();
+        return view('transactions.approved_documents.index')->with(compact("package"));
+    }
+
+    public function show(){
+
+        $this->validate(request(),[
+                'package' => 'required',
+                'items' => 'required'
+            ]);
+
+        $package=CreatePackage::where('package_code',request('package'))->get();
+        $openId=OpenPackage::where('created_package_id',$package[0]->id)->get()[0]->id;
+//        dd($openId);
+        $postId=PostPackage::where('opened_package_id',$openId)->get()[0]->id;
+//        dd($postId);
+        $approveId=Approve::where('post_package_id',$postId)->get()[0]->id;
+//        dd($approveId);
+        $doc=ApprovedDocuments::where('approve_id',$approveId)->where('item_name',request('items'))->get();
+//        dd($doc);
+
+        return view('transactions.approved_documents.show')->with(compact('doc'));
+    }
+
+    public function download($id){
+        $val=DB::table('approved_documents')
+            ->where('id',$id)
+            ->first();
+        $path = storage_path().'/'.'app'.'/'.$val->dir;
+        if (file_exists($path)) {
+            //$id=Auth::user()->employee_id;
+            return response()->file($path);
+            //return response()->download($path);
+        }
+        else
+            return "File Not found";
+    }
 
     public static function store2(Approve $app){
         $post_id=$app->post_package_id;
@@ -134,4 +176,7 @@ class ApprovedDocumentsController extends Controller
     //     $doc10->save();
 
     // }
+
+
+
 }

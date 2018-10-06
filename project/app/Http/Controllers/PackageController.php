@@ -52,7 +52,7 @@ class PackageController extends Controller
     }
 
     public function show(){
-        $Packages=Package::all();
+        $Packages=Package::orderBy('id','desc')->paginate(20);
         //dd($sectors);
         return view('maintenance.package.show')->with(compact('Packages'));
     }

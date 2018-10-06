@@ -53,7 +53,7 @@ class ItemDocController extends Controller
     }
 
     public function show(){
-        $items=ItemDoc::all();
+        $items=ItemDoc::orderBy('id','desc')->paginate(20);
         //dd($items);
         return view('maintenance.item.show')->with(compact('items'));
     }

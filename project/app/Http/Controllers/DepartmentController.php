@@ -51,7 +51,7 @@ class DepartmentController extends Controller
     }
 
     public function show(){
-        $depts=Department::all();
+        $depts=Department::orderBy('id','desc')->paginate(20);
         //dd($assesors);
         return view('maintenance.department.show')->with(compact('depts'));
     }
